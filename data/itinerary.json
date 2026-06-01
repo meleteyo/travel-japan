@@ -1,0 +1,63 @@
+{
+  "trip": {
+    "title": "도쿄 가족여행",
+    "subtitle": "2026.6.3 ~ 6.6 · 가족 3명",
+    "start": "2026-06-03",
+    "end": "2026-06-06",
+    "tz": "Asia/Tokyo"
+  },
+  "days": [
+    {
+      "id": "d1", "n": 1, "date": "2026-06-03", "dow": "수", "title": "닛포리 · 야나카 · 우에노",
+      "mood": "도착일, 가볍게", "weather": "w1", "hero": "yanaka-ginza",
+      "summary": "나리타 도착 → 스카이라이너 → 닛포리 호텔 체크인 → 야나카긴자 산책 → (컨디션 되면) 우에노 아메요코",
+      "moveNote": "첫날은 멀리 가지 말고 닛포리+야나카 정도가 딱 좋아요. 비 80% — 무리한 야외 산책은 줄이고 실내·호텔 주변 위주.",
+      "stops": [
+        { "time": "11:50", "name": "나리타공항 도착·입국", "img": "keisei-skyliner", "desc": "검역 → 입국심사(통합 QR) → 수하물 → 세관(전자신고) 순서. 자동 게이트는 도장이 안 찍히니 기념 도장은 직원에게 요청.", "tips": ["Visit Japan Web 통합 QR 캡처를 밝게 보여주기", "공항~호텔 약 2~2.5시간 예상"] },
+        { "time": "13:00", "name": "스카이라이너 → 닛포리", "station": "京成上野行 · 日暮里", "img": "keisei-skyliner", "desc": "전 좌석 지정제. 온라인 e티켓도 공항 카운터에서 실물 교환+좌석지정 후 탑승. 나리타→닛포리 약 36분.", "tips": ["카운터 운영 7:00~21:00", "B1F JR East에서 Welcome Suica도 함께 구입"], "fareYen": 2580, "gmap": "Keisei Skyliner Narita Airport" },
+        { "time": "14:00", "name": "렁우드 호텔 체크인", "nameJa": "アートホテル日暮里ラングウッド", "station": "日暮里駅", "img": "hotel", "desc": "닛포리역에서 도보로 가까워 캐리어 이동이 편함. 체크인 전이면 프런트에 짐 보관.", "tips": ["교통카드 잔액 확인", "호텔 주변 편의점 위치 파악"], "gmap": "ART HOTEL Nippori Lungwood" },
+        { "time": "15:00", "name": "야나카긴자 산책", "nameJa": "谷中銀座", "station": "日暮里駅 도보 7분", "img": "yanaka-ginza", "desc": "옛 동네 골목 상점가. 작은 가게·간식·고양이 소품으로 첫 일본 분위기 만끽. 화려하진 않지만 정겨움.", "tips": ["가게 대부분 18시경 마감 — 체크인 후 바로!", "멘치카츠·고로케 길거리 간식 추천"], "gmap": "Yanaka Ginza Shopping Street" },
+        { "time": "17:30", "name": "우에노 아메요코 (선택)", "nameJa": "上野アメ横", "station": "닛포리→우에노 1정거장", "img": "ameyoko", "desc": "활기찬 재래시장 거리. 컨디션 좋으면 가볍게. 저녁 6시 이후 이자카야 분위기로 바뀌니 가족은 18시 이내 식사 권장.", "tips": ["첫날은 '분위기만' 보기", "비 많이 오면 생략하고 호텔 근처에서 저녁"], "gmap": "Ameyoko Ueno" }
+      ]
+    },
+    {
+      "id": "d2", "n": 2, "date": "2026-06-04", "dow": "목", "title": "시부야 · 하라주쿠",
+      "mood": "은재 메인 데이", "weather": "w2", "hero": "shibuya-scramble",
+      "summary": "시부야 PARCO(닌텐도·포켓몬·캡콤) → 시부야 LOFT → 캣스트리트 → 하라주쿠/오모테산도",
+      "moveNote": "닛포리에서 야마노테선 한 줄로 시부야까지. 가장 기대하는 코스라 오전~점심에 PARCO 먼저. 습하고 더울 수 있으니 얇은 옷·접이식 우산.",
+      "stops": [
+        { "time": "10:00", "name": "닛포리 → 시부야", "station": "山手線 · 渋谷", "img": "shibuya-scramble", "desc": "환승 없이 야마노테선으로 쭉. 길이 단순해 초행 가족에게 좋음.", "tips": ["사람 많은 곳에선 약속 장소 정하기", "40분마다 짧게 쉬기"], "fareYen": 210 },
+        { "time": "10:40", "name": "시부야 PARCO", "nameJa": "渋谷PARCO", "img": "pokemon-center-shibuya", "desc": "Nintendo TOKYO · Pokémon Center Shibuya · CAPCOM STORE · 캐릭터 굿즈샵이 모여 있는 은재 메인 스폿. 오전~점심 사이가 덜 붐빔.", "tips": ["가챠/굿즈 예산 미리 정하기", "점심은 PARCO 안·근처에서 간단히"], "gmap": "Shibuya PARCO" },
+        { "time": "13:30", "name": "시부야 LOFT", "nameJa": "渋谷ロフト", "img": "shibuya-loft", "desc": "문구·스티커·펜·노트·생활소품·캐릭터 잡화. 닌텐도샵보다 더 오래 볼 수도.", "tips": ["친구 선물용 소품 많음"], "gmap": "Shibuya LOFT" },
+        { "time": "15:00", "name": "캣스트리트", "nameJa": "キャットストリート", "img": "cat-street", "desc": "걷기 좋은 소품·패션·카페 거리. 다케시타도리보다 덜 복잡하고 사진 찍기 좋음.", "tips": ["10대 감성 키링·액세서리·옷"], "gmap": "Cat Street Harajuku" },
+        { "time": "16:00", "name": "하라주쿠 다케시타도리", "nameJa": "竹下通り", "img": "harajuku-takeshita", "desc": "10대 취향 거리. 크레페·캐릭터샵. 사람 많고 정신없으니 30분~1시간만 짧게.", "tips": ["크레페 가게는 현금 준비"], "gmap": "Takeshita Street Harajuku" },
+        { "time": "16:40", "name": "오모테산도", "nameJa": "表参道", "img": "omotesando", "desc": "차분한 가로수길·카페·디저트. 파르페 등 '인생샷' 디저트 한 끼 좋음.", "tips": ["저녁은 닛포리·우에노로 돌아와서 편하게"], "gmap": "Omotesando Tokyo" }
+      ]
+    },
+    {
+      "id": "d3", "n": 3, "date": "2026-06-05", "dow": "금", "title": "아키하바라 · 긴자",
+      "mood": "디지털 + 문구", "weather": "w3", "hero": "akihabara",
+      "summary": "아키하바라(요도바시·가챠·애니메이트·라디오회관) → 긴자 이토야(문구)",
+      "moveNote": "오전 아키하바라(덜 피곤), 오후엔 분위기 바꿔 차분한 긴자. 가챠는 1인 1,000~2,000엔으로 예산 정하기.",
+      "stops": [
+        { "time": "10:00", "name": "닛포리 → 아키하바라", "station": "山手線 · 秋葉原", "img": "akihabara", "desc": "닛포리에서 가깝고 환승 없음.", "tips": ["오전 방문이 덜 붐빔"], "fareYen": 170 },
+        { "time": "10:20", "name": "요도바시 아키바", "nameJa": "ヨドバシAkiba", "img": "yodobashi-akiba", "desc": "이어폰·헤드폰·폰 액세서리·게임 주변기기·전자기기 천국. 은재가 디지털 좋아하면 필수.", "tips": ["면세 5천엔↑ 가능, 여권 지참"], "gmap": "Yodobashi Akiba" },
+        { "time": "12:00", "name": "가챠·애니메이트·라디오회관", "nameJa": "ガチャ · アニメイト · ラジオ会館", "img": "akihabara", "desc": "캡슐토이·캐릭터 굿즈. 가챠는 정해둔 예산만큼만!", "tips": ["100엔·500엔 동전 미리 준비"], "gmap": "Akihabara Radio Kaikan" },
+        { "time": "14:30", "name": "긴자 이토야", "nameJa": "銀座 伊東屋", "img": "ginza-itoya", "desc": "펜·노트·스티커·종이·카드·디자인 소품이 가득한 정갈한 문구 백화점. 긴자는 길이 정돈돼 부모도 덜 피곤.", "tips": ["저녁은 닛포리·우에노로 복귀해서"], "gmap": "Itoya Ginza" }
+      ]
+    },
+    {
+      "id": "d4", "n": 4, "date": "2026-06-06", "dow": "토", "title": "도쿄역 · 공항",
+      "mood": "마지막 쇼핑 후 공항", "weather": "w4", "hero": "tokyo-station",
+      "summary": "체크아웃·짐 보관 → 도쿄역 캐릭터스트리트 → 점심/기념품 → 닛포리 짐 찾기 → 스카이라이너 → 나리타",
+      "moveNote": "귀국편 19:35. 쇼핑 14:30 마무리, 16:00경 닛포리에서 스카이라이너 탑승 목표. 토요일이라 도쿄역 혼잡 — 욕심내지 않기.",
+      "stops": [
+        { "time": "11:00", "name": "체크아웃 · 짐 보관", "station": "日暮里駅", "img": "hotel", "desc": "호텔에 짐 맡기고 가볍게 출발. 닛포리역이 가까워 마지막에 짐 찾고 스카이라이너 타기 편함.", "tips": ["귀국일 짐 무게·면세품 점검"], "gmap": "ART HOTEL Nippori Lungwood" },
+        { "time": "11:30", "name": "도쿄역 캐릭터스트리트", "nameJa": "東京駅 一番街 キャラクターストリート", "img": "tokyo-character-street", "desc": "캐릭터 굿즈·한정 소품·귀여운 과자·기념품을 한 번에. 작은 선물 사기 좋음. 토요일이라 9시 오픈 직후가 한산.", "tips": ["라멘스트리트도 같은 건물 지하", "필요한 것만 사고 점심"], "gmap": "Tokyo Character Street" },
+        { "time": "13:30", "name": "점심 · 기념품 마무리", "station": "東京駅", "img": "tokyo-station", "desc": "라멘스트리트 또는 에키벤(역 도시락). 14:30 전 쇼핑 마무리.", "tips": ["라멘 줄 길면 에키벤으로 시간 절약"] },
+        { "time": "15:00", "name": "닛포리 → 짐 찾기", "station": "日暮里駅", "img": "hotel", "desc": "호텔에서 맡긴 짐 회수.", "tips": [] },
+        { "time": "16:00", "name": "스카이라이너 → 나리타", "station": "京成 日暮里 → 成田空港", "img": "keisei-skyliner", "desc": "약 36분. 19:35 비행기 기준 여유 있게. 공항 도착 후 체크인·출국·면세.", "tips": ["귀국 스카이라이너도 좌석 지정", "장마 시작 가능 — 우산·시간 여유"], "fareYen": 2580 }
+      ]
+    }
+  ]
+}

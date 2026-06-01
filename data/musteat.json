@@ -1,0 +1,191 @@
+{
+  "items": [
+    {
+      "key": "ramen",
+      "name": "라멘",
+      "nameJa": "ラーメン",
+      "imageUrl": "assets/img/e41d58e43a74f2bf.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "간장·미소·소금·돈코츠 4대 국물로 나뉘며, 지역마다 독자적인 스타일이 발달해 있다.",
+      "area": "일본 전국",
+      "gmapUrl": ""
+    },
+    {
+      "key": "tsukemen",
+      "name": "츠케멘",
+      "nameJa": "つけ麺",
+      "imageUrl": "assets/img/6a816b240a90f6be.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "면과 진한 국물을 따로 내어 찍어 먹는 방식으로, 1961년 도쿄에서 처음 고안되었다.",
+      "area": "도쿄",
+      "gmapUrl": ""
+    },
+    {
+      "key": "sushi",
+      "name": "회전초밥",
+      "nameJa": "回転寿司",
+      "imageUrl": "assets/img/6a5226021ab90ea2.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "1958년 오사카에서 처음 등장한 컨베이어 벨트 스시로, 일본 스시 문화를 대중화시켰다.",
+      "area": "일본 전국",
+      "gmapUrl": ""
+    },
+    {
+      "key": "tonkatsu",
+      "name": "돈카츠",
+      "nameJa": "豚カツ",
+      "imageUrl": "assets/img/cb4382cba59ff3aa.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "19세기 말 일본에서 서양식 코틀렛을 일본화한 요리로, 소스와 양배추 샐러드와 함께 낸다.",
+      "area": "일본 전국",
+      "gmapUrl": ""
+    },
+    {
+      "key": "gyukatsu",
+      "name": "규카츠",
+      "nameJa": "牛カツ",
+      "imageUrl": "assets/img/af5b9f27ce8fe75e.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "돼지고기 대신 소고기를 튀긴 커틀릿으로, 겉은 바삭하고 속은 레어로 즐기는 것이 특징이다.",
+      "area": "도쿄·교토",
+      "gmapUrl": ""
+    },
+    {
+      "key": "unagi",
+      "name": "장어덮밥",
+      "nameJa": "鰻丼・うな重",
+      "imageUrl": "assets/img/d6ad180e1b7f5948.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "민물장어를 달콤짭조름한 타레 소스로 구워 밥 위에 얹은 요리로, 여름 더위를 이기는 스태미나 식품으로 유명하다.",
+      "area": "일본 전국",
+      "gmapUrl": ""
+    },
+    {
+      "key": "tempura",
+      "name": "튀김",
+      "nameJa": "天ぷら",
+      "imageUrl": "assets/img/41a9149874b5eb09.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "16세기 포르투갈 선교사의 튀김 기법이 일본에 전해져 발전한 요리로, 얇은 반죽이 핵심이다.",
+      "area": "일본 전국",
+      "gmapUrl": ""
+    },
+    {
+      "key": "tendon",
+      "name": "텐동",
+      "nameJa": "天丼",
+      "imageUrl": "assets/img/c8e5e6149abd8360.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "튀김(덴푸라)을 밥 위에 올리고 달콤짭조름한 텐타레 소스를 뿌린 덮밥으로, 에도 시대부터 서민 음식이었다.",
+      "area": "일본 전국",
+      "gmapUrl": ""
+    },
+    {
+      "key": "gyudon",
+      "name": "규동",
+      "nameJa": "牛丼",
+      "imageUrl": "assets/img/63d0acd4bcd51dec.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "얇게 썬 소고기와 양파를 달콤짭조름하게 조려 밥 위에 얹은 덮밥으로, 요시노야·스키야·마쓰야가 3대 체인이다.",
+      "area": "일본 전국",
+      "gmapUrl": ""
+    },
+    {
+      "key": "katsu-curry",
+      "name": "카츠카레",
+      "nameJa": "カツカレー",
+      "imageUrl": "assets/img/dda58dd986c036cf.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "돈카츠를 일본식 카레 위에 얹은 음식으로, 야구선수 가와카미 테쓰하루가 즐겨 먹었다는 설이 있다.",
+      "area": "일본 전국",
+      "gmapUrl": ""
+    },
+    {
+      "key": "harajuku-crepe",
+      "name": "하라주쿠 크레페",
+      "nameJa": "原宿クレープ",
+      "imageUrl": "assets/img/c4818923bbe364a5.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "1970년대 하라주쿠에서 탄생한 일본식 크레페로, 생크림·과일·아이스크림을 가득 넣어 원뿔 모양으로 말아 먹는다.",
+      "area": "도쿄 하라주쿠",
+      "gmapUrl": ""
+    },
+    {
+      "key": "parfait",
+      "name": "파르페",
+      "nameJa": "パフェ",
+      "imageUrl": "assets/img/caa996b277c67c86.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": false,
+      "note": "일본 파르페는 긴 유리잔에 아이스크림·시리얼·과일·소스를 겹겹이 쌓는 디저트로, 전시 샘플까지 예술적으로 만든다.",
+      "area": "일본 전국",
+      "gmapUrl": ""
+    },
+    {
+      "key": "melonpan",
+      "name": "멜론빵",
+      "nameJa": "メロンパン",
+      "imageUrl": "assets/img/ab7346fdacca6cae.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "쿠키 반죽을 빵 위에 얹어 구운 것으로, 멜론 향이 나지 않아도 격자 무늬가 멜론 껍질을 닮아 붙여진 이름이다.",
+      "area": "일본 전국",
+      "gmapUrl": ""
+    },
+    {
+      "key": "konbini-pudding",
+      "name": "편의점 푸딩",
+      "nameJa": "コンビニプリン",
+      "imageUrl": "assets/img/ee56d0daf475327c.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "세븐일레븐·패밀리마트 편의점 푸딩은 부드러운 식감과 캐러멜 소스로 유명하며, 일본 방문객이 꼭 사 먹는 간식이다.",
+      "area": "일본 전국 편의점",
+      "gmapUrl": ""
+    },
+    {
+      "key": "matcha-dessert",
+      "name": "말차 디저트",
+      "nameJa": "抹茶スイーツ",
+      "imageUrl": "assets/img/18425fd676183545.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "교토 우지 지역이 말차의 본고장으로, 아이스크림·파르페·와라비모치 등 다양한 말차 디저트가 발달해 있다.",
+      "area": "교토 우지",
+      "gmapUrl": ""
+    },
+    {
+      "key": "takoyaki",
+      "name": "타코야키",
+      "nameJa": "たこ焼き",
+      "imageUrl": "assets/img/ba526b7625cde719.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "1935년 오사카에서 탄생한 문어 반죽 볼로, 가쓰오부시·마요네즈·소스·아오노리를 얹어 먹는 오사카의 소울 푸드이다.",
+      "area": "오사카",
+      "gmapUrl": ""
+    },
+    {
+      "key": "onigiri",
+      "name": "주먹밥",
+      "nameJa": "おにぎり",
+      "imageUrl": "assets/img/45f76ef1bb0c5ad9.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "일본 편의점의 상징으로, 연어·참치마요·매실 등 수십 가지 속재료가 있으며 김을 바삭하게 유지하는 포장 기술이 독특하다.",
+      "area": "일본 전국",
+      "gmapUrl": ""
+    }
+  ]
+}

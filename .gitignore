@@ -1,0 +1,7 @@
+private/
+.idea/
+.omc/
+.DS_Store
+*.log
+node_modules/
+*.iml

@@ -1,0 +1,213 @@
+{
+  "items": [
+    {
+      "key": "shibuya-scramble",
+      "name": "시부야 스크램블 교차로",
+      "nameJa": "渋谷スクランブル交差点",
+      "area": "시부야",
+      "imageUrl": "assets/img/39386faae71d4f9a.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Shibuya+Scramble+Crossing,+Tokyo",
+      "note": "세계에서 가장 붐비는 교차로로 한 번에 3,000명 이상이 건너기도 한다."
+    },
+    {
+      "key": "hachiko",
+      "name": "하치코 동상",
+      "nameJa": "ハチ公像",
+      "area": "시부야",
+      "imageUrl": "assets/img/4c9b5aabfa0e709b.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Hachiko+Statue+Shibuya+Tokyo",
+      "note": "시부야역 하치코 출구 앞 약속 장소의 대명사. 충견 하치코를 기리는 동상."
+    },
+    {
+      "key": "harajuku-takeshita",
+      "name": "다케시타 거리",
+      "nameJa": "竹下通り",
+      "area": "하라주쿠",
+      "imageUrl": "assets/img/4f831282bb619fdc.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Takeshita+Street+Harajuku+Tokyo",
+      "note": "일본 팝 컬처와 원색 패션의 성지. 크레페 가게와 빈티지숍이 밀집해 있다."
+    },
+    {
+      "key": "cat-street",
+      "name": "캣 스트리트",
+      "nameJa": "キャットストリート",
+      "area": "하라주쿠·시부야",
+      "imageUrl": "assets/img/887007adf6a09f41.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Cat+Street+Harajuku+Tokyo",
+      "note": "도쿄 스트리트 패션의 중심. 셀렉트숍과 인디 브랜드가 즐비한 한적한 골목."
+    },
+    {
+      "key": "omotesando",
+      "name": "오모테산도",
+      "nameJa": "表参道",
+      "area": "오모테산도",
+      "imageUrl": "assets/img/9d0ba74ce45d8f8e.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Omotesando+Tokyo",
+      "note": "도쿄의 샹젤리제라 불리는 명품 가로수길. 봄 벚꽃 시즌이 가장 아름답다."
+    },
+    {
+      "key": "ueno-park",
+      "name": "우에노 공원",
+      "nameJa": "上野公園",
+      "area": "우에노",
+      "imageUrl": "assets/img/6072d2462728b251.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Ueno+Park+Tokyo",
+      "note": "도쿄 최대 규모의 공원. 벚꽃 명소이자 국립박물관·동물원이 모여 있다."
+    },
+    {
+      "key": "ameyoko",
+      "name": "아메요코 시장",
+      "nameJa": "アメヤ横丁",
+      "area": "우에노",
+      "imageUrl": "assets/img/c8d3ed33e7a6f0be.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Ameyoko+Market+Ueno+Tokyo",
+      "note": "전후 闇시장에서 시작된 재래시장. 연말에는 수산물·과자 등 떨이 쇼핑이 활발하다."
+    },
+    {
+      "key": "yanaka-ginza",
+      "name": "야나카 긴자",
+      "nameJa": "谷中銀座",
+      "area": "야나카",
+      "imageUrl": "assets/img/2a63dad4d7695d9c.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Yanaka+Ginza+Tokyo",
+      "note": "도쿄에서 옛 쇼와 분위기를 가장 잘 느낄 수 있는 약 170m의 소박한 상점가."
+    },
+    {
+      "key": "tokyo-station",
+      "name": "도쿄역",
+      "nameJa": "東京駅",
+      "area": "마루노우치",
+      "imageUrl": "assets/img/0320ae3d743e9ebe.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Tokyo+Station+Japan",
+      "note": "1914년 개업한 붉은 벽돌 역사. 마루노우치 측 정면이 대표 포토스팟."
+    },
+    {
+      "key": "akihabara",
+      "name": "아키하바라",
+      "nameJa": "秋葉原",
+      "area": "아키하바라",
+      "imageUrl": "assets/img/2047d8f35fe27f41.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Akihabara+Electric+Town+Tokyo",
+      "note": "전자제품·애니메이션·피규어의 성지. 메이드카페와 중고 게임숍이 밀집해 있다."
+    },
+    {
+      "key": "ginza",
+      "name": "긴자",
+      "nameJa": "銀座",
+      "area": "긴자",
+      "imageUrl": "assets/img/e22edcf3110b6fad.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Ginza+Tokyo",
+      "note": "일본 최고급 쇼핑가. 주말에는 중앙통이 보행자 천국(호코텐)으로 개방된다."
+    },
+    {
+      "key": "nakamise",
+      "name": "나카미세 쇼핑 거리",
+      "nameJa": "仲見世通り",
+      "area": "아사쿠사",
+      "imageUrl": "assets/img/05d75969da01ea95.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Nakamise+Shopping+Street+Asakusa+Tokyo",
+      "note": "센소지 절로 이어지는 약 250m 참배길 상점가. 전통 과자·기념품 70여 개 점포."
+    },
+    {
+      "key": "pokemon-center-shibuya",
+      "name": "포켓몬 센터 메가 도쿄",
+      "nameJa": "ポケモンセンターメガトウキョー",
+      "area": "이케부쿠로",
+      "imageUrl": "assets/img/1c8c930e03e02efb.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Pokemon+Center+Mega+Tokyo+Ikebukuro",
+      "note": "선샤인시티 내 세계 최대급 포켓몬 공식 직영점. 한정 굿즈는 오픈 전 줄서기 필수."
+    },
+    {
+      "key": "nintendo-tokyo",
+      "name": "닌텐도 도쿄",
+      "nameJa": "Nintendo Tokyo",
+      "area": "시부야",
+      "imageUrl": "assets/img/a7fef3e737e76122.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": false,
+      "gmapUrl": "https://maps.google.com/?q=Nintendo+Tokyo+Shibuya+Parco",
+      "note": "시부야 파르코 6층. 닌텐도 일본 1호 직영점으로 한정 마리오·젤다 굿즈를 판매한다."
+    },
+    {
+      "key": "yodobashi-akiba",
+      "name": "요도바시 아키바",
+      "nameJa": "ヨドバシAkiba",
+      "area": "아키하바라",
+      "imageUrl": "assets/img/1ce8c6f09d6e71c3.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Yodobashi+Akiba+Tokyo",
+      "note": "아키하바라역 바로 앞 9층 규모 초대형 전자제품 매장. 면세 카운터 이용 가능."
+    },
+    {
+      "key": "ginza-itoya",
+      "name": "긴자 이토야",
+      "nameJa": "銀座・伊東屋",
+      "area": "긴자",
+      "imageUrl": "assets/img/e22edcf3110b6fad.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": false,
+      "gmapUrl": "https://maps.google.com/?q=Itoya+Ginza+Tokyo",
+      "note": "1904년 창업한 일본 최고 수준의 문구·스테이셔너리 전문점. 12층 건물 전체가 매장."
+    },
+    {
+      "key": "tokyo-character-street",
+      "name": "도쿄 캐릭터 스트리트",
+      "nameJa": "東京キャラクターストリート",
+      "area": "도쿄역 지하",
+      "imageUrl": "assets/img/45eee2782b3cef15.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Tokyo+Character+Street+Tokyo+Station",
+      "note": "도쿄역 지하 1번가에 위치한 공식 캐릭터 굿즈 상점가. NHK·스누피·리락쿠마 등 입점."
+    },
+    {
+      "key": "keisei-skyliner",
+      "name": "케이세이 스카이라이너",
+      "nameJa": "京成スカイライナー",
+      "area": "나리타공항↔닛포리/우에노",
+      "imageUrl": "assets/img/7fa31ad2091c88ce.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Keisei+Skyliner+Nippori+Station+Tokyo",
+      "note": "나리타공항에서 닛포리까지 최속 36분. 공항 도착 직후 구매하면 대기 없이 탑승 가능."
+    },
+    {
+      "key": "welcome-suica",
+      "name": "웰컴 스이카",
+      "nameJa": "Welcomeスイカ",
+      "area": "도쿄 전역",
+      "imageUrl": "assets/img/29b856652ab3b012.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Narita+Airport+Terminal+1+Tokyo",
+      "note": "외국인 전용 교통·전자화폐 IC카드. 보증금 없이 구입하며 구입일로부터 28일 유효."
+    }
+  ]
+}

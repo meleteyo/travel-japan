@@ -1,0 +1,1004 @@
+{
+  "days": [
+    {
+      "dayId": "d1",
+      "area": "닛포리 · 우에노",
+      "restaurants": [
+        {
+          "id": "izuei-umegawatei",
+          "name": "이즈에이 우메가와테이",
+          "nameJa": "伊豆栄 梅川亭",
+          "tier": "대표",
+          "food": "우나기(장어)",
+          "priceRangeYen": "¥3,960–¥19,800",
+          "why": "에도 300년 전통의 정통 간토식 장어 전문점. 우에노 공원 내 위치하며 고급 코스부터 단품 우나주까지 선택 가능. 비교적 접근하기 쉬운 장어 노포.",
+          "station": "JR 우에노역 공원구 도보 5분 / 케이세이 우에노역 도보 7분",
+          "walk": "도보 5–7분",
+          "phone": "+81-3-5685-2011",
+          "reserve": "코스 요리는 예약 권장. 단품은 당일 가능 (화~일 11:00~15:00, 17:00~21:00, 월요일 정기 휴무)",
+          "pay": "현금·카드 가능(개인실 이용 시 확인 권장)",
+          "foreigner": "영어 메뉴 없는 경우 있음. 라이브재팬 등 외국어 소개 다수. 상급 요리점이라 직원에게 도움 요청 가능.",
+          "kid": "개인실 이용 시 어린이 동반 가능. 다다미석 있음.",
+          "caution": "월요일 휴무. 단품 우나주도 ¥3,960~로 예산 넉넉히 준비. 공원 내 위치로 주변 혼잡할 수 있음.",
+          "confidence": "높음 — 공식 사이트·구르나비·타베로그 교차 확인",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=伊豆栄+梅川亭+上野公園",
+          "heroImageUrl": "assets/img/9059c7f4f3450cae.webp",
+          "heroImageSource": "Wikimedia Commons (우나동 대표 이미지 — 663highland, CC BY-SA 3.0)",
+          "menu": [
+            {
+              "name": "우나주 마츠(상)",
+              "nameJa": "うな重 松",
+              "priceYen": 3960,
+              "mustEat": true,
+              "imageUrl": "assets/img/e817651f4667a23c.webp",
+              "imageSource": "Wikimedia Commons (우나동 대표 이미지 — Japanexperterna.se, CC BY-SA 3.0)"
+            },
+            {
+              "name": "우나주 다케(중)",
+              "nameJa": "うな重 竹",
+              "priceYen": 5060,
+              "mustEat": false
+            },
+            {
+              "name": "우나주 우메(하)",
+              "nameJa": "うな重 梅",
+              "priceYen": 6160,
+              "mustEat": false
+            },
+            {
+              "name": "시라야키(소금구이 장어)",
+              "nameJa": "白焼き",
+              "priceYen": 6380,
+              "mustEat": false
+            }
+          ]
+        },
+        {
+          "id": "tonkatsu-yamabe-ueno",
+          "name": "돈카츠 야마베 우에노",
+          "nameJa": "とんかつ山家 上野店",
+          "tier": "간단",
+          "food": "돈카츠(튀김 돼지고기)",
+          "priceRangeYen": "¥850–¥1,300",
+          "why": "타베로그 100선 선정 상급 돈카츠집. 약 2cm 두께의 두꺼운 등심 돈카츠 정식을 ¥850 안팎의 놀라운 가성비로 제공. 점심 줄 서는 명소.",
+          "station": "JR 우에노역·게이힌토호쿠선 오카치마치역 도보 5분",
+          "walk": "도보 5분",
+          "phone": "+81-3-5817-7045",
+          "reserve": "예약 불가. 영업시간: 11:00~15:00, 17:00~21:00",
+          "pay": "현금 위주(카드 미지원 가능성 높음)",
+          "foreigner": "일본어 메뉴 중심. 사진 메뉴 있어 손가락으로 주문 가능.",
+          "kid": "일반 테이블. 어린이 동반 시 주의(줄 대기 있음).",
+          "caution": "점심 피크 타임 줄 필수. 밥·양배추 셀프 리필 가능. 현금 필수 지참 권장.",
+          "confidence": "높음 — 타베로그·구르나비·현지 블로그 교차 확인",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=とんかつ山家+上野店+台東区上野4-5-1",
+          "heroImageUrl": "assets/img/e5338f97f7dd9b94.webp",
+          "heroImageSource": "Wikimedia Commons (돈카츠 대표 이미지 — yoppy, CC BY 2.0)",
+          "menu": [
+            {
+              "name": "로스카츠 정식",
+              "nameJa": "ロースかつ定食",
+              "priceYen": 850,
+              "mustEat": true,
+              "imageUrl": "assets/img/e5338f97f7dd9b94.webp",
+              "imageSource": "Wikimedia Commons (돈카츠 이미지 — yoppy, CC BY 2.0)"
+            },
+            {
+              "name": "상 로스카츠 정식",
+              "nameJa": "上ロースかつ定食",
+              "priceYen": 1300,
+              "mustEat": false
+            },
+            {
+              "name": "히레카츠 정식",
+              "nameJa": "ひれかつ定食",
+              "priceYen": 1050,
+              "mustEat": false
+            }
+          ]
+        },
+        {
+          "id": "sushiro-ueno",
+          "name": "스시로 우에노",
+          "nameJa": "スシロー 上野店",
+          "tier": "간단",
+          "food": "회전초밥",
+          "priceRangeYen": "¥150–¥390(1접시)",
+          "why": "일본 최대 회전초밥 체인의 도심형 매장. 가족 단위 부담 없이 즐길 수 있는 신선한 초밥. 참치·연어 등 인기 네타를 ¥150부터.",
+          "station": "JR 야마노테선·게이힌토호쿠선 오카치마치역 도보 3분 / JR 우에노역 도보 4분",
+          "walk": "도보 3–4분",
+          "phone": "+81-3-5846-6077",
+          "reserve": "예약 불가(당일 방문). 영업시간: 평일 11:00~23:00, 주말·공휴일 10:30~23:00",
+          "pay": "현금·카드·QR페이 가능",
+          "foreigner": "터치패널 주문으로 외국어 대응. 영어 메뉴 화면 있음. 외국인 친화적.",
+          "kid": "어린이 메뉴·디저트 풍부. 가족 동반에 최적.",
+          "caution": "주말·공휴일 대기 발생. 도심형 매장이라 일반 교외 점포보다 가격 소폭 높을 수 있음.",
+          "confidence": "높음 — 공식 사이트·타베로그·구르나비 교차 확인",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=スシロー+上野店+台東区上野6-9-9",
+          "heroImageUrl": "assets/img/10aff0eb52dfe9b2.webp",
+          "heroImageSource": "Wikimedia Commons (스시로 실제 접시 이미지 — Tokumeigakarinoaoshima, CC BY-SA 4.0)",
+          "menu": [
+            {
+              "name": "엄선 참치 적살",
+              "nameJa": "厳選まぐろ赤身",
+              "priceYen": 150,
+              "mustEat": true,
+              "imageUrl": "assets/img/10aff0eb52dfe9b2.webp",
+              "imageSource": "Wikimedia Commons (스시로 접시 — Tokumeigakarinoaoshima, CC BY-SA 4.0)"
+            },
+            {
+              "name": "연어(사케)",
+              "nameJa": "サーモン",
+              "priceYen": 150,
+              "mustEat": false
+            },
+            {
+              "name": "특상 대뱃살",
+              "nameJa": "特ネタ大とろ",
+              "priceYen": 390,
+              "mustEat": false
+            },
+            {
+              "name": "라멘(사이드 메뉴)",
+              "nameJa": "ラーメン",
+              "priceYen": 490,
+              "mustEat": false
+            }
+          ]
+        },
+        {
+          "id": "burari-nippori",
+          "name": "멘사카도코로 부라리",
+          "nameJa": "麺酒処 ぶらり",
+          "tier": "간단",
+          "food": "라멘(닭 뼈 육수)",
+          "priceRangeYen": "¥700–¥930",
+          "why": "미슐랭 빕구르망 2015·2016년 선정 닛포리의 숨은 명소. 닭뼈만으로 우린 진한 닭 파이탄(백탕) 라멘과 맑은 닭소바를 제공하는 줄 서는 라멘집.",
+          "station": "JR·케이세이 닛포리역 남쪽 출구 도보 1~2분",
+          "walk": "도보 1–2분",
+          "phone": "+81-3-3805-9766",
+          "reserve": "예약 불가(당일 방문). 영업시간: 월~금 11:30~14:30·16:00~22:00, 토·공휴일 11:30~22:00, 일요일 정기 휴무",
+          "pay": "현금 위주(카드·전자결제 미지원)",
+          "foreigner": "일본어 전용 메뉴. 사진 메뉴 있어 주문 가능. 카운터 위주 소규모 점포.",
+          "kid": "카운터석 위주라 영유아 동반은 불편할 수 있음.",
+          "caution": "일요일 휴무 주의. 점심·저녁 피크 타임 줄 발생. 현금 필수.",
+          "confidence": "높음 — 타베로그·미슐랭 기록·현지 블로그 교차 확인",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=麺酒処+ぶらり+荒川区東日暮里5-52-5",
+          "heroImageUrl": "assets/img/c826b5f1aabf55eb.webp",
+          "heroImageSource": "Wikimedia Commons (라멘 대표 이미지 — Schellack, Public Domain)",
+          "menu": [
+            {
+              "name": "닭 파이탄 라멘",
+              "nameJa": "鶏白湯らーめん",
+              "priceYen": 820,
+              "mustEat": true,
+              "imageUrl": "assets/img/c826b5f1aabf55eb.webp",
+              "imageSource": "Wikimedia Commons (라멘 대표 이미지 — Schellack, Public Domain)"
+            },
+            {
+              "name": "닭 소바(맑은 국물)",
+              "nameJa": "鶏そば",
+              "priceYen": 700,
+              "mustEat": false
+            },
+            {
+              "name": "닭 파이탄 라멘(달걀 포함)",
+              "nameJa": "鶏白湯らーめん玉子入り",
+              "priceYen": 930,
+              "mustEat": false
+            },
+            {
+              "name": "파이탄 츠케멘(찍어먹는 라멘)",
+              "nameJa": "白湯つけめん",
+              "priceYen": 870,
+              "mustEat": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dayId": "d2",
+      "area": "시부야 · 하라주쿠",
+      "restaurants": [
+        {
+          "id": "gyukatsu-motomura-shibuya",
+          "name": "규카츠 모토무라 시부야",
+          "nameJa": "牛かつ もと村 渋谷店",
+          "tier": "대표",
+          "food": "규카츠 (소고기 돈카츠)",
+          "why": "미디엄 레어로 튀긴 규카츠를 개인 돌판 위에서 직접 구워 먹는 독특한 방식. 와사비 간장·암염과 함께 즐기며 밥·캐비지 리필 가능. 시부야 도보 4분 거리로 접근성 최고.",
+          "priceRangeYen": "1,930~3,060",
+          "station": "JR 시부야역 동쪽 출구",
+          "walk": "도보 4분",
+          "phone": "+81-50-1720-9137",
+          "reserve": "예약 불가 (현장 웨이팅)",
+          "pay": "현금·카드 가능",
+          "kid": "어린이 메뉴 없음, 카운터 9석 좌석",
+          "foreigner": "매우 친화적 (영문·한국어 메뉴 있음)",
+          "caution": "인기 맛집으로 웨이팅 필수. 피크타임 30~60분 대기 예상.",
+          "confidence": "높음",
+          "gmapUrl": "https://google.com/maps/search/?api=1&query=牛かつ+もと村+渋谷店",
+          "heroImageUrl": "assets/img/883b01174c5fd6be.webp",
+          "heroImageSource": "upload.wikimedia.org (Wikimedia Commons, CC BY 2.0)",
+          "menu": [
+            {
+              "name": "규카츠 세트 (130g)",
+              "nameJa": "牛かつ定食 (130g)",
+              "priceYen": 1930,
+              "mustEat": true,
+              "imageUrl": "assets/img/883b01174c5fd6be.webp",
+              "imageSource": "upload.wikimedia.org (Wikimedia Commons, CC BY 2.0)"
+            },
+            {
+              "name": "규카츠 세트 1.5배 (195g)",
+              "nameJa": "牛かつ定食 1.5倍 (195g)",
+              "priceYen": 2600,
+              "mustEat": false
+            },
+            {
+              "name": "규카츠 세트 2배 (260g)",
+              "nameJa": "牛かつ定食 2倍 (260g)",
+              "priceYen": 3060,
+              "mustEat": false
+            }
+          ]
+        },
+        {
+          "id": "maisen-hikarie-shibuya",
+          "name": "마이센 시부야 히카리에",
+          "nameJa": "とんかつ まい泉 渋谷ヒカリエ店",
+          "tier": "대표",
+          "food": "돈카츠 (흑돼지 등심·안심 카츠)",
+          "why": "일본 대표 돈카츠 브랜드 마이센의 시부야 히카리에 6층 레스토랑. 흑돼지(구로부타)와 차미돈 두 등급으로 즐길 수 있으며, 안심 한입카츠 샌드위치가 테이크아웃 인기 메뉴.",
+          "priceRangeYen": "1,850~3,900",
+          "station": "시부야역 직결",
+          "walk": "도보 1분 (히카리에 6층)",
+          "phone": "+81-3-3486-2365",
+          "reserve": "예약 가능 (전화)",
+          "pay": "현금·카드·전자화폐 가능",
+          "kid": "어린이 런치 ¥1,100",
+          "foreigner": "친화적 (영문 메뉴 있음, 히카리에 내 위치)",
+          "caution": "런치 피크 시간대 웨이팅 발생. 저녁 가격대가 더 높음.",
+          "confidence": "높음",
+          "gmapUrl": "https://google.com/maps/search/?api=1&query=とんかつ+まい泉+渋谷ヒカリエ店",
+          "heroImageUrl": "assets/img/8f80ec73bf1034fa.webp",
+          "heroImageSource": "upload.wikimedia.org (Wikimedia Commons, CC0 공개도메인)",
+          "menu": [
+            {
+              "name": "차미돈 로스카츠 정식",
+              "nameJa": "茶美豚ロースかつ膳",
+              "priceYen": 1990,
+              "mustEat": true,
+              "imageUrl": "assets/img/8f80ec73bf1034fa.webp",
+              "imageSource": "upload.wikimedia.org (Wikimedia Commons, CC0)"
+            },
+            {
+              "name": "차미돈 히레카츠 정식",
+              "nameJa": "茶美豚ヒレかつ膳",
+              "priceYen": 1990,
+              "mustEat": false
+            },
+            {
+              "name": "구로부타 로스카츠 정식",
+              "nameJa": "黒豚ロースかつ膳",
+              "priceYen": 3900,
+              "mustEat": false
+            },
+            {
+              "name": "안심 한입카츠 샌드위치 (3개)",
+              "nameJa": "ひとくちヒレかつサンド (3個)",
+              "priceYen": 1260,
+              "mustEat": true
+            }
+          ]
+        },
+        {
+          "id": "uobei-shibuya-dogenzaka",
+          "name": "우오베이 시부야 도겐자카",
+          "nameJa": "魚べい 渋谷道玄坂店",
+          "tier": "간단",
+          "food": "회전초밥 (고속 레인 배달식 스시)",
+          "why": "1접시 ¥110~150의 초저가 회전초밥. 터치패널로 주문하면 고속 레인으로 배달되는 '미래형 회전초밥'. 가성비 최강으로 여러 종류를 부담 없이 맛볼 수 있음.",
+          "priceRangeYen": "110~300",
+          "station": "시부야역",
+          "walk": "도보 5분",
+          "phone": "+81-3-3462-0241",
+          "reserve": "예약 불가",
+          "pay": "현금·카드 가능",
+          "kid": "어린이 동반 가능, 다양한 메뉴",
+          "foreigner": "매우 친화적 (터치패널 다국어 지원)",
+          "caution": "피크 시간대 대기 발생. 121석이나 점심·저녁 혼잡.",
+          "confidence": "높음",
+          "gmapUrl": "https://google.com/maps/search/?api=1&query=魚べい+渋谷道玄坂店",
+          "heroImageUrl": "assets/img/60a4cd90dd7e59f1.webp",
+          "heroImageSource": "upload.wikimedia.org (Wikimedia Commons, CC BY-SA 4.0)",
+          "menu": [
+            {
+              "name": "참치 (마구로) 초밥",
+              "nameJa": "まぐろ",
+              "priceYen": 110,
+              "mustEat": true,
+              "imageUrl": "assets/img/60a4cd90dd7e59f1.webp",
+              "imageSource": "upload.wikimedia.org (Wikimedia Commons, CC BY-SA 4.0)"
+            },
+            {
+              "name": "새우 튀김 롤",
+              "nameJa": "えび天巻",
+              "priceYen": 150,
+              "mustEat": false
+            },
+            {
+              "name": "해산물 차완무시",
+              "nameJa": "海鮮茶碗蒸し",
+              "priceYen": 198,
+              "mustEat": false
+            }
+          ]
+        },
+        {
+          "id": "initial-omotesando",
+          "name": "이니셜 오모테산도",
+          "nameJa": "INITIAL 表参道",
+          "tier": "간단",
+          "food": "시메 파르페 (계절 과일 파르페·젤라토)",
+          "why": "홋카이도 발 '시메 파르페(식사 후 마무리 디저트)' 전문점 도쿄 1호점. 계절마다 바뀌는 예술적인 파르페와 홋카이도 우유 소프트아이스크림 사용. 메이지진구마에역 4분 거리.",
+          "priceRangeYen": "1,650~2,600",
+          "station": "메이지진구마에역 (하라주쿠역)",
+          "walk": "도보 4분",
+          "phone": "+81-50-5597-2604",
+          "reserve": "예약 불가 (현장 웨이팅)",
+          "pay": "현금·카드 가능",
+          "kid": "어린이 동반 가능",
+          "foreigner": "친화적 (영문 메뉴, 직관적인 사진 메뉴)",
+          "caution": "인기 많아 만석이 잦음. 이른 시간 방문 권장. 계절에 따라 메뉴 변경.",
+          "confidence": "높음",
+          "gmapUrl": "https://google.com/maps/search/?api=1&query=INITIAL+表参道+パフェ",
+          "heroImageUrl": "assets/img/a2311df9fa485f92.webp",
+          "heroImageSource": "upload.wikimedia.org (Wikimedia Commons, CC BY-SA 4.0) — 롤 파르페 대표 이미지",
+          "menu": [
+            {
+              "name": "딸기 & 3가지 초콜릿 파르페",
+              "nameJa": "いちごと3種のチョコレート",
+              "priceYen": 2600,
+              "mustEat": true,
+              "imageUrl": "assets/img/a2311df9fa485f92.webp",
+              "imageSource": "upload.wikimedia.org (Wikimedia Commons, CC BY-SA 4.0)"
+            },
+            {
+              "name": "딸기 & 말차 파르페",
+              "nameJa": "いちごと抹茶のパフェ",
+              "priceYen": 2500,
+              "mustEat": false
+            },
+            {
+              "name": "치즈케이크 테이스팅",
+              "nameJa": "チーズケーキテイスティング",
+              "priceYen": 1650,
+              "mustEat": false
+            }
+          ]
+        },
+        {
+          "id": "marion-crepes-harajuku",
+          "name": "마리온 크레페 하라주쿠",
+          "nameJa": "マリオンクレープ 原宿竹下通り店",
+          "tier": "간단",
+          "food": "하라주쿠 스타일 크레페 (테이크아웃 전문)",
+          "why": "1976년 하라주쿠 다케시타 거리 발상지 원조 크레페 가게. 70종 이상 메뉴 보유. 걸어다니며 먹는 일본 스트리트 크레페 문화의 원점. 저렴하고 빠르게 즐길 수 있음.",
+          "priceRangeYen": "400~800",
+          "station": "하라주쿠역",
+          "walk": "도보 3분 (다케시타 출구)",
+          "phone": "+81-3-3401-7297",
+          "reserve": "예약 불가 (테이크아웃 전용)",
+          "pay": "현금·전자화폐 가능 (카드 불가)",
+          "kid": "매우 적합 (다양한 달콤한 메뉴)",
+          "foreigner": "매우 친화적 (사진 메뉴, 관광지 중심부)",
+          "caution": "카드 결제 불가, 현금 또는 전자화폐만 사용 가능. 좌석 없음.",
+          "confidence": "높음",
+          "gmapUrl": "https://google.com/maps/search/?api=1&query=マリオンクレープ+原宿竹下通り店",
+          "heroImageUrl": "assets/img/ce1d7daea4085b48.webp",
+          "heroImageSource": "upload.wikimedia.org (Wikimedia Commons, CC BY 2.0) — 하라주쿠 크레페 가게 외관",
+          "menu": [
+            {
+              "name": "바나나 초코 크림 크레페",
+              "nameJa": "バナナチョコクリーム",
+              "priceYen": 550,
+              "mustEat": true,
+              "imageUrl": "assets/img/ce1d7daea4085b48.webp",
+              "imageSource": "upload.wikimedia.org (Wikimedia Commons, CC BY 2.0)"
+            },
+            {
+              "name": "딸기 케이크 크림 크레페",
+              "nameJa": "ストロベリーケーキクリーム",
+              "priceYen": 650,
+              "mustEat": true
+            },
+            {
+              "name": "말차 흑꿀 크레페",
+              "nameJa": "抹茶黒みつ",
+              "priceYen": 600,
+              "mustEat": false
+            },
+            {
+              "name": "버터 슈가 크레페",
+              "nameJa": "バターシュガー",
+              "priceYen": 400,
+              "mustEat": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "dayId": "d3",
+      "area": "아키하바라 · 긴자",
+      "restaurants": [
+        {
+          "id": "tonkatsu-marugo",
+          "name": "돈카츠 마루고",
+          "nameJa": "とんかつ 丸五",
+          "tier": "대표",
+          "food": "돈카츠",
+          "station": "JR 아키하바라역",
+          "walk": "도보 4분",
+          "priceRangeYen": "2,200–3,000",
+          "why": "미슐랭 빕 구르망 선정, 다베로그 100 최고급 돈카츠 리스트 연속 선정(2017–2026). 야마가타산 돼지고기를 저온 장시간으로 튀겨 겉은 바삭·속은 육즙이 풍부. 늘 줄이 서는 아키하바라 최고의 돈카츠 집.",
+          "menu": [
+            {
+              "name": "특히레카츠 정식",
+              "nameJa": "特ヒレかつ定食",
+              "priceYen": 2650,
+              "mustEat": true,
+              "imageUrl": "assets/img/617758c3142c4605.webp",
+              "imageSource": "wikimedia.org"
+            },
+            {
+              "name": "특로스카츠 정식",
+              "nameJa": "特ロースかつ定食",
+              "priceYen": 2400,
+              "mustEat": false,
+              "imageUrl": "assets/img/d512e42f9a9cc439.webp",
+              "imageSource": "wikimedia.org"
+            },
+            {
+              "name": "히레카츠 정식",
+              "nameJa": "ヒレかつ定食",
+              "priceYen": 2200,
+              "mustEat": false,
+              "imageUrl": "",
+              "imageSource": ""
+            },
+            {
+              "name": "로스카츠 정식",
+              "nameJa": "ロースかつ定食",
+              "priceYen": 1950,
+              "mustEat": false,
+              "imageUrl": "",
+              "imageSource": ""
+            }
+          ],
+          "heroImageUrl": "assets/img/617758c3142c4605.webp",
+          "heroImageSource": "wikimedia.org (일본 도쿄 히레카츠 정식 대표사진)",
+          "phone": "+81-3-3255-6595",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%82%93%E3%81%8B%E3%81%A4+%E4%B8%B8%E4%BA%94+%E7%A7%8B%E8%91%89%E5%8E%9F",
+          "reserve": "예약 불가. 개점 20분 전부터 줄 서기 권장",
+          "pay": "현금 전용 (카드·전자화폐 불가)",
+          "foreigner": "메뉴판 영어·한국어 병기. 외국인 손님 많음",
+          "kid": "어린이 동반 가능 (유모차 입장 불가)",
+          "caution": "월·화 정기휴무. 점심 11:30, 저녁 17:00 오픈. 인기메뉴 품절 시 조기 마감 있음",
+          "confidence": "높음 — 다베로그·트립어드바이저·현지 블로그 다수 교차 확인"
+        },
+        {
+          "id": "kyushu-jangara-akihabara",
+          "name": "규슈잔가라 아키하바라 본점",
+          "nameJa": "九州じゃんがら 秋葉原本店",
+          "tier": "대표",
+          "food": "라멘 (돈코츠)",
+          "station": "JR 아키하바라역 / 도쿄메트로 스에히로초역",
+          "walk": "도보 3분",
+          "priceRangeYen": "790–1,500",
+          "why": "1984년 창업, 도쿄에 하카타·규슈식 돈코츠라멘을 처음 알린 전설적 원조. 진한 돈코츠 육수와 섬세한 토핑으로 40년째 아키하바라 명물. 다양한 농도·스타일 선택 가능.",
+          "menu": [
+            {
+              "name": "규슈잔가라 (기본)",
+              "nameJa": "九州じゃんがら",
+              "priceYen": 790,
+              "mustEat": true,
+              "imageUrl": "assets/img/3a4483d1c0bafc76.webp",
+              "imageSource": "kyushujangara.co.jp"
+            },
+            {
+              "name": "본샨 (진한 크리미 돈코츠)",
+              "nameJa": "ぼんしゃん",
+              "priceYen": 880,
+              "mustEat": true,
+              "imageUrl": "assets/img/e0938c2545410f12.webp",
+              "imageSource": "kyushujangara.co.jp"
+            },
+            {
+              "name": "카라본 (매운 돈코츠)",
+              "nameJa": "からぼん",
+              "priceYen": 940,
+              "mustEat": false,
+              "imageUrl": "assets/img/a5f7bc0deba69316.webp",
+              "imageSource": "kyushujangara.co.jp"
+            },
+            {
+              "name": "무기짱 (보리맛 돈코츠)",
+              "nameJa": "むぎちゃん",
+              "priceYen": 890,
+              "mustEat": false,
+              "imageUrl": "assets/img/869d84e80cfe7e5e.webp",
+              "imageSource": "kyushujangara.co.jp"
+            }
+          ],
+          "heroImageUrl": "assets/img/3a4483d1c0bafc76.webp",
+          "heroImageSource": "kyushujangara.co.jp (공식 홈페이지 메뉴 사진)",
+          "phone": "+81-3-3251-4059",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B9%9D%E5%B7%9E%E3%81%98%E3%82%83%E3%82%93%E3%81%8C%E3%82%89+%E7%A7%8B%E8%91%89%E5%8E%9F%E6%9C%AC%E5%BA%97",
+          "reserve": "예약 불필요. 웨이팅 짧음",
+          "pay": "카드·IC카드·PayPay·Alipay·WeChat Pay·VISA·MC·JCB·AMEX 등 다양",
+          "foreigner": "영어 메뉴 있음. 외국인 방문객 많음",
+          "kid": "어린이 동반 가능",
+          "caution": "연중무휴 11:00~22:00. 토핑 추가(전부입り +¥550)하면 더욱 풍성",
+          "confidence": "높음 — 공식 홈페이지 및 현지 블로그 가격 교차 확인"
+        },
+        {
+          "id": "tenya-akihabara",
+          "name": "텐동 텐야 아키하바라점",
+          "nameJa": "天丼てんや 秋葉原店",
+          "tier": "간단",
+          "food": "텐동 (튀김덮밥)",
+          "station": "도쿄메트로 긴자선 스에히로초역 1번 출구",
+          "walk": "도보 1분",
+          "priceRangeYen": "700–1,200",
+          "why": "일본 전국 체인의 '국민 텐동'으로 가성비 최강. 새우·오징어·야채 등 다채로운 튀김을 단 830엔에 즐길 수 있음. 한국어 메뉴판 제공, 테이크아웃 가능.",
+          "menu": [
+            {
+              "name": "오르스타 텐동",
+              "nameJa": "オールスター天丼",
+              "priceYen": 830,
+              "mustEat": true,
+              "imageUrl": "assets/img/f70ece97ee1b0d09.webp",
+              "imageSource": "wikimedia.org (카키아게 텐동 대표사진)"
+            },
+            {
+              "name": "에비와 야채 상텐동",
+              "nameJa": "海老と野菜の上天丼",
+              "priceYen": 940,
+              "mustEat": false,
+              "imageUrl": "",
+              "imageSource": ""
+            },
+            {
+              "name": "해선 카키아게 텐동",
+              "nameJa": "海鮮かき揚げ天丼",
+              "priceYen": 980,
+              "mustEat": false,
+              "imageUrl": "",
+              "imageSource": ""
+            }
+          ],
+          "heroImageUrl": "assets/img/f70ece97ee1b0d09.webp",
+          "heroImageSource": "wikimedia.org (카키아게 텐동 음식 유형 대표사진)",
+          "phone": "+81-3-3526-3241",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E4%B8%BC%E3%81%A6%E3%82%93%E3%82%84+%E7%A7%8B%E8%91%89%E5%8E%9F%E5%BA%97",
+          "reserve": "예약 불필요",
+          "pay": "카드 결제 가능",
+          "foreigner": "한국어 메뉴판 제공. 테이크아웃 가능",
+          "kid": "어린이 동반 가능",
+          "caution": "평일 10:30~22:00, 주말·공휴일 10:00~21:00 (라스트오더 마감 30분 전). 시즌 한정 메뉴 있음",
+          "confidence": "높음 — 공식 홈페이지 및 triple.guide 교차 확인"
+        },
+        {
+          "id": "ginza-bairin",
+          "name": "긴자 바이린 본점",
+          "nameJa": "とんかつ 銀座梅林 本店",
+          "tier": "대표",
+          "food": "돈카츠",
+          "station": "도쿄메트로 긴자역",
+          "walk": "도보 3분",
+          "priceRangeYen": "1,100–3,400",
+          "why": "1927년 창업, 긴자 최초의 돈카츠 전문점. 가고시마 흑돼지를 사용한 히레·로스카츠로 유명. 국민배우가 사랑한 카츠동도 별미. 역사적 노포의 품격.",
+          "menu": [
+            {
+              "name": "히레카츠 정식",
+              "nameJa": "ヒレカツ定食",
+              "priceYen": 2800,
+              "mustEat": true,
+              "imageUrl": "assets/img/d0e66127a0a4b3e7.webp",
+              "imageSource": "hitosara.com"
+            },
+            {
+              "name": "로스카츠 정식",
+              "nameJa": "ロースカツ定食",
+              "priceYen": 2900,
+              "mustEat": false,
+              "imageUrl": "",
+              "imageSource": ""
+            },
+            {
+              "name": "스페셜 카츠동",
+              "nameJa": "スペシャルカツ丼",
+              "priceYen": 2000,
+              "mustEat": true,
+              "imageUrl": "assets/img/5f9e1e9ea5675998.webp",
+              "imageSource": "hitosara.com"
+            },
+            {
+              "name": "긴카츠 정식",
+              "nameJa": "銀カツ定食",
+              "priceYen": 2300,
+              "mustEat": false,
+              "imageUrl": "",
+              "imageSource": ""
+            }
+          ],
+          "heroImageUrl": "assets/img/617758c3142c4605.webp",
+          "heroImageSource": "wikimedia.org (도쿄 히레카츠 정식 대표사진 — 식당 고유 사진 미확보)",
+          "phone": "+81-3-3571-0350",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%81%A8%E3%82%93%E3%81%8B%E3%81%A4+%E9%8A%80%E5%BA%A7%E6%A2%85%E6%9E%97+%E6%9C%AC%E5%BA%97",
+          "reserve": "예약 가능 (온라인/전화). 평일 점심은 웨이팅 있음",
+          "pay": "카드 가능 (VISA·MC·JCB), IC카드·iD·QUICPay",
+          "foreigner": "영어 메뉴 있음. 외국인 손님 환영",
+          "kid": "어린이 동반 가능",
+          "caution": "1월 1~3일 휴무. 지하 1층 위치. 가격대 ¥2,000~¥3,999",
+          "confidence": "높음 — 다베로그·hitosara·현지 블로그 교차 확인"
+        },
+        {
+          "id": "tempura-yamanoue-ginza",
+          "name": "텐푸라 야마노우에 긴자",
+          "nameJa": "てんぷら山の上 Ginza",
+          "tier": "대표",
+          "food": "텐푸라 (코스 요리)",
+          "station": "도쿄메트로 긴자역 A3 출구",
+          "walk": "도보 2분 (긴자식스 13층)",
+          "priceRangeYen": "9,000–30,000",
+          "why": "70년 역사의 야마노우에 호텔 텐푸라를 긴자식스 13층에서 계승. 에도마에 전통 기법으로 제철 식재료를 눈앞에서 튀겨주는 카운터 석이 압권. 특별한 날의 고급 텐푸라 코스.",
+          "menu": [
+            {
+              "name": "오마카세 이 (런치 기본 코스)",
+              "nameJa": "おまかせ（イ）",
+              "priceYen": 12000,
+              "mustEat": true,
+              "imageUrl": "assets/img/f8b0973207458d7b.webp",
+              "imageSource": "wikimedia.org (텐푸라 음식 대표사진)"
+            },
+            {
+              "name": "오마카세 로 (런치 중급 코스)",
+              "nameJa": "おまかせ（ロ）",
+              "priceYen": 16000,
+              "mustEat": false,
+              "imageUrl": "",
+              "imageSource": ""
+            },
+            {
+              "name": "오마카세 하 (런치 최상급 코스)",
+              "nameJa": "おまかせ（ハ）",
+              "priceYen": 22000,
+              "mustEat": false,
+              "imageUrl": "",
+              "imageSource": ""
+            },
+            {
+              "name": "쓰바키 계절 디너 코스",
+              "nameJa": "『椿』季節のおまかせ",
+              "priceYen": 25000,
+              "mustEat": false,
+              "imageUrl": "",
+              "imageSource": ""
+            }
+          ],
+          "heroImageUrl": "assets/img/f8b0973207458d7b.webp",
+          "heroImageSource": "wikimedia.org (텐푸라 음식 유형 대표사진 — 식당 고유 직링크 미확보)",
+          "phone": "+81-3-6264-5516",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%81%A6%E3%82%93%E3%81%B7%E3%82%89%E5%B1%B1%E3%81%AE%E4%B8%8A+Ginza+GINZA+SIX",
+          "reserve": "예약 강력 권장. 온라인(TableCheck) 또는 전화 11:00~20:00",
+          "pay": "카드 가능 (VISA·MC·JCB·AMEX·Diners), PayPay·d Barai·Rakuten Pay·au PAY",
+          "foreigner": "영어 메뉴 있음. 영어 예약 가능(TableCheck)",
+          "kid": "어린이 동반 가능하나 고급 코스 레스토랑으로 어린 아이는 부적합",
+          "caution": "가격에 소비세 10% + 서비스료 10% 포함. 런치 11:00~15:00, 디너 17:00~23:00 (L.O. 20:30). 긴자식스 휴관일 임시휴무",
+          "confidence": "높음 — 공식 홈페이지·다베로그·Pocket Concierge 교차 확인"
+        },
+        {
+          "id": "ginza-swiss",
+          "name": "긴자 스이스",
+          "nameJa": "銀座スイス",
+          "tier": "대표",
+          "food": "요쇼쿠 (양식·원조 카츠카레)",
+          "station": "도쿄메트로 마루노우치선 긴자잇초메역 8번 출구",
+          "walk": "도보 2분",
+          "priceRangeYen": "1,365–3,500",
+          "why": "1947년 창업, 프로야구 선수 치바 시게루가 요청해 탄생한 '일본 원조 카츠카레' 발상지. 78년 역사의 양식 노포로 다베로그 100 선정. 얇게 튀긴 카츠와 진한 카레의 절묘한 조합.",
+          "menu": [
+            {
+              "name": "원조 카츠카레",
+              "nameJa": "元祖カツカレー",
+              "priceYen": 1365,
+              "mustEat": true,
+              "imageUrl": "assets/img/b4f03c2c1832946a.webp",
+              "imageSource": "ginza-swiss.com (공식 홈페이지 사진)"
+            },
+            {
+              "name": "원조 카츠카레 세트 (런치, 하루 20식 한정)",
+              "nameJa": "元祖カツカレーセット",
+              "priceYen": 1430,
+              "mustEat": true,
+              "imageUrl": "",
+              "imageSource": ""
+            },
+            {
+              "name": "하야시라이스",
+              "nameJa": "ハヤシライス",
+              "priceYen": 1980,
+              "mustEat": false,
+              "imageUrl": "assets/img/c60a336d8d3e1dde.webp",
+              "imageSource": "ginza-swiss.com (공식 홈페이지 사진)"
+            },
+            {
+              "name": "쇼와 그라탱",
+              "nameJa": "昭和のグラタン",
+              "priceYen": 2860,
+              "mustEat": false,
+              "imageUrl": "",
+              "imageSource": ""
+            }
+          ],
+          "heroImageUrl": "assets/img/b4f03c2c1832946a.webp",
+          "heroImageSource": "ginza-swiss.com (공식 홈페이지 2025년 이미지)",
+          "phone": "+81-3-3563-3206",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%8A%80%E5%BA%A7%E3%82%B9%E3%82%A4%E3%82%B9+%E9%8A%80%E5%BA%A7",
+          "reserve": "디너 코스(17:00~)만 예약 가능. 런치·일반 착석은 예약 불가 (선착순). 온라인 예약 권장",
+          "pay": "카드 가능 (VISA·MC·JCB·AMEX·Diners), Suica·Rakuten-Edy·nanaco·WAON·QUICPay·PayPay",
+          "foreigner": "영어 메뉴 있음. 긴자 중심부 위치로 외국인 접근성 좋음",
+          "kid": "어린이 동반 가능",
+          "caution": "착석 시 테이블 차지 ¥500/인 + 드링크 1잔 주문 필요 (17:00 이전 일반 착석 제외). 원조 카츠카레 세트는 매일 20식 한정",
+          "confidence": "높음 — 공식 홈페이지·다베로그·구르나비 교차 확인"
+        }
+      ]
+    },
+    {
+      "dayId": "d4",
+      "area": "도쿄역 · 공통(체인)",
+      "restaurants": [
+        {
+          "id": "rokurinsha-tokyo-station",
+          "name": "로쿠린샤 도쿄역점",
+          "nameJa": "六厘舎 東京ラーメンストリート店",
+          "tier": "대표",
+          "food": "츠케멘(つけ麺)",
+          "priceRangeYen": "950~1,350",
+          "why": "도쿄 츠케멘 붐을 만든 원조 명점. 진한 돈코츠·해물 더블 수프와 초극태 면의 조합. 도쿄역 라멘스트리트 상시 행렬 1위.",
+          "station": "JR 도쿄역 야에스 지하 중앙구",
+          "walk": "도보 1분 (지하 1층)",
+          "phone": "+81-3-3286-0166",
+          "reserve": "예약 불가, 현장 대기",
+          "pay": "현금·IC카드·각종 QR결제",
+          "kid": "아이 동반 가능(좁은 공간 주의)",
+          "foreigner": "외국인 친화적 — 영문 메뉴 있음",
+          "caution": "점심~저녁 30~60분 대기 상시. 아침 영업(7:30~9:30)은 비교적 짧음.",
+          "confidence": "높음",
+          "heroImageUrl": "assets/img/99fcecbd44d504d1.webp",
+          "heroImageSource": "Wikimedia Commons — Rokurinsha Tokyo Ramen Street",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=六厘舎+東京ラーメンストリート+東京駅",
+          "menu": [
+            {
+              "name": "특제 츠케멘",
+              "nameJa": "特製つけめん",
+              "priceYen": 1250,
+              "mustEat": true,
+              "imageUrl": "assets/img/99fcecbd44d504d1.webp",
+              "imageSource": "Wikimedia Commons"
+            },
+            {
+              "name": "츠케멘",
+              "nameJa": "つけめん",
+              "priceYen": 950,
+              "mustEat": false
+            },
+            {
+              "name": "아침 츠케멘",
+              "nameJa": "朝つけめん",
+              "priceYen": 790,
+              "mustEat": false
+            },
+            {
+              "name": "특제 중화소바",
+              "nameJa": "特製中華そば",
+              "priceYen": 1100,
+              "mustEat": false
+            }
+          ]
+        },
+        {
+          "id": "hanamichian-tokyo-station",
+          "name": "미소멘도코로 하나미치안 도쿄역점",
+          "nameJa": "味噌麺処 花道庵 東京駅店",
+          "tier": "대표",
+          "food": "미소 라멘",
+          "priceRangeYen": "930~1,350",
+          "why": "미슐랭 가이드 도쿄 2016·2017 비브구르망 2년 연속 선정 미소 라멘 전문점. 도쿄역 라멘스트리트 입점.",
+          "station": "JR 도쿄역 야에스 지하 중앙구",
+          "walk": "도보 1분 (지하 1층)",
+          "phone": "+81-3-6268-0507",
+          "reserve": "예약 불가",
+          "pay": "현금·카드·QR결제",
+          "kid": "가능",
+          "foreigner": "외국인 친화적",
+          "caution": "로쿠린샤와 함께 대기 발생. 아침 8시부터 영업하므로 이른 시간 방문 추천.",
+          "confidence": "높음",
+          "heroImageUrl": "",
+          "heroImageSource": "공식 사진 직링크 미확보 — 방문 시 tabelog 참고",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=味噌麺処+花道庵+東京駅店",
+          "menu": [
+            {
+              "name": "미소 라멘",
+              "nameJa": "味噌ラーメン",
+              "priceYen": 980,
+              "mustEat": true
+            },
+            {
+              "name": "번장 라멘",
+              "nameJa": "番長ラーメン",
+              "priceYen": 1080,
+              "mustEat": false
+            },
+            {
+              "name": "매운 미소 라멘",
+              "nameJa": "辛味噌ラーメン",
+              "priceYen": 1030,
+              "mustEat": false
+            },
+            {
+              "name": "도쿄 진한 니보시 미소 라멘",
+              "nameJa": "TOKYO濃厚煮干し味噌ラーメン",
+              "priceYen": 1200,
+              "mustEat": false
+            }
+          ]
+        },
+        {
+          "id": "ichiran-atre-ueno",
+          "name": "이치란 아트레 우에노 야마시타구치점",
+          "nameJa": "一蘭 アトレ上野山下口店",
+          "tier": "간단",
+          "food": "천연 돈코츠 라멘",
+          "priceRangeYen": "1,080~1,500",
+          "why": "개인 칸막이 '맛 집중 카운터'로 유명한 하카타 돈코츠 라멘 전문 체인. 24시간 영업으로 늦은 밤·이른 아침에도 이용 가능.",
+          "station": "도쿄메트로 긴자선 우에노히로코지역 A5출구",
+          "walk": "도보 1분",
+          "phone": "+81-50-3733-3915",
+          "reserve": "예약 불가",
+          "pay": "현금·IC카드·QR결제(WeChat Pay, Alipay, PayPay 등)·신용카드",
+          "kid": "칸막이 구조로 아이와 함께 이용 시 주의",
+          "foreigner": "매우 친화적 — 영문 주문표 제공, 모바일 결제 다양",
+          "caution": "22시 이후 심야 요금 부과. 구 우에노오카치마치점(2022년 12월 폐점)과 다름 — 현재 영업 점포는 아트레 우에노점.",
+          "confidence": "높음",
+          "heroImageUrl": "assets/img/ee50892c166c6467.webp",
+          "heroImageSource": "Wikimedia Commons — Ichiran tonkotsu ramen (나카스카와바타점, 음식 사진 공통)",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=一蘭+アトレ上野山下口店",
+          "menu": [
+            {
+              "name": "천연 돈코츠 라멘",
+              "nameJa": "天然とんこつラーメン",
+              "priceYen": 1080,
+              "mustEat": true,
+              "imageUrl": "assets/img/ee50892c166c6467.webp",
+              "imageSource": "Wikimedia Commons"
+            },
+            {
+              "name": "가에다마 (면 추가)",
+              "nameJa": "替玉",
+              "priceYen": 210,
+              "mustEat": false
+            },
+            {
+              "name": "반숙 조미 달걀",
+              "nameJa": "半熟味付け玉子",
+              "priceYen": 160,
+              "mustEat": false
+            }
+          ]
+        },
+        {
+          "id": "matsuya",
+          "name": "마츠야",
+          "nameJa": "松屋",
+          "tier": "간단",
+          "food": "규메시(소고기 덮밥) / 규동 체인",
+          "priceRangeYen": "460~860",
+          "why": "일본 전국 체인 규동 패스트푸드. 24시간 영업 다수, 자판기 주문으로 언어 장벽 없음. 규메시(소고기 덮밥) 병 사이드 메뉴가 충실.",
+          "station": "도쿄 도내 어디서나 접근 가능",
+          "walk": "도보권 내 다수 점포",
+          "phone": "",
+          "reserve": "불필요 (패스트푸드)",
+          "pay": "현금·IC카드·QR결제·신용카드",
+          "kid": "가능",
+          "foreigner": "친화적 — 자판기 주문, 사진 메뉴 있음",
+          "caution": "규동 전문점(요시노야 등)에 비해 약간 저렴하지만 맛은 기호에 따라 다름. 심야 시간대 일부 점포 심야 요금 부과.",
+          "confidence": "높음",
+          "heroImageUrl": "assets/img/3119e43038f60c65.webp",
+          "heroImageSource": "Wikimedia Commons — 마츠야 규토지동(소고기 덮밥)",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=松屋+上野",
+          "menu": [
+            {
+              "name": "규메시 (보통)",
+              "nameJa": "牛めし 並盛",
+              "priceYen": 460,
+              "mustEat": true,
+              "imageUrl": "assets/img/3119e43038f60c65.webp",
+              "imageSource": "Wikimedia Commons"
+            },
+            {
+              "name": "규메시 (대성)",
+              "nameJa": "牛めし 大盛",
+              "priceYen": 680,
+              "mustEat": false
+            },
+            {
+              "name": "치즈 규메시",
+              "nameJa": "チーズ牛めし",
+              "priceYen": 660,
+              "mustEat": false
+            },
+            {
+              "name": "김치 규메시",
+              "nameJa": "キムチ牛めし",
+              "priceYen": 560,
+              "mustEat": false
+            }
+          ]
+        },
+        {
+          "id": "saizeriya",
+          "name": "사이제리야",
+          "nameJa": "サイゼリヤ",
+          "tier": "간단",
+          "food": "이탈리안 패밀리 레스토랑",
+          "priceRangeYen": "300~1,100",
+          "why": "일본 최고의 가성비 이탈리안 체인. 밀라노풍 도리아·매운 치킨·페페론치노 등 대부분 300~400엔. 한국인 여행자에게 부담 없는 식사 옵션.",
+          "station": "도쿄 도내 어디서나 접근 가능",
+          "walk": "도보권 내 다수 점포",
+          "phone": "",
+          "reserve": "불필요",
+          "pay": "현금·IC카드·QR결제·신용카드",
+          "kid": "매우 적합 — 패밀리 레스토랑",
+          "foreigner": "친화적 — 사진 메뉴, 영문 표기 일부",
+          "caution": "점심 500~600엔 런치 세트 평일 한정. 주문은 메뉴 테이블 번호로 직원에게 구두 주문(일본어 메뉴) 또는 셀프 주문기 이용.",
+          "confidence": "높음",
+          "heroImageUrl": "assets/img/e00884408ffbd595.webp",
+          "heroImageSource": "Wikimedia Commons — 사이제리야 밀라노풍 도리아",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=サイゼリヤ+上野",
+          "menu": [
+            {
+              "name": "밀라노풍 도리아",
+              "nameJa": "ミラノ風ドリア",
+              "priceYen": 300,
+              "mustEat": true,
+              "imageUrl": "assets/img/e00884408ffbd595.webp",
+              "imageSource": "Wikimedia Commons"
+            },
+            {
+              "name": "매운 치킨",
+              "nameJa": "辛味チキン",
+              "priceYen": 300,
+              "mustEat": true
+            },
+            {
+              "name": "페페론치노",
+              "nameJa": "ペペロンチーノ",
+              "priceYen": 300,
+              "mustEat": false
+            },
+            {
+              "name": "에스카르고 오븐구이",
+              "nameJa": "エスカルゴのオーブン焼き",
+              "priceYen": 400,
+              "mustEat": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5">
+  <title>도쿄 가족여행 가이드</title>
+  <meta name="description" content="2026 도쿄 가족여행 오프라인 가이드 — 일정·회화·교통·맛집·긴급">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#E8743B">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="도쿄가이드">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header class="appbar">
+    <a href="#/" class="ab-home">🗾 도쿄가이드</a>
+    <span id="net-dot" class="net-dot" hidden>● 오프라인 · 저장된 정보</span>
+    <a href="#/settings" class="ab-set" aria-label="설정">⚙️</a>
+  </header>
+
+  <main id="app" class="app"><div class="boot">불러오는 중…</div></main>
+
+  <nav class="tabbar" aria-label="메인 메뉴">
+    <a href="#/" data-tab="home"><span>🏠</span>홈</a>
+    <a href="#/day/d1" data-tab="day"><span>📅</span>일정</a>
+    <a href="#/talk" data-tab="talk"><span>💬</span>회화</a>
+    <a href="#/subway" data-tab="subway"><span>🗺</span>지도</a>
+    <a href="#/sos" data-tab="sos" class="t-sos"><span>🆘</span>긴급</a>
+  </nav>
+
+  <script>
+    // offline indicator
+    (function () {
+      function upd() { var d = document.getElementById('net-dot'); if (d) d.hidden = navigator.onLine; }
+      window.addEventListener('online', upd); window.addEventListener('offline', upd);
+      document.addEventListener('DOMContentLoaded', upd);
+    })();
+  </script>
+  <script src="js/util.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/screens.js"></script>
+  <script src="js/panzoom.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

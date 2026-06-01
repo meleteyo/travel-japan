@@ -1,0 +1,114 @@
+{
+  "items": [
+    {
+      "key": "shibuya-scramble",
+      "name": "시부야 스크램블 교차로",
+      "nameJa": "渋谷スクランブル交差点",
+      "area": "시부야",
+      "note": "세계에서 가장 붐비는 교차로로 한 번에 3,000명 이상이 건너기도 한다.",
+      "gmapUrl": "https://maps.google.com/?q=Shibuya+Scramble+Crossing,+Tokyo",
+      "dayId": "d2",
+      "imageUrl": "assets/img/39386faae71d4f9a.webp"
+    },
+    {
+      "key": "hachiko",
+      "name": "하치코 동상",
+      "nameJa": "ハチ公像",
+      "area": "시부야",
+      "note": "시부야역 하치코 출구 앞 약속 장소의 대명사. 충견 하치코를 기리는 동상.",
+      "gmapUrl": "https://maps.google.com/?q=Hachiko+Statue+Shibuya+Tokyo",
+      "dayId": "d2",
+      "imageUrl": "assets/img/4c9b5aabfa0e709b.webp"
+    },
+    {
+      "key": "harajuku-takeshita",
+      "name": "다케시타 거리",
+      "nameJa": "竹下通り",
+      "area": "하라주쿠",
+      "note": "일본 팝 컬처와 원색 패션의 성지. 크레페 가게와 빈티지숍이 밀집해 있다.",
+      "gmapUrl": "https://maps.google.com/?q=Takeshita+Street+Harajuku+Tokyo",
+      "dayId": "d2",
+      "imageUrl": "assets/img/4f831282bb619fdc.webp"
+    },
+    {
+      "key": "cat-street",
+      "name": "캣 스트리트",
+      "nameJa": "キャットストリート",
+      "area": "하라주쿠·시부야",
+      "note": "도쿄 스트리트 패션의 중심. 셀렉트숍과 인디 브랜드가 즐비한 한적한 골목.",
+      "gmapUrl": "https://maps.google.com/?q=Cat+Street+Harajuku+Tokyo",
+      "dayId": "d2",
+      "imageUrl": "assets/img/887007adf6a09f41.webp"
+    },
+    {
+      "key": "omotesando",
+      "name": "오모테산도",
+      "nameJa": "表参道",
+      "area": "오모테산도",
+      "note": "도쿄의 샹젤리제라 불리는 명품 가로수길. 봄 벚꽃 시즌이 가장 아름답다.",
+      "gmapUrl": "https://maps.google.com/?q=Omotesando+Tokyo",
+      "dayId": "d2",
+      "imageUrl": "assets/img/9d0ba74ce45d8f8e.webp"
+    },
+    {
+      "key": "ueno-park",
+      "name": "우에노 공원",
+      "nameJa": "上野公園",
+      "area": "우에노",
+      "note": "도쿄 최대 규모의 공원. 벚꽃 명소이자 국립박물관·동물원이 모여 있다.",
+      "gmapUrl": "https://maps.google.com/?q=Ueno+Park+Tokyo",
+      "dayId": "d1",
+      "imageUrl": "assets/img/6072d2462728b251.webp"
+    },
+    {
+      "key": "ameyoko",
+      "name": "아메요코 시장",
+      "nameJa": "アメヤ横丁",
+      "area": "우에노",
+      "note": "전후 闇시장에서 시작된 재래시장. 연말에는 수산물·과자 등 떨이 쇼핑이 활발하다.",
+      "gmapUrl": "https://maps.google.com/?q=Ameyoko+Market+Ueno+Tokyo",
+      "dayId": "d1",
+      "imageUrl": "assets/img/c8d3ed33e7a6f0be.webp"
+    },
+    {
+      "key": "yanaka-ginza",
+      "name": "야나카 긴자",
+      "nameJa": "谷中銀座",
+      "area": "야나카",
+      "note": "도쿄에서 옛 쇼와 분위기를 가장 잘 느낄 수 있는 약 170m의 소박한 상점가.",
+      "gmapUrl": "https://maps.google.com/?q=Yanaka+Ginza+Tokyo",
+      "dayId": "d1",
+      "imageUrl": "assets/img/2a63dad4d7695d9c.webp"
+    },
+    {
+      "key": "tokyo-station",
+      "name": "도쿄역",
+      "nameJa": "東京駅",
+      "area": "마루노우치",
+      "note": "1914년 개업한 붉은 벽돌 역사. 마루노우치 측 정면이 대표 포토스팟.",
+      "gmapUrl": "https://maps.google.com/?q=Tokyo+Station+Japan",
+      "dayId": "d4",
+      "imageUrl": "assets/img/0320ae3d743e9ebe.webp"
+    },
+    {
+      "key": "akihabara",
+      "name": "아키하바라",
+      "nameJa": "秋葉原",
+      "area": "아키하바라",
+      "note": "전자제품·애니메이션·피규어의 성지. 메이드카페와 중고 게임숍이 밀집해 있다.",
+      "gmapUrl": "https://maps.google.com/?q=Akihabara+Electric+Town+Tokyo",
+      "dayId": "d3",
+      "imageUrl": "assets/img/2047d8f35fe27f41.webp"
+    },
+    {
+      "key": "ginza",
+      "name": "긴자",
+      "nameJa": "銀座",
+      "area": "긴자",
+      "note": "일본 최고급 쇼핑가. 주말에는 중앙통이 보행자 천국(호코텐)으로 개방된다.",
+      "gmapUrl": "https://maps.google.com/?q=Ginza+Tokyo",
+      "dayId": "d3",
+      "imageUrl": "assets/img/e22edcf3110b6fad.webp"
+    }
+  ]
+}
