@@ -31,10 +31,13 @@ for d in DIRS:
 paths = sorted(set(paths))
 entries = ["./"] + paths
 
-# version = hash of (path:size)
+# version = hash of file CONTENT (not just size) so reorders/same-size edits still bump
 h = hashlib.sha1()
 for p in paths:
-    h.update((p + ":" + str(os.path.getsize(os.path.join(ROOT, p))) + ";").encode())
+    h.update((p + ":").encode())
+    with open(os.path.join(ROOT, p), "rb") as fh:
+        h.update(fh.read())
+    h.update(b";")
 version = h.hexdigest()[:10]
 
 arr = "const PRECACHE = [\n" + "".join(f"  '{p}',\n" for p in entries) + "];"
