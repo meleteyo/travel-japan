@@ -251,7 +251,7 @@ window.App = window.App || {};
     (((D.transit || {}).routes) || []).forEach((r) => add(r.from + ' ' + r.to + ' ' + r.line, r.from + ' → ' + r.to, '#/subway', '🚇', r.line));
     (((D.transit || {}).stations) || []).forEach((s) => add(s.ko + ' ' + s.ja + ' ' + s.roma, s.ko + '역', '#/subway', '🚉', s.ja));
     (((D.restaurants || {}).days) || []).forEach((day) => (day.restaurants || []).forEach((r) => add(r.name + ' ' + (r.nameJa || '') + ' ' + r.food, r.name, '#/food?d=' + day.dayId, '🍜', r.food)));
-    (((D.musteat || {}).items) || []).forEach((m) => add(m.name + ' ' + (m.nameJa || ''), '꼭 먹어볼 · ' + m.name, '#/food', '🍱', m.note));
+    (((D.musteat || {}).items) || []).forEach((m) => add(m.name + ' ' + (m.nameJa || ''), '꼭 먹어볼 · ' + m.name, '#/eat/' + m.key, '🍱', m.note));
     (((D.photospots || {}).items) || []).forEach((p) => add(p.name + ' ' + (p.nameJa || '') + ' ' + (p.note || ''), '포토스팟 · ' + p.name, '#/photo', '📸', p.area));
     (((D.shopping || {}).wishlist) || []).forEach((w) => add(w.store + ' ' + w.label, '쇼핑 · ' + w.store, '#/shopping', '🛍', w.label));
     (((D.emergency || {}).flows) || []).forEach((f) => add(f.title + ' ' + (f.steps || []).join(' '), '긴급 · ' + f.title, '#/sos', f.icon || '🆘', ''));

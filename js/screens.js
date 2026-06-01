@@ -226,8 +226,8 @@ window.App = window.App || {};
       return `<button class="chip ${x.dayId === (cur || {}).dayId ? 'on' : ''}" data-action="food-day" data-day="${x.dayId}">${dm.n || ''}일 ${esc((x.area || '').split(' · ')[0])}</button>`;
     }).join('');
     // must-eat strip
-    const me = (A.data.musteat.items || []).map((m) => `<button class="me-card" data-action="lightbox" data-src="${esc(m.imageUrl || '')}" data-alt="${esc(m.name)}">
-      ${A.img(m.imageUrl, m.name, 'me-img', '🍱')}<span>${esc(m.name)}</span></button>`).join('');
+    const me = (A.data.musteat.items || []).map((m) => `<a class="me-card" href="#/eat/${esc(m.key)}">
+      ${A.img(m.imageUrl, m.name, 'me-img', '🍱')}<span>${esc(m.name)}</span></a>`).join('');
     const cards = ((cur || {}).restaurants || []).map(restoCard).join('');
     return `<section class="food">
       ${head('맛집', '하루 1끼는 대표 음식 제대로, 2끼는 간단히')}
@@ -262,6 +262,32 @@ window.App = window.App || {};
       </div>
     </article>`;
   }
+
+  // ====================================================== EAT (머스트잇 → 추천 식당)
+  S.eat = function (key) {
+    const m = ((A.data.musteat.items) || []).find((x) => x.key === key);
+    if (!m) return `<section>${head('추천 식당')}<a class="btn-primary" href="#/food">맛집으로</a></section>`;
+    const recos = (m.recos || []).map((r) => {
+      const priceHtml = r.price ? `<div class="rc-food"><b>${A.fmtRange(r.price)}</b></div>` : '';
+      const chips = [r.area, r.reserve].filter(Boolean).map((x) => `<span class="rc-chip">${esc(x)}</span>`).join('');
+      return `<article class="reco">
+        <h3>${esc(r.name)}</h3>
+        ${priceHtml}
+        ${r.why ? `<p class="rc-why">${esc(r.why)}</p>` : ''}
+        <div class="rc-chips">${chips}</div>
+        <div class="row-btns">${mapBtn(r.gmapUrl || r.name, '지도·길찾기')}</div>
+      </article>`;
+    }).join('');
+    return `<section class="eatv">
+      <a class="g-back" href="#/food">‹ 맛집으로</a>
+      ${head(m.name, m.nameJa || '')}
+      ${A.img(m.imageUrl, m.name, 'g-hero', '🍱')}
+      ${m.note ? `<p class="g-intro">${esc(m.note)}</p>` : ''}
+      <h2 class="sec">🍴 이 음식 잘하는 곳</h2>
+      ${recos || '<p class="muted small">추천 식당을 준비 중이에요. 맛집 탭의 일자별 추천도 참고하세요.</p>'}
+      <p class="muted small">※ 가격·영업은 변동될 수 있어요. 방문 전 지도에서 확인하세요.</p>
+    </section>`;
+  };
 
   // ====================================================== TIPS
   S.tips = function () {

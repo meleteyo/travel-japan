@@ -32,6 +32,7 @@ window.App = window.App || {};
         case 'docs': html = S.docs(); tab = 'home'; break;
         case 'search': html = S.search(); tab = 'home'; break;
         case 'guide': html = S.guide(parts[1]); tab = 'day'; break;
+        case 'eat': html = S.eat(parts[1]); tab = 'home'; break;
         case 'exchange': html = S.exchange(); tab = 'home'; break;
         case 'check': html = S.check(); tab = 'home'; break;
         case 'info': html = S.info(); tab = 'home'; break;

@@ -39,6 +39,7 @@ const cases = {
   photo: () => S.photo(), medical: () => S.medical(), exchange: () => S.exchange(),
   check: () => S.check(), info: () => S.info(), settings: () => S.settings(), docs: () => S.docs(), search: () => S.search(),
   'guide(narita)': () => S.guide('narita-arrival'), 'guide(miss)': () => S.guide('zzz'),
+  'eat(wagyu)': () => S.eat('wagyu'), 'eat(ramen)': () => S.eat('ramen'), 'eat(miss)': () => S.eat('zzz'),
 };
 for (const [k, fn] of Object.entries(cases)) {
   try {

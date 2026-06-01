@@ -98,3 +98,4 @@
 - `assets/img/075c5c7a2213fb3c.webp` (guide:yanaka-ginza fetch:menchi katsu)
 - `assets/img/d1c92ff3b754a793.webp` (guide:checkout-luggage fetch:coin locker train station Japan)
 - `assets/img/6fef201446a04307.webp` (guide:departure fetch:Narita Airport departure terminal check-in)
+- `assets/img/4f2dcc5c36524909.webp` (musteat:wagyu) <- https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E9%82%A3%E9%9C%B8_Naha_%E4%B9%85%E8%8C%82%E5%9C%B0_Kumoji_MK_Building_shop_%E5%92%8C%E7%89%9B%E7%87%92%E8%82%89%E5%BA%97_BBQ_Motobu_WAGYU_Yakiniku_Beef_Restaurant_lunch_meal_January_2025_R12S_08.jpg/1280px-thumbnail.jpg

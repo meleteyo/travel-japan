@@ -9,7 +9,36 @@
       "isReal": true,
       "note": "간장·미소·소금·돈코츠 4대 국물로 나뉘며, 지역마다 독자적인 스타일이 발달해 있다.",
       "area": "일본 전국",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "멘사카도코로 부라리 (麺処 ぶらり)",
+          "area": "닛포리 / 닛포리역 도보 3분",
+          "why": "거점 닛포리 바로 앞, 진한 돈코츠쇼유 베이스에 두툼한 차슈가 올라가 온 가족이 부담 없이 즐길 수 있는 동네 명소",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%BA%BA%E5%87%A6+%E3%81%B6%E3%82%89%E3%82%8A+%E6%97%A5%E6%9A%AE%E9%87%8C",
+          "price": "900~1,200엔",
+          "reserve": "예약 불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "이치란 우에노점 (一蘭 上野店)",
+          "area": "우에노 / 우에노역 도보 3분",
+          "why": "1인 칸막이 시스템으로 주문표에 체크만 하면 되어 언어 장벽 없이 이용 가능, 규슈 돈코츠의 교과서 같은 맛",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%80%E8%98%AD+%E4%B8%8A%E9%87%8E%E5%BA%97",
+          "price": "1,000~1,400엔",
+          "reserve": "예약 불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "규슈잔가라 아키하바라점 (九州じゃんがら 秋葉原店)",
+          "area": "아키하바라 / 아키하바라역 도보 2분",
+          "why": "아키하바라 관광 중 들르기 딱 좋은 위치, 국물이 진하고 부드러워 아이도 잘 먹는 규슈 돈코츠 라멘 전문점",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B9%9D%E5%B7%9E%E3%81%98%E3%82%83%E3%82%93%E3%81%8C%E3%82%89+%E7%A7%8B%E8%91%89%E5%8E%9F%E5%BA%97",
+          "price": "900~1,300엔",
+          "reserve": "예약 불필요",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "key": "tsukemen",
@@ -20,7 +49,36 @@
       "isReal": true,
       "note": "면과 진한 국물을 따로 내어 찍어 먹는 방식으로, 1961년 도쿄에서 처음 고안되었다.",
       "area": "도쿄",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "로쿠린샤 (六厘舎) — 도쿄역 라멘스트리트",
+          "area": "도쿄역 (야에스 지하 1층, 라멘스트리트)",
+          "why": "츠케멘 붐을 일으킨 원조 명점. 진한 돼지뼈·생선 육수 츠케지루에 극굵면 조합이 교과서. 도쿄역 동선에서 점심·저녁 모두 접근 편리.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%85%AD%E5%8E%98%E8%88%8E+%E6%9D%B1%E4%BA%AC%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%82%93",
+          "price": "1,100~1,300엔",
+          "reserve": "불필요 (줄 서기, 오픈 직후·평일 낮 추천)",
+          "confidence": "high"
+        },
+        {
+          "name": "야스베에 시부야점 (斑鳩 渋谷店 → 止まり木) — 실제 추천: 야스베에 시부야 (やすべえ 渋谷店)",
+          "area": "시부야역 도보 3분",
+          "why": "시부야 동선에서 접근 편리한 인기 체인 츠케멘. 아이도 먹기 좋은 깔끔한 쇼유·시오 기본 국물, 줄이 짧아 가족 여행 실용적.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%84%E3%81%99%E3%81%B9%E3%81%88+%E6%B8%8B%E8%B0%B7%E5%BA%97",
+          "price": "900~1,100엔",
+          "reserve": "불필요",
+          "confidence": "medium"
+        },
+        {
+          "name": "도쿄역 라멘스트리트 — 후지야마 산로쿠 (fujiyama 산로쿠 / 富士山さんろく)",
+          "area": "도쿄역 야에스 지하 1층, 라멘스트리트",
+          "why": "로쿠린샤 대기가 너무 길 때 바로 옆 대안. 후지 용암수로 만든 쫄깃한 면, 가다랑어 육수 기반 츠케지루로 어린이 입맛에도 무난.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88+%E5%AF%8C%E5%A3%AB%E5%B1%B1%E3%81%95%E3%82%93%E3%82%8D%E3%81%8F+%E6%9D%B1%E4%BA%AC%E9%A7%85",
+          "price": "1,000~1,200엔",
+          "reserve": "불필요 (줄 서기)",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "key": "sushi",
@@ -31,7 +89,36 @@
       "isReal": true,
       "note": "1958년 오사카에서 처음 등장한 컨베이어 벨트 스시로, 일본 스시 문화를 대중화시켰다.",
       "area": "일본 전국",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "스시로 우에노 (スシロー 上野御徒町店)",
+          "area": "우에노 / 우에노오카치마치역",
+          "why": "일본 최대 회전초밥 체인으로 100엔대부터 시작, 앱 예약 가능해 대기 없이 입장 — 첫 방문 가족에게 가장 무난하고 안전한 선택",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=スシロー+上野御徒町店+東京",
+          "price": "1인 1,000~1,500엔",
+          "reserve": "앱 예약 권장 (당일 가능)",
+          "confidence": "high"
+        },
+        {
+          "name": "우오베이 시부야 도겐자카 (魚べい 渋谷道玄坂店)",
+          "area": "시부야 / 시부야역",
+          "why": "터치패널 주문 + 신칸센 레일로 서빙하는 시스템이 아이에게 특히 재미있고, 1접시 165엔 균일 가격으로 부담 없이 다양하게 즐길 수 있음",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=魚べい+渋谷道玄坂店+東京",
+          "price": "1인 800~1,200엔",
+          "reserve": "예약 불필요 (웨이팅 가능)",
+          "confidence": "high"
+        },
+        {
+          "name": "쿠라스시 아키하바라 (くら寿司 秋葉原店)",
+          "area": "아키하바라 / 아키하바라역",
+          "why": "비어드파파·가챠 등 엔터테인먼트 요소가 있는 회전초밥으로 아키하바라 동선에서 아이와 즐기기 딱 좋은 가족 친화 체인",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=くら寿司+秋葉原店+東京",
+          "price": "1인 900~1,300엔",
+          "reserve": "예약 불필요",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "key": "tonkatsu",
@@ -42,7 +129,36 @@
       "isReal": true,
       "note": "19세기 말 일본에서 서양식 코틀렛을 일본화한 요리로, 소스와 양배추 샐러드와 함께 낸다.",
       "area": "일본 전국",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "돈카츠 야마베 (とんかつ山家)",
+          "area": "우에노 / 우에노역",
+          "price": "1,500~2,500엔",
+          "why": "우에노 동선에서 접근성이 가장 좋고, 두툼한 로스카츠가 바삭하면서도 육즙이 풍부해 가족 모두 만족하기 쉬운 현지 인기 노포",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=とんかつ山家+上野",
+          "reserve": "불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "마이센 시부야 히카리에 (まい泉 渋谷ヒカリエ)",
+          "area": "시부야 / 시부야역",
+          "price": "2,000~3,500엔",
+          "why": "쇼핑몰(히카리에) 안에 있어 날씨·화장실 걱정 없이 편하게 이용 가능, 부드러운 히레카츠가 아이 입맛에도 잘 맞음",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=まい泉+渋谷ヒカリエ",
+          "reserve": "불필요 (대기 있을 수 있음)",
+          "confidence": "high"
+        },
+        {
+          "name": "긴자 바이린 (銀座梅林)",
+          "area": "긴자 / 긴자역",
+          "price": "2,000~4,000엔",
+          "why": "1927년 창업 긴자 노포로 긴자 동선에서 '정통 돈카츠 원조'를 경험할 수 있는 상징적인 선택",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=銀座梅林+銀座",
+          "reserve": "불필요 (점심 시간대는 웨이팅 예상)",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "key": "gyukatsu",
@@ -53,7 +169,76 @@
       "isReal": true,
       "note": "돼지고기 대신 소고기를 튀긴 커틀릿으로, 겉은 바삭하고 속은 레어로 즐기는 것이 특징이다.",
       "area": "도쿄·교토",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "규카츠 모토무라 시부야점 / 牛かつもと村 渋谷店",
+          "area": "시부야",
+          "why": "가이드 기존 등록 식당. 얇게 썬 규카츠를 직접 돌판에 구워 먹는 방식으로 어린이도 체험 재미가 있고, 줄 서면 입장 가능해 예약 없이 방문 가능.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=牛かつもと村+渋谷店",
+          "price": "1,500~2,000엔",
+          "reserve": "예약 불필요 (웨이팅 있음)",
+          "confidence": "high"
+        },
+        {
+          "name": "규카츠 교토카츠규 아키하바라점 / 牛かつ京都勝牛 秋葉原店",
+          "area": "아키하바라",
+          "why": "아키하바라 동선 내 위치해 접근성 우수. 교토 발 체인으로 품질이 안정적이고 메뉴가 심플해 일본어 미숙 가족도 주문이 쉽다.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=牛かつ京都勝牛+秋葉原",
+          "price": "1,500~2,200엔",
+          "reserve": "예약 불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "규카츠 교토카츠규 우에노점 / 牛かつ京都勝牛 上野店",
+          "area": "우에노",
+          "why": "닛포리 거점에서 가장 가까운 규카츠 전문점. 우에노 동선과 겹쳐 점심 식사로 부담 없이 들를 수 있다.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=牛かつ京都勝牛+上野",
+          "price": "1,500~2,200엔",
+          "reserve": "예약 불필요",
+          "confidence": "medium"
+        }
+      ]
+    },
+    {
+      "key": "wagyu",
+      "name": "와규(소고기 구이·스테이크)",
+      "nameJa": "和牛",
+      "imageUrl": "assets/img/4f2dcc5c36524909.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "note": "마블링이 풍부한 일본 고급 소고기. 야키니쿠(구이)·철판 스테이크·스시(니기리)로 즐기며, 점심 코스가 저녁보다 합리적이다. '하루 한 끼 제대로'에 딱 맞는 특별한 한 끼.",
+      "area": "도쿄 전역",
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "우에노 와규 야키니쿠 우시하치 키와미 / Ueno Wagyu Yakiniku USHIHACHI Kiwami",
+          "area": "우에노 (우에노역 도보 1분)",
+          "why": "A4등급 암소 구로게와규 한 마리 통째 매입, 런치 11:30~15:00 운영, 영어 메뉴 완비 — 가족 와규 첫 경험에 딱 맞는 접근성과 가격대",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Ueno+Wagyu+Yakiniku+USHIHACHI+Kiwami+Ueno+Tokyo",
+          "price": "런치 1인 ¥3,000~6,000 (코스에 따라 상이)",
+          "reserve": "예약 권장 (Tabelog·SavorJapan·byFood 가능)",
+          "confidence": "high"
+        },
+        {
+          "name": "야키니쿠 이노우에 긴자 / Yakiniku Inoue Ginza",
+          "area": "긴자 (긴자잇초메역 도보 1분)",
+          "why": "런치 와규 히츠마부시셋 단 ¥2,000 — 긴자 위치에서 이 가격에 구로게와규를 먹을 수 있는 도쿄 최고의 가성비 런치, 토·일·공휴일도 런치 영업",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Yakiniku+Inoue+Ginza+Tokyo",
+          "price": "런치 1인 ¥2,000~5,000 (야키니쿠셋 ¥2,500, 코스 ¥5,000)",
+          "reserve": "예약 가능 (TableCheck·byFood), 런치는 당일도 가능한 편",
+          "confidence": "high"
+        },
+        {
+          "name": "규카쿠 시부야점 / Gyu-Kaku Shibuya",
+          "area": "시부야 (시부야역 도보 5분, 우다가와초)",
+          "why": "일본 최대 야키니쿠 체인으로 어린이 메뉴·반개인실 구조 — 만 12세 딸과 함께하는 가족 야키니쿠로 부담 없이 즐길 수 있으며 무한리필 코스로 배불리 먹을 수 있음",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Gyu-Kaku+Shibuya+Tokyo",
+          "price": "1인 ¥3,500~4,200 (무한리필 90분 코스 기준)",
+          "reserve": "예약 불필요 (방문 또는 홈페이지 예약 모두 가능)",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "key": "unagi",
@@ -64,7 +249,36 @@
       "isReal": true,
       "note": "민물장어를 달콤짭조름한 타레 소스로 구워 밥 위에 얹은 요리로, 여름 더위를 이기는 스태미나 식품으로 유명하다.",
       "area": "일본 전국",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "이즈에이 우메가와테이 / 伊豆栄 梅川亭",
+          "area": "우에노 (우에노역 도보 5분)",
+          "why": "1702년 창업 에도 전통 우나기 노포. 우에노 공원 연못 옆 고풍스러운 분위기로 가족 첫 장어 경험에 딱 맞는 대표 명소.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=伊豆栄梅川亭+上野",
+          "price": "3,000~5,000엔",
+          "reserve": "예약 불필요(대기 가능, 점심은 줄 서기)",
+          "confidence": "high"
+        },
+        {
+          "name": "우나토코 / うな鐵",
+          "area": "아키하바라 (아키하바라역 도보 3분)",
+          "why": "숯불 직화구이 히츠마부시 스타일, 가성비 좋고 동선(아키하바라) 안에 있어 관광 중 들르기 편리.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=うな鐵+秋葉原",
+          "price": "2,500~4,000엔",
+          "reserve": "예약 불필요",
+          "confidence": "medium"
+        },
+        {
+          "name": "야마다야 / 山田屋",
+          "area": "우에노 (우에노역 도보 7분)",
+          "why": "우에노 권역 현지인 단골 우나기 전문점. 이즈에이보다 대기가 짧고 가격도 소폭 저렴해 가족 부담 없이 즐기기 좋음.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=山田屋+上野+うなぎ",
+          "price": "2,500~3,500엔",
+          "reserve": "예약 불필요",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "key": "tempura",
@@ -75,7 +289,36 @@
       "isReal": true,
       "note": "16세기 포르투갈 선교사의 튀김 기법이 일본에 전해져 발전한 요리로, 얇은 반죽이 핵심이다.",
       "area": "일본 전국",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "텐푸라 야마노우에 긴자 (てんぷら山の上 Ginza)",
+          "area": "긴자 / 긴자식스 13층",
+          "why": "야마노우에 호텔 계보를 잇는 정통 에도마에 텐푸라. 긴자식스 쇼핑 동선에 딱 맞고 코스 구성이 명확해 일본어 초보 가족도 주문이 쉬움. 예약 필수.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%81%A6%E3%82%93%E3%81%B7%E3%82%89%E5%B1%B1%E3%81%AE%E4%B8%8A+GINZA+SIX",
+          "price": "점심 4,000~6,000엔 / 저녁 10,000엔~",
+          "reserve": "예약 필요 (TableCheck 온라인 예약 가능)",
+          "confidence": "high"
+        },
+        {
+          "name": "텐푸라 신주쿠 츠나하치 파르코야 우에노점 (天ぷら新宿つな八 PARCO_ya上野店)",
+          "area": "우에노 / 우에노히로코지역 1분, 파르코야 쇼핑몰 내",
+          "why": "1924년 창업 노포 체인. 파르코야 쇼핑몰 안이라 날씨·이동 걱정 없고 런치 세트 2,970엔~로 가족 부담이 적음. 메뉴판에 사진이 있어 주문이 쉬움.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E3%81%B7%E3%82%89%E6%96%B0%E5%AE%BF%E3%81%A4%E3%81%AA%E5%85%AB+PARCO_ya+%E4%B8%8A%E9%87%8E",
+          "price": "런치 2,970엔~ / 저녁 4,000엔~",
+          "reserve": "예약 불필요 (예약도 가능)",
+          "confidence": "high"
+        },
+        {
+          "name": "텐동 텐야 오카치마치점 (天丼てんや 御徒町店)",
+          "area": "우에노 / 오카치마치역 도보 1분",
+          "why": "일본 전국 체인의 합리적 텐동 전문점. 1인 600~900엔대로 부담 없이 바삭한 새우·야채 튀김덮밥을 즐길 수 있어 첫 텐푸라 입문으로 최적. 우에노 관광 동선과 일치.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E4%B8%BC%E3%81%A6%E3%82%93%E3%82%84+%E5%BE%A1%E5%BE%92%E7%94%BA%E5%BA%97",
+          "price": "1인 600~900엔",
+          "reserve": "예약 불필요",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "key": "tendon",
@@ -86,7 +329,27 @@
       "isReal": true,
       "note": "튀김(덴푸라)을 밥 위에 올리고 달콤짭조름한 텐타레 소스를 뿌린 덮밥으로, 에도 시대부터 서민 음식이었다.",
       "area": "일본 전국",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "텐야 아키하바라점 (天丼てんや 秋葉原店)",
+          "area": "아키하바라 (스에히로쵸역 근처)",
+          "why": "1인 500~720엔의 믿기 어려운 가성비 — 새우·오징어·야채 튀김이 넉넉하게 올라오고, 일본 전국 체인이라 주문도 쉬워 언어 장벽 없이 편하게 즐길 수 있다.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E4%B8%BC%E3%81%A6%E3%82%93%E3%82%84+%E7%A7%8B%E8%91%89%E5%8E%9F%E5%BA%97",
+          "price": "500~720엔",
+          "reserve": "예약 불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "긴자 텐쿠니 본점 (銀座 天国)",
+          "area": "긴자 (히가시긴자역 도보 2분)",
+          "why": "1885년 창업 140년 노포로 텐동의 정석을 맛볼 수 있다. 런치 타임(~15시)에는 비교적 합리적인 가격으로 이용 가능하며, 긴자 일정과 자연스럽게 연계된다.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%8A%80%E5%BA%A7+%E5%A4%A9%E5%9B%BD+%E6%9C%AC%E5%BA%97+%E9%8A%80%E5%BA%A7",
+          "price": "1,500~3,500엔",
+          "reserve": "예약 불필요 (런치 줄 대기 가능)",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "key": "gyudon",
@@ -97,7 +360,36 @@
       "isReal": true,
       "note": "얇게 썬 소고기와 양파를 달콤짭조름하게 조려 밥 위에 얹은 덮밥으로, 요시노야·스키야·마쓰야가 3대 체인이다.",
       "area": "일본 전국",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "마츠야 우에노점 / Matsuya Ueno",
+          "area": "우에노 (우에노역 도보 2분)",
+          "why": "24시간 영업, 규동 외 카레·정식도 있어 가족 모두 각자 취향대로 고를 수 있는 편리한 체인. 탭식 자판기 주문이라 일본어 몰라도 OK.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Matsuya+Ueno+Tokyo",
+          "price": "¥380~550",
+          "reserve": "불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "요시노야 아키하바라점 / Yoshinoya Akihabara",
+          "area": "아키하바라 (아키하바라역 도보 1분)",
+          "why": "일본 규동의 원조 체인. 부드러운 소고기+달콤한 양파 조합이 어린이 입맛에도 잘 맞고, 가격 부담 없이 부담 없이 한 끼 해결.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Yoshinoya+Akihabara+Tokyo",
+          "price": "¥380~530",
+          "reserve": "불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "스키야 시부야점 / Sukiya Shibuya",
+          "area": "시부야 (시부야역 도보 3분)",
+          "why": "3대 규동 체인 중 메뉴 가짓수가 가장 많아 규동 외 카레·셋트·음료까지 선택폭 넓음. 시부야 쇼핑 중 빠른 식사에 최적.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Sukiya+Shibuya+Tokyo",
+          "price": "¥370~600",
+          "reserve": "불필요",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "key": "katsu-curry",
@@ -108,7 +400,36 @@
       "isReal": true,
       "note": "돈카츠를 일본식 카레 위에 얹은 음식으로, 야구선수 가와카미 테쓰하루가 즐겨 먹었다는 설이 있다.",
       "area": "일본 전국",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "긴자 스이스 (Ginza Swiss)",
+          "area": "긴자 / 긴자역 A9출구 도보 3분",
+          "why": "1947년 창업, 카츠카레를 세상에 처음 선보인 원조 집. '간소 카츠카레' 한 그릇으로 역사를 맛본다.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Ginza+Swiss+%E9%8A%80%E5%BA%A7+%E3%82%B9%E3%82%A4%E3%82%B9",
+          "price": "1,000~1,800엔",
+          "reserve": "예약 불필요 (현금 전용, 영어 메뉴 없음 — 손가락으로 주문 가능)",
+          "confidence": "high"
+        },
+        {
+          "name": "Go!Go!Curry 아키하바라 No.1점 (Go!Go!Curry Akihabara No.1)",
+          "area": "아키하바라 / JR 아키하바라역 쇼와도리 출구 도보 2분",
+          "why": "금세 뚝딱 먹을 수 있는 진한 가나자와 카레 + 바삭한 카츠 조합. 아키하바라 관광 중 간편하게 들를 수 있고 가족·어린이 모두 부담 없는 가격.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Go+Go+Curry+Akihabara+No1+Tokyo",
+          "price": "700~1,500엔",
+          "reserve": "예약 불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "CoCo壱番屋 우에노 오카치마치점 (CoCo Ichibanya Ueno Okachimachi)",
+          "area": "우에노·오카치마치 / JR 오카치마치역 도보 1분",
+          "why": "맵기 단계·토핑을 마음대로 고를 수 있어 어린이 포함 가족 전체가 각자 입맛에 맞춰 먹기 편한 체인 카레 대표 명소. 우에노 관광 중 부담 없이 들를 수 있음.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=CoCo+Ichibanya+Ueno+Okachimachi+Tokyo",
+          "price": "800~1,400엔",
+          "reserve": "예약 불필요",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "key": "harajuku-crepe",
@@ -119,7 +440,27 @@
       "isReal": true,
       "note": "1970년대 하라주쿠에서 탄생한 일본식 크레페로, 생크림·과일·아이스크림을 가득 넣어 원뿔 모양으로 말아 먹는다.",
       "area": "도쿄 하라주쿠",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "마리온 크레페 하라주쿠 (Marion Crepes Harajuku)",
+          "area": "하라주쿠 다케시타도리",
+          "why": "1976년 창업한 하라주쿠 크레페의 원조. 다케시타도리 입구에 위치해 접근성 최고, 딸기·초코·아이스크림 조합이 어린이에게 인기 만점.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Marion+Crepes+Harajuku+Takeshita",
+          "price": "600~900",
+          "reserve": "불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "엔젤스 하트 하라주쿠 (Angel's Heart Harajuku)",
+          "area": "하라주쿠 다케시타도리",
+          "why": "다케시타도리 내 20년 넘은 노포 크레페집. 생크림 가득한 달콤한 조합이 주력이며 줄이 짧아 마리온 크레페 대기 시 대안으로 추천.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Angel%27s+Heart+Harajuku+Takeshita+Street",
+          "price": "500~850",
+          "reserve": "불필요",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "key": "parfait",
@@ -130,7 +471,36 @@
       "isReal": false,
       "note": "일본 파르페는 긴 유리잔에 아이스크림·시리얼·과일·소스를 겹겹이 쌓는 디저트로, 전시 샘플까지 예술적으로 만든다.",
       "area": "일본 전국",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "이니셜 오모테산도 (Initial Omotesando)",
+          "area": "오모테산도·하라주쿠",
+          "why": "SNS에서 화제인 계절 과일 파르페 전문점. 하라주쿠 크레페 동선에서 도보권이라 함께 방문하기 좋고, 비주얼과 맛 모두 가족 만족도 최상.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Initial+Omotesando+parfait+Tokyo",
+          "price": "1,500~2,500엔",
+          "reserve": "불필요 (웨이팅 있을 수 있음)",
+          "confidence": "high"
+        },
+        {
+          "name": "파르페, 코히, 사케, 하나 (パフェ、珈琲、酒、佐藤 / Parfait Coffee Sake Sato)",
+          "area": "긴자",
+          "why": "긴자 동선에서 접근 편리한 파르페 전문 카페. 계절 파르페가 예술적으로 아름답고 커피·주스도 함께 즐길 수 있어 온 가족이 만족.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%83%91%E3%83%95%E3%82%A7%E3%80%81%E7%8F%88%E7%90%B2%E3%80%81%E9%85%92%E3%80%81%E4%BD%90%E8%97%A4+%E9%8A%80%E5%BA%A7",
+          "price": "1,800~3,000엔",
+          "reserve": "불필요 (웨이팅 있을 수 있음)",
+          "confidence": "medium"
+        },
+        {
+          "name": "선데이즈 선 파르페 (Sunday's Sun Parfait / サンデーズサン)",
+          "area": "시부야·하라주쿠",
+          "why": "시부야 동선 내 위치하며 두툼한 과일 파르페로 유명한 인기 카페. 딸 은재가 특히 좋아할 만한 화려한 비주얼의 파르페를 제공.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Sundays+Sun+Parfait+Shibuya+Tokyo",
+          "price": "1,500~2,500엔",
+          "reserve": "불필요",
+          "confidence": "medium"
+        }
+      ]
     },
     {
       "key": "melonpan",
@@ -141,7 +511,36 @@
       "isReal": true,
       "note": "쿠키 반죽을 빵 위에 얹어 구운 것으로, 멜론 향이 나지 않아도 격자 무늬가 멜론 껍질을 닮아 붙여진 이름이다.",
       "area": "일본 전국",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "아사쿠사 카게츠도 본점 (浅草 花月堂 本店)",
+          "area": "아사쿠사 / 아사쿠사역 도보 5분 (우에노·닛포리에서 가깝고 센소지 관광과 묶기 좋음)",
+          "why": "1945년 창업 원조 점보 멜론빵. 겉은 바삭, 속은 폭신. 하루 3000개 팔리는 도쿄 멜론빵 성지. 바닐라·말차 아이스크림 끼워 먹는 옵션도 있어 아이들이 특히 좋아함.",
+          "price": "¥300~400 (아이스 추가 시 ¥500 내외)",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=浅草花月堂本店+台東区浅草2-7-13",
+          "reserve": "예약 불필요 (오후 4시 전 방문 권장, 조기 매진 주의)",
+          "confidence": "high"
+        },
+        {
+          "name": "세계 제2위 멜론빵 아이스 시부야점 (世界で2番めにおいしい焼きたてメロンパンアイス)",
+          "area": "시부야 / 시부야역 하치코 출구 도보 8분 (하라주쿠 동선과 묶기 좋음)",
+          "why": "갓 구운 멜론빵을 칼로 쪼개 아이스크림을 넣어 주는 포토제닉 간식. 바닐라·말차·쿠키앤크림 등 선택 가능. 어린이와 함께라면 필수.",
+          "price": "¥600~750 내외",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=世界で2番めにおいしいメロンパンアイス+渋谷神南1-15-9",
+          "reserve": "예약 불필요 (줄 서기 10~20분 예상)",
+          "confidence": "high"
+        },
+        {
+          "name": "긴자 기무라야 총본점 (銀座 木村屋總本店)",
+          "area": "긴자 / 긴자역 A9 출구 도보 1분",
+          "why": "1869년 창업 일본 최고령 빵집. 발효버터+바닐라 멜론빵은 묵직한 풍미로 어른도 만족. 긴자 쇼핑 동선과 자연스럽게 연계.",
+          "price": "¥302 내외",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=銀座木村屋總本店+銀座4-5-7",
+          "reserve": "예약 불필요",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "key": "konbini-pudding",
@@ -152,7 +551,36 @@
       "isReal": true,
       "note": "세븐일레븐·패밀리마트 편의점 푸딩은 부드러운 식감과 캐러멜 소스로 유명하며, 일본 방문객이 꼭 사 먹는 간식이다.",
       "area": "일본 전국 편의점",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "세븐일레븐 — 나め라카 푸린 (Seven-Eleven Nameraka Purin)",
+          "area": "도쿄 전역 편의점",
+          "why": "일본 편의점 푸딩의 대명사. 부드럽고 진한 카라멜이 특징이며 어린이·어른 모두 좋아하는 스테디셀러. 200~250엔대로 부담 없음.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Seven+Eleven+Nippori+Tokyo",
+          "price": "200~250엔",
+          "reserve": "불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "로손 — 프리미엄 롤케이크·푸딩 시리즈 (Lawson Premium Pudding)",
+          "area": "도쿄 전역 편의점",
+          "why": "로손의 프리미엄 스위츠 라인은 편의점 디저트 중 품질이 가장 높다는 평. 농후한 달걀 맛 푸딩으로 현지인도 손꼽는 명물.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Lawson+Ueno+Tokyo",
+          "price": "200~300엔",
+          "reserve": "불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "패밀리마트 — 오토나노 콘비니 스위츠 푸딩 (FamilyMart Adult Pudding)",
+          "area": "도쿄 전역 편의점",
+          "why": "패밀리마트의 '어른을 위한 스위츠' 시리즈 푸딩은 쌉쌀한 카라멜 소스와 부드러운 질감으로 세 편의점 중 카라멜 향이 가장 진하다는 평가.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=FamilyMart+Akihabara+Tokyo",
+          "price": "200~280엔",
+          "reserve": "불필요",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "key": "matcha-dessert",
@@ -163,7 +591,36 @@
       "isReal": true,
       "note": "교토 우지 지역이 말차의 본고장으로, 아이스크림·파르페·와라비모치 등 다양한 말차 디저트가 발달해 있다.",
       "area": "교토 우지",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "나나야 아오야마 / Nanaya Aoyama",
+          "area": "시부야·오모테산도 (하라주쿠 도보 7분)",
+          "why": "말차 농도를 1~7단계로 직접 골라 먹는 젤라토 전문점. 세계 최강 레벨7은 시즈오카 직송 최고급 말차 사용. 아이도 입문용부터 도전 가능해 가족 체험으로 딱.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Nanaya+Aoyama+Shibuya+Tokyo",
+          "price": "600~900엔 (젤라토 1스쿱 기준)",
+          "reserve": "예약 불필요",
+          "confidence": "high"
+        },
+        {
+          "name": "사료 츠지리 다이마루 도쿄점 / Saryo Tsujiri Daimaru Tokyo",
+          "area": "도쿄역 야에스 (다이마루 도쿄 10층)",
+          "why": "교토 우지 기원 1800년대 말차 전문 찻집. 말차 아이스크림·시라타마·우지 팥이 겹겹이 쌓인 말차 파르페가 대표 메뉴. 도쿄역 동선에서 쇼핑 후 바로 방문 가능.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Saryo+Tsujiri+Daimaru+Tokyo+Station",
+          "price": "1,200~1,800엔 (파르페 기준)",
+          "reserve": "예약 불필요 (웨이팅 있을 수 있음)",
+          "confidence": "high"
+        },
+        {
+          "name": "나카무라 도키치 긴자점 / Nakamura Tokichi Honten Ginza",
+          "area": "긴자 (긴자식스 4층)",
+          "why": "1854년 교토 우지 창업, 170년 역사 말차 명가의 도쿄 플래그십. 긴자 한정 베세이 마루토 파르페가 시그니처. 긴자 쇼핑 동선에 자연스럽게 포함 가능.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Nakamura+Tokichi+Ginza+Six+Tokyo",
+          "price": "1,500~2,200엔 (파르페 기준)",
+          "reserve": "예약 불필요 (점심 피크 웨이팅 가능)",
+          "confidence": "high"
+        }
+      ]
     },
     {
       "key": "takoyaki",
@@ -174,7 +631,36 @@
       "isReal": true,
       "note": "1935년 오사카에서 탄생한 문어 반죽 볼로, 가쓰오부시·마요네즈·소스·아오노리를 얹어 먹는 오사카의 소울 푸드이다.",
       "area": "오사카",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "아메요코 타코야키 노점 / Ameyoko Takoyaki Stalls",
+          "area": "우에노 · 아메요코 시장",
+          "why": "4개 200~300엔의 초저가 길거리 타코야키. 큼직한 문어 살, 즉석 철판 체험이 아이와 함께 먹기 딱 좋고, 우에노 동선 내라 따로 이동 불필요.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Ameyoko+Market+Ueno+Tokyo+takoyaki",
+          "price": "200~300엔 (4개 기준)",
+          "reserve": "불필요 (노점)",
+          "confidence": "medium — 노점 특성상 운영 일자·위치가 매일 다를 수 있으니 현장 확인 권장"
+        },
+        {
+          "name": "츠키지 긴다코 시부야점 / Tsukiji Gindaco Shibuya",
+          "area": "시부야 · 시부야역 동쪽 출구",
+          "why": "일본 최대 타코야키 전문 체인으로 외부 바삭·내부 촉촉한 '정석 도쿄 타코야키'. 메뉴 사진이 있어 일본어 몰라도 주문 쉽고, 시부야 동선과 바로 연결.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Tsukiji+Gindaco+Shibuya+Tokyo",
+          "price": "700~800엔 (8개 기준)",
+          "reserve": "불필요",
+          "confidence": "high — 전국 체인, 2026년에도 영업 확인"
+        },
+        {
+          "name": "츠키지 긴다코 築地본점 / Tsukiji Gindaco Tsukiji Honten",
+          "area": "긴자·도쿄역 인근 · 츠키지역",
+          "why": "긴자·도쿄역 동선에서 도보권인 츠키지 본점. 갓 구운 타코야키를 자리에 앉아 먹을 수 있고, 긴자 쇼핑 후 들르기 좋은 위치.",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Tsukiji+Gindaco+Honten+Tsukiji+Tokyo",
+          "price": "700~900엔 (8개 기준)",
+          "reserve": "불필요",
+          "confidence": "high — 공식 사이트 2026년 영업 확인"
+        }
+      ]
     },
     {
       "key": "onigiri",
@@ -185,7 +671,36 @@
       "isReal": true,
       "note": "일본 편의점의 상징으로, 연어·참치마요·매실 등 수십 가지 속재료가 있으며 김을 바삭하게 유지하는 포장 기술이 독특하다.",
       "area": "일본 전국",
-      "gmapUrl": ""
+      "gmapUrl": "",
+      "recos": [
+        {
+          "name": "일본 편의점 오니기리 (세븐일레븐·로손·패밀리마트)",
+          "area": "도쿄 전역 (우에노·아키하바라·시부야·긴자 등 모든 동선)",
+          "why": "도쿄 여행의 필수 경험 — 갓 포장된 시오사케(소금연어)·참치마요·고등어 등 100~200엔대, 포장 뜯는 순간 김이 바삭해지는 3단 포장이 아이에게도 재미있고 일본어 몰라도 그림·번호로 주문 가능",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Seven+Eleven+Ueno+Tokyo",
+          "reserve": "불필요",
+          "price": "110~210엔 (약 1,000~2,000원)",
+          "confidence": "high"
+        },
+        {
+          "name": "혼노리야 우에노 에큐트점 (ほんのり屋 エキュート上野店 / Honnoriya Ecute Ueno)",
+          "area": "우에노역 (에큐트 우에노, 개찰구 안)",
+          "why": "후쿠시마 아이즈산 고시히카리 쌀을 매장에서 직접 지어 즉석으로 빚는 오니기리 전문점 — 우에노역 이동 중 바로 구매 가능, 참치마요·명란·다시마 등 클래식 라인업에 계절 한정 메뉴도 있음",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Honnoriya+Ecute+Ueno+Station+Tokyo",
+          "reserve": "불필요",
+          "price": "200~350엔 (약 1,900~3,300원)",
+          "confidence": "high"
+        },
+        {
+          "name": "오니기리 아사쿠사 야도로쿠 (おにぎり浅草 宿六 / Onigiri Asakusa Yadoroku)",
+          "area": "아사쿠사 (센소지 뒤편, 우에노에서 도보+전철 15분)",
+          "why": "1954년 창업, 미쉐린 빕 구르망 2026 선정 — 18가지 속재료를 주문 즉시 손으로 빚어주는 도쿄 최고의 오니기리 성지, 오전 일찍 줄 서면 대기 가능하며 테이크아웃도 됨",
+          "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Onigiri+Asakusa+Yadoroku+Tokyo",
+          "reserve": "불필요 (현장 대기)",
+          "price": "300~500엔 (약 2,800~4,700원)",
+          "confidence": "high"
+        }
+      ]
     }
   ]
 }
