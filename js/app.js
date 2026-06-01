@@ -11,6 +11,8 @@ window.App = window.App || {};
     const id = t.dataset.id;
     switch (act) {
       case 'show': A.showPhrase(id); break;
+      case 'nav-back': navBack(); break;
+      case 'guide-jump': guideJump(t.dataset.target); break;
       case 'show-text': A.showText(t.dataset.jp, t.dataset.pron, t.dataset.ko, t.dataset.level); break;
       case 'close-sheet': A.closeSheet(); break;
       case 'fav': toggleFav(id, t); break;
@@ -138,6 +140,27 @@ window.App = window.App || {};
   });
 
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { A.closeSheet(); A.closeLightbox(); } });
+
+  // ---------------- navigation: universal back ----------------
+  function navBack() {
+    // a sheet/lightbox open? close that first.
+    const sheet = A.$('#sheet'), lb = A.$('#lightbox');
+    if (lb && lb.classList.contains('open')) { A.closeLightbox(); return; }
+    if (sheet && sheet.classList.contains('open')) { A.closeSheet(); return; }
+    if (window.history.length > 1) history.back();
+    else location.hash = '#/';
+  }
+
+  // ---------------- guide: jump to a section ----------------
+  function guideJump(idx) {
+    const el = document.getElementById('g-sec-' + idx);
+    if (!el) return;
+    const bar = A.$('.appbar');
+    const offset = (bar ? bar.offsetHeight : 56) + 8;
+    const y = Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - offset);
+    // positional scroll works everywhere; html{scroll-behavior:smooth} adds easing where supported.
+    window.scrollTo(0, y);
+  }
 
   // ---------------- favorites ----------------
   function toggleFav(id, btn) {

@@ -6,7 +6,7 @@
   <title>도쿄 가족여행 가이드</title>
   <meta name="description" content="2026 도쿄 가족여행 오프라인 가이드 — 일정·회화·교통·맛집·긴급">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#E8743B">
+  <meta name="theme-color" content="#2C7C87">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon-180.png">
@@ -19,19 +19,20 @@
 </head>
 <body>
   <header class="appbar">
-    <a href="#/" class="ab-home">🗾 도쿄가이드</a>
-    <span id="net-dot" class="net-dot" hidden>● 오프라인 · 저장된 정보</span>
-    <a href="#/settings" class="ab-set" aria-label="설정">⚙️</a>
+    <button id="ab-back" class="ab-back" data-action="nav-back" aria-label="뒤로 가기" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
+    <a href="#/" class="ab-home"><svg class="ab-logo" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-5.8 6.5-11A6.5 6.5 0 0 0 5.5 10c0 5.2 6.5 11 6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>도쿄가이드</a>
+    <span id="net-dot" class="net-dot" hidden>오프라인 · 저장된 정보</span>
+    <a href="#/settings" class="ab-set" aria-label="설정"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h9M17 8h3"/><path d="M4 16h3M11 16h9"/><circle cx="15" cy="8" r="2"/><circle cx="9" cy="16" r="2"/></svg></a>
   </header>
 
   <main id="app" class="app"><div class="boot">불러오는 중…</div></main>
 
   <nav class="tabbar" aria-label="메인 메뉴">
-    <a href="#/" data-tab="home"><span>🏠</span>홈</a>
-    <a href="#/day/d1" data-tab="day"><span>📅</span>일정</a>
-    <a href="#/talk" data-tab="talk"><span>💬</span>회화</a>
-    <a href="#/subway" data-tab="subway"><span>🗺</span>지도</a>
-    <a href="#/sos" data-tab="sos" class="t-sos"><span>🆘</span>긴급</a>
+    <a href="#/" data-tab="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 11.5 12 4.5l8.5 7"/><path d="M5.5 10v9.5h13V10"/><path d="M10 19.5V14h4v5.5"/></svg>홈</a>
+    <a href="#/day/d1" data-tab="day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 9.5h17"/><path d="M8 3.5v3.5M16 3.5v3.5"/></svg>일정</a>
+    <a href="#/talk" data-tab="talk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.5A1.5 1.5 0 0 0 18.5 5h-13A1.5 1.5 0 0 0 4 6.5v8A1.5 1.5 0 0 0 5.5 16H8v3.4L12.6 16h5.9A1.5 1.5 0 0 0 20 14.5z"/><path d="M8.5 10.4h.01M12 10.4h.01M15.5 10.4h.01"/></svg>회화</a>
+    <a href="#/subway" data-tab="subway"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6 9 4z"/><path d="M9 4v14M15 6v14"/></svg>지도</a>
+    <a href="#/sos" data-tab="sos" class="t-sos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5 21 19.5H3z"/><path d="M12 10v4.4"/><path d="M12 17.2h.01"/></svg>긴급</a>
   </nav>
 
   <script>
@@ -43,6 +44,7 @@
     })();
   </script>
   <script src="js/util.js"></script>
+  <script src="js/icons.js"></script>
   <script src="js/idb.js"></script>
   <script src="js/data.js"></script>
   <script src="js/weather.js"></script>

@@ -1,5 +1,14 @@
 {
   "budget": { "free": "자유 쇼핑비 2만~3만엔", "gacha": "가챠 1회 1,000~2,000엔" },
+  "budgetNote": "관심 매장이 많아 2만~3만엔은 빠듯할 수 있어요. 매장별 상한을 미리 정해두면 현장에서 흔들리지 않아요.",
+  "storeBudget": [
+    { "store": "Nintendo TOKYO", "cap": "5,000~8,000엔" },
+    { "store": "포켓몬센터 시부야", "cap": "5,000~8,000엔" },
+    { "store": "시부야 로프트", "cap": "3,000~5,000엔" },
+    { "store": "가챠", "cap": "1,000~2,000엔" },
+    { "store": "긴자 이토야", "cap": "3,000~5,000엔" },
+    { "store": "도쿄역 캐릭터스트리트", "cap": "3,000~5,000엔" }
+  ],
   "wishlist": [
     { "id": "sh1", "store": "Nintendo TOKYO (시부야)", "label": "마리오·젤다·동물의숲 굿즈", "img": "nintendo-tokyo", "guide": "buy-nintendo" },
     { "id": "sh2", "store": "포켓몬센터 시부야", "label": "인형·카드·문구·한정판", "img": "pokemon-center-shibuya", "guide": "buy-pokemon" },

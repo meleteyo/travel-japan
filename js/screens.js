@@ -27,7 +27,7 @@ window.App = window.App || {};
         <div class="dday">D-${t.dleft}</div>
         <div class="tc-body"><strong>출발까지 ${t.dleft}일</strong>
         <p>준비물 체크리스트부터 확인해요.</p>
-        <a class="btn-primary" href="#/check">✅ 출발 전 체크리스트</a></div></div>`;
+        <a class="btn-primary" href="#/check">출발 전 체크리스트</a></div></div>`;
     } else if (t.phase === 'after') {
       hero = `<div class="today-card"><div class="tc-body"><strong>여행이 끝났어요 🎉</strong><p>즐거운 추억 되었길 바라요!</p></div></div>`;
     } else {
@@ -48,32 +48,32 @@ window.App = window.App || {};
       <span class="w-k">오늘 옷차림</span><span class="w-v small">${(w.clothing||[]).map(esc).join(' · ')}</span></a>` : '';
 
     const big = [
-      ['#/talk', '💬', '회화', 'big primary'],
-      ['#/sos', '🆘', '긴급', 'big danger'],
-      ['#/subway', '🗺', '노선도', 'big'],
-      ['#/food', '🍜', '맛집', 'big'],
+      ['#/talk', 'chat', '회화', 'big primary'],
+      ['#/sos', 'alert', '긴급', 'big danger'],
+      ['#/subway', 'map', '노선도', 'big'],
+      ['#/food', 'food', '맛집', 'big'],
     ];
     const small = [
-      ['#/day/' + ((t.day || {}).id || 'd1'), '📅', '일정'],
-      ['#/shopping', '🛍', '쇼핑'],
-      ['#/tips', '💡', '정보·꿀팁'],
-      ['#/photo', '📸', '포토'],
-      ['#/exchange', '💱', '환율'],
-      ['#/medical', '🏥', '병원·약국'],
-      ['#/docs', '🗂', '서류함'],
-      ['#/check', '✅', '체크'],
-      ['#/info', '📋', '예약·정보'],
+      ['#/day/' + ((t.day || {}).id || 'd1'), 'calendar', '일정'],
+      ['#/shopping', 'bag', '쇼핑'],
+      ['#/tips', 'bulb', '정보·꿀팁'],
+      ['#/photo', 'camera', '포토'],
+      ['#/exchange', 'swap', '환율'],
+      ['#/medical', 'medical', '병원·약국'],
+      ['#/docs', 'folder', '서류함'],
+      ['#/check', 'check', '체크'],
+      ['#/info', 'clipboard', '예약·정보'],
     ];
     return `<section class="home">
       <header class="home-top"><div><h1>${esc(trip.title || '도쿄 여행')}</h1>
       <p>${esc(trip.subtitle || '')}</p></div></header>
-      <a class="home-search" href="#/search">🔍 무엇이든 검색 — 회화·맛집·교통·꿀팁…</a>
+      <a class="home-search" href="#/search">${A.icon('search')}<span>무엇이든 검색 — 회화·맛집·교통·꿀팁…</span></a>
       ${hero}
       <div class="widgets">${budget}${cloth}</div>
-      <div class="grid-big">${big.map(([h, i, l, c]) => `<a class="card-act ${c}" href="${h}"><span class="ca-ic">${i}</span><span>${l}</span></a>`).join('')}</div>
+      <div class="grid-big">${big.map(([h, i, l, c]) => `<a class="card-act ${c}" href="${h}"><span class="ca-ic">${A.icon(i)}</span><span>${l}</span></a>`).join('')}</div>
       <h2 class="sec">더 보기</h2>
-      <div class="grid-small">${small.map(([h, i, l]) => `<a class="card-act sm" href="${h}"><span class="ca-ic">${i}</span><span>${l}</span></a>`).join('')}</div>
-      <p class="foot-note">📥 출발 전 와이파이에서 <a href="#/settings">오프라인 전체 저장</a>을 한 번 실행하면 인터넷 없이도 모두 열려요.</p>
+      <div class="grid-small">${small.map(([h, i, l]) => `<a class="card-act sm" href="${h}"><span class="ca-ic">${A.icon(i)}</span><span>${l}</span></a>`).join('')}</div>
+      <p class="foot-note">출발 전 와이파이에서 <a href="#/settings">오프라인 전체 저장</a>을 한 번 실행하면 인터넷 없이도 모두 열려요.</p>
     </section>`;
   };
 
@@ -303,6 +303,8 @@ window.App = window.App || {};
     return `<section class="shopv">
       ${head('쇼핑 · 예산', (sh.budget && sh.budget.free) || '')}
       <div class="budget-note">${sh.budget ? `🎯 ${esc(sh.budget.free)} · ${esc(sh.budget.gacha)}` : ''}</div>
+      ${sh.budgetNote ? `<p class="muted small">${esc(sh.budgetNote)}</p>` : ''}
+      ${(sh.storeBudget || []).length ? `<div class="store-budget">${sh.storeBudget.map((b) => `<div class="sb-row"><span>${esc(b.store)}</span><span class="sb-cap">${esc(b.cap)}</span></div>`).join('')}</div>` : ''}
       <h2 class="sec">🧾 지출 메모</h2>
       <form class="exp-form" data-action="add-expense">
         <input name="label" placeholder="항목 (예: 가챠)" aria-label="항목">
@@ -454,23 +456,27 @@ window.App = window.App || {};
     if (!g) return `<section>${head('상세 가이드', '내용을 찾을 수 없어요')}<a class="btn-primary" href="#/">홈으로</a></section>`;
     let backDay = '';
     (A.data.itinerary.days || []).forEach((d) => (d.stops || []).forEach((s) => { if (s.guide === id) backDay = d.id; }));
-    const sec = (s) => {
+    const sec = (s, i) => {
       const steps = (s.steps || []).length ? `<ol class="g-steps">${s.steps.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>` : '';
       const tips = (s.tips || []).length ? `<ul class="g-tips">${s.tips.map((x) => `<li>💡 ${esc(x)}</li>`).join('')}</ul>` : '';
       const cau = (s.cautions || []).length ? `<ul class="g-caution">${s.cautions.map((x) => `<li>⚠️ ${esc(x)}</li>`).join('')}</ul>` : '';
       const ph = (s.phraseIds || []).map((pid) => { const p = A.phraseIndex[pid]; return p ? `<button class="mini-show" data-action="show" data-id="${pid}">📢 ${esc(p.ko)}</button>` : ''; }).join('');
-      return `<div class="g-sec"><h3>${s.icon ? s.icon + ' ' : ''}${esc(s.heading)}</h3>${steps}${tips}${cau}${ph ? `<div class="row-btns">${ph}</div>` : ''}</div>`;
+      return `<div class="g-sec" id="g-sec-${i}"><h3>${s.icon ? s.icon + ' ' : ''}${esc(s.heading)}</h3>${steps}${tips}${cau}${ph ? `<div class="row-btns">${ph}</div>` : ''}</div>`;
     };
     const heroSrc = g.heroImg || (g.hero ? A.placeImg(g.hero) : '');
     const gallery = (g.gallery || []).length ? `<div class="g-gallery">${g.gallery.map((im) =>
       `<button class="g-gimg" data-action="lightbox" data-src="${esc(im.src)}" data-alt="${esc(im.caption || '')}">${A.img(im.src, im.caption, 'g-gimg-i', '🛍')}${im.caption ? `<span>${esc(im.caption)}</span>` : ''}</button>`).join('')}</div>` : '';
+    const secs = g.sections || [];
+    const toc = secs.length >= 3 ? `<nav class="g-toc" aria-label="섹션 바로가기">${secs.map((s, i) =>
+      `<button class="g-toc-chip" data-action="guide-jump" data-target="${i}">${s.icon ? s.icon + ' ' : ''}${esc((s.heading || '').replace(/^\d+\.\s*/, ''))}</button>`).join('')}</nav>` : '';
     return `<section class="guidev">
       ${backDay ? `<a class="g-back" href="#/day/${backDay}">‹ 일정으로</a>` : ''}
       ${head(g.title, g.subtitle)}
       ${heroSrc ? A.img(heroSrc, g.title, 'g-hero', '📖') : ''}
       ${g.intro ? `<p class="g-intro">${esc(g.intro)}</p>` : ''}
       ${gallery}
-      ${(g.sections || []).map(sec).join('')}
+      ${toc}
+      ${secs.map(sec).join('')}
       ${g.updated ? `<p class="muted small">📅 ${esc(g.updated)} · 변동 가능하니 방문 전 한 번 더 확인</p>` : ''}
       ${backDay ? `<a class="btn-block" href="#/day/${backDay}">일정으로 돌아가기</a>` : ''}
     </section>`;

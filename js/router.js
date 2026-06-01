@@ -46,8 +46,16 @@ window.App = window.App || {};
     app.innerHTML = html;
     app.scrollTop = 0; window.scrollTo(0, 0);
     setActiveTab(tab);
+    toggleBack(name);
     A.afterRender(name);
   };
+
+  // tab-root screens reachable from the bottom bar — no back arrow needed.
+  const ROOTS = { home: 1, day: 1, talk: 1, subway: 1, sos: 1 };
+  function toggleBack(name) {
+    const b = A.$('#ab-back');
+    if (b) b.hidden = !!ROOTS[name];
+  }
 
   function setActiveTab(tab) {
     A.$$('.tabbar a').forEach((a) => a.classList.toggle('on', a.dataset.tab === tab));
