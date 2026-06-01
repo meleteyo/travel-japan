@@ -414,6 +414,9 @@ window.App = window.App || {};
       <p class="muted">출발 전 와이파이에서 한 번 눌러 사진까지 모두 저장하면, 인터넷 없이도 전부 열려요.</p>
       <button class="btn-primary wide" data-action="prefetch">📥 오프라인 전체 저장</button>
       <div id="pf-status" class="muted small"></div>
+      <h2 class="sec">🔄 업데이트</h2>
+      <p class="muted">앱이 옛 화면을 보이거나 변경이 안 보이면 누르세요. 최신 버전을 받아 새로고침합니다.</p>
+      <button class="btn-block" data-action="force-update">🔄 최신 버전으로 업데이트</button>
       <h2 class="sec">🎨 테마</h2>
       <div class="segs">${opt(st.theme, 'auto', '자동', 'theme')}${opt(st.theme, 'light', '밝게', 'theme')}${opt(st.theme, 'dark', '어둡게', 'theme')}</div>
       <h2 class="sec">🔤 글자 크기</h2>

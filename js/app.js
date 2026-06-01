@@ -105,8 +105,20 @@ window.App = window.App || {};
       case 'calc-jpy': calcFrom('jpy', parseFloat(t.value)); break;
       case 'calc-krw': calcFrom('krw', parseFloat(t.value)); break;
       case 'global-search': A.runGlobalSearch(t.value); break;
+      case 'force-update': forceUpdate(); break;
     }
   });
+
+  async function forceUpdate() {
+    A.toast('업데이트 확인 중…');
+    try {
+      if ('serviceWorker' in navigator) {
+        const reg = await navigator.serviceWorker.getRegistration();
+        if (reg) { await reg.update(); if (reg.waiting) reg.waiting.postMessage('skipWaiting'); }
+      }
+    } catch (e) {}
+    setTimeout(() => { try { location.reload(); } catch (e) {} }, 700);
+  }
 
   document.addEventListener('submit', function (e) {
     const t = e.target.closest('[data-action="add-expense"]'); if (!t) return;
@@ -262,9 +274,28 @@ window.App = window.App || {};
     const dayHref = '#/day/' + ((today.day && today.day.id) || 'd1');
     const tabDay = A.$('.tabbar a[data-tab="day"]'); if (tabDay) tabDay.setAttribute('href', dayHref);
     A.startRouter();
-    // service worker
+    // service worker — with prompt update + auto-refresh on new version
     if ('serviceWorker' in navigator) {
-      try { await navigator.serviceWorker.register('service-worker.js', { scope: './' }); } catch (e) { console.warn('sw', e); }
+      try {
+        const hadController = !!navigator.serviceWorker.controller;
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (refreshing || !hadController) return; // 첫 설치 땐 새로고침 안 함
+          refreshing = true; window.location.reload();
+        });
+        const reg = await navigator.serviceWorker.register('service-worker.js', { scope: './', updateViaCache: 'none' });
+        const apply = (w) => { if (w) w.postMessage('skipWaiting'); };
+        if (reg.waiting) apply(reg.waiting);
+        reg.addEventListener('updatefound', () => {
+          const nw = reg.installing;
+          if (nw) nw.addEventListener('statechange', () => {
+            if (nw.state === 'installed' && navigator.serviceWorker.controller) { A.toast('새 버전 적용 중…'); apply(nw); }
+          });
+        });
+        const check = () => { try { reg.update(); } catch (e) {} };
+        check();
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) check(); });
+      } catch (e) { console.warn('sw', e); }
     }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
