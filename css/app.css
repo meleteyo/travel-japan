@@ -124,6 +124,8 @@ img { background: var(--surface-2); }
 .tc-body p { color: var(--text-soft); font-size: .9rem; }
 .wbadge { display: inline-block; margin-top: 8px; font-size: .82rem; font-weight: 700;
   background: var(--surface-2); padding: 5px 10px; border-radius: 999px; }
+.wbadge small { color: var(--info); font-weight: 700; }
+.wlive { font-size: .72rem; font-weight: 800; color: var(--info); background: var(--surface); padding: 2px 8px; border-radius: 999px; }
 
 .widgets { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
 .widget { display: flex; flex-direction: column; gap: 2px; background: var(--surface); border: 1px solid var(--line);

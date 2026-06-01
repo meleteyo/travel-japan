@@ -10,7 +10,8 @@ window.App = window.App || {};
   const head = (title, sub) =>
     `<header class="scr-head"><h1>${esc(title)}</h1>${sub ? `<p>${esc(sub)}</p>` : ''}</header>`;
   const weatherOf = (dayId) => ((A.data.weather.days || []).find((w) => w.dayId === dayId)) || null;
-  const wBadge = (w) => w ? `<span class="wbadge">${w.icon} ${w.summary} · 비 ${w.rainPct}% · ${w.tempMin}~${w.tempMax}°</span>` : '';
+  const wLive = () => (A.weatherUpdatedLabel ? A.weatherUpdatedLabel() : '');
+  const wBadge = (w) => w ? `<span class="wbadge">${w.icon} ${w.summary} · 비 ${w.rainPct}% · ${w.tempMin}~${w.tempMax}°${wLive() ? ` <small>${wLive()}</small>` : ''}</span>` : '';
   const showBtn = (jp, pron, ko, level) =>
     `<button class="show-btn" data-action="show-text" data-jp="${esc(jp)}" data-pron="${esc(pron || '')}" data-ko="${esc(ko || '')}" data-level="${level || ''}">📢 보여주기</button>`;
   const telBtn = (tel, label) => tel ? `<a class="tel-btn" href="${A.telHref(tel)}">📞 ${esc(label || '전화')}</a>` : '';
@@ -105,7 +106,7 @@ window.App = window.App || {};
     return `<section class="dayv">
       ${head(d.n + '일차 · ' + d.title, d.date + ' (' + d.dow + ') · ' + d.mood)}
       <div class="chips">${chips}</div>
-      ${w ? `<div class="weather-band">${w.icon} <strong>${esc(w.summary)} · 비 ${w.rainPct}% · ${w.tempMin}~${w.tempMax}°</strong><br><span>${esc(w.advice)}</span></div>` : ''}
+      ${w ? `<div class="weather-band">${w.icon} <strong>${esc(w.summary)} · 비 ${w.rainPct}% · ${w.tempMin}~${w.tempMax}°</strong>${wLive() ? ` <span class="wlive">${wLive()}</span>` : ' <span class="wlive">예보</span>'}<br><span>${esc(w.advice)}</span></div>` : ''}
       ${d.moveNote ? `<p class="movenote">🧭 ${esc(d.moveNote)}</p>` : ''}
       <div class="timeline">${stops}</div>
       <a class="btn-block" href="#/food?d=${d.id}">🍜 이 날 맛집·식사 보기</a>

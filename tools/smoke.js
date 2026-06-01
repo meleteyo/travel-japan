@@ -18,7 +18,7 @@ global.document = Object.assign(noopEl(), { readyState: 'loading',
   createElement: () => noopEl(), querySelector: (s) => (s === '#app' ? appEl : null), querySelectorAll: () => [],
   body: noopEl(), documentElement: { dataset: {}, style: { setProperty() {} } } });
 
-for (const f of ['util', 'idb', 'data', 'screens', 'panzoom', 'router', 'app'])
+for (const f of ['util', 'idb', 'data', 'weather', 'screens', 'panzoom', 'router', 'app'])
   require(path.join(ROOT, 'js', f + '.js'));
 const App = global.App;
 
@@ -73,6 +73,16 @@ try {
   if (sidx.length > 80 && hits.length && hits2.length) console.log(`ok    search-index (${sidx.length} entries, '스카이라이너'→${hits.length}, '가챠'→${hits2.length})`);
   else { fail++; console.log(`FAIL  search-index len=${sidx.length} skyliner=${hits.length} gacha=${hits2.length}`); }
 } catch (e) { fail++; console.log('FAIL search-index', e.message); }
+
+// weather: wmo mapping + applyWeather updates days in place (offline-safe)
+try {
+  const m = App.wmoIcon(61); if (m.icon !== '🌧️') throw new Error('wmo 61 = ' + m.icon);
+  const date = App.data.itinerary.days[0].date;
+  const n = App.applyWeather({ [date]: { code: 0, tmax: 30, tmin: 19, pop: 5 } }, 1700000000000);
+  const d1 = App.data.weather.days.find((x) => x.dayId === 'd1');
+  if (n >= 1 && d1.tempMax === 30 && d1.rainPct === 5 && d1.summary === '맑음' && d1.advice) console.log('ok    weather-live (applyWeather updates numbers, keeps advice)');
+  else { fail++; console.log('FAIL  weather-live', n, d1.tempMax, d1.rainPct, d1.summary); }
+} catch (e) { fail++; console.log('FAIL weather-live', e.message); }
 
 console.log(fail ? `\n❌ ${fail} failures` : '\n✅ all screens rendered');
 process.exit(fail ? 1 : 0);

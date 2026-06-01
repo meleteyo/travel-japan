@@ -279,11 +279,16 @@ window.App = window.App || {};
     if (A.ttsOk()) { A.loadVoices(); try { window.speechSynthesis.onvoiceschanged = A.loadVoices; } catch (e) {} }
     if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', A.applyTheme);
     try { await A.load(); } catch (e) { console.error(e); }
+    if (A.loadCachedWeather) A.loadCachedWeather();
     // bottom tab "일정" → today's day
     const today = A.tripDay();
     const dayHref = '#/day/' + ((today.day && today.day.id) || 'd1');
     const tabDay = A.$('.tabbar a[data-tab="day"]'); if (tabDay) tabDay.setAttribute('href', dayHref);
     A.startRouter();
+    if (A.refreshWeather) {
+      A.refreshWeather();
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) A.refreshWeather(); });
+    }
     // service worker — with prompt update + auto-refresh on new version
     if ('serviceWorker' in navigator) {
       try {
