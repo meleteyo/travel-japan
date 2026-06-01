@@ -28,7 +28,11 @@ body {
   font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
   background: var(--bg); color: var(--text);
   min-height: 100vh;
+  overflow-wrap: break-word;   /* long JP names / numbers break instead of overflowing */
 }
+/* let flex text children shrink + wrap instead of forcing horizontal overflow */
+.st-l, .mi-body, .wish-b, .med-row-b, .tip-b, .tc-body, .prow-main,
+.stop-body, .resto-body, .pc-b, .hc-b, .fl-main, .exp-row > span:first-child { min-width: 0; }
 .yen .krw, .muted, .small { font-variant-numeric: tabular-nums; }
 
 /* ===== layout ===== */
@@ -102,7 +106,8 @@ img { background: var(--surface-2); }
 
 /* money */
 .yen .jpy { font-weight: 800; }
-.yen .krw { color: var(--primary); font-weight: 700; font-size: .92em; white-space: nowrap; }
+.yen .krw { color: var(--primary); font-weight: 700; font-size: .92em; }
+.yen .jpy { white-space: nowrap; }
 
 /* ===== home ===== */
 .home-top h1 { font-size: 1.7rem; font-weight: 800; }
