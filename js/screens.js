@@ -193,6 +193,21 @@ window.App = window.App || {};
     const contacts = (e.contacts || []).map((c) => `<a class="sos-tel ${c.danger ? 'danger' : ''}" href="${A.telHref(c.tel)}">
       <span class="st-ic">${c.icon}</span><span class="st-l"><strong>${esc(c.label)}</strong><small>${esc(c.sub || '')} · ${esc(c.tel)}</small></span><span class="st-go">📞</span></a>`).join('');
     const hs = e.hotelShow || {};
+    const h = (A.data.info || {}).hotel || {};
+    const hotelBtns = `${telBtn(h.tel, '호텔 전화')}${mapBtn(h.gmap || h.name, '지도에서 보기')}`;
+    // 비상 서류: 여권(3)+보험(1) — docs.json 그룹에서 단일 소스로 라벨/슬롯ID를 읽어 서류함과 절대 어긋나지 않게.
+    // 같은 슬롯 ID를 재사용해 IndexedDB의 동일 레코드를 읽음(기기에만 저장, 업로드 없음). SPA는 화면을 하나만 그리므로 docbody- ID 충돌 없음.
+    const groups = ((A.data.docs || {}).groups) || [];
+    const docGroup = (gid) => groups.find((g) => g.id === gid) || { icon: '📄', slots: [] };
+    const slotCard = (s, icon) => `<div class="doc-slot">
+      <div class="doc-label">${icon || '📄'} ${esc(s.label)}</div>
+      <div class="doc-body" id="docbody-${esc(s.id)}">
+        <button class="doc-pick" data-action="doc-pick" data-slot="${esc(s.id)}">＋ 불러오기</button>
+      </div></div>`;
+    const pp = docGroup('passport');
+    const ins = docGroup('insurance');
+    const docSlots = (pp.slots || []).map((s) => slotCard(s, pp.icon))
+      .concat((ins.slots || []).map((s) => slotCard(s, ins.icon))).join('');
     const flows = (e.flows || []).map((f) => {
       const steps = (f.steps || []).map((s) => `<li>${esc(s)}</li>`).join('');
       const ph = (f.phraseIds || []).map((id) => { const p = A.phraseIndex[id]; return p ? `<button class="mini-show" data-action="show" data-id="${id}">📢 ${esc(p.ko)}</button>` : ''; }).join('');
@@ -206,7 +221,12 @@ window.App = window.App || {};
         <div class="hs-ja" lang="ja">${esc(hs.nameJa || '')}<br>${esc(hs.addrJa || '')}</div>
         <div class="hs-near">${esc(hs.near || '')}</div>
         <button class="show-btn wide" data-action="show-text" data-jp="${esc((hs.nameJa || '') + '  ' + (hs.addrJa || ''))}" data-pron="" data-ko="우리 호텔로 가주세요">📢 크게 보여주기</button>
+        ${hotelBtns ? `<div class="row-btns">${hotelBtns}</div>` : ''}
       </div>
+      <h2 class="sec">🛂 비상 서류</h2>
+      <div class="doc-note sos-doc-note">🔒 <b>이 기기에만</b> 저장돼요(인터넷에 안 올라감). 미리 폰에 저장해두면 <b>오프라인에서도</b> 바로 보여줄 수 있어요. <a href="#/docs">서류함에서 전체 관리 ›</a></div>
+      <div class="doc-grid">${docSlots}</div>
+      <input type="file" accept="image/*" id="doc-file" hidden>
       <h2 class="sec">상황별 대처</h2>
       ${flows}
       <a class="btn-block" href="#/medical">🏥 병원 · 약국 · 상비약 보기</a>

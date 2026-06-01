@@ -233,7 +233,7 @@ window.App = window.App || {};
   // ---------------- after render hooks ----------------
   A.afterRender = function (name) {
     if (name === 'talk') { A.talkState = { cat: 'fav', q: '' }; filterTalk(); }
-    if (name === 'docs') A.loadDocs();
+    if (name === 'docs' || name === 'sos') A.loadDocs();
     if (name === 'search') { const i = A.$('#gsearch'); if (i) { try { i.focus(); } catch (e) {} A.runGlobalSearch(i.value); } }
   };
 
