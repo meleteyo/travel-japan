@@ -23,7 +23,7 @@ for (const f of ['util', 'idb', 'data', 'screens', 'panzoom', 'router', 'app'])
 const App = global.App;
 
 const FILES = ['itinerary', 'phrases', 'emergency', 'info', 'transit', 'exchange', 'weather',
-  'checklist', 'shopping', 'tips', 'restaurants', 'musteat', 'places', 'photospots', 'medical', 'docs'];
+  'checklist', 'shopping', 'tips', 'restaurants', 'musteat', 'places', 'photospots', 'medical', 'docs', 'guides'];
 FILES.forEach((f) => { App.data[f] = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', f + '.json'))); });
 App.buildPlaceIndex();
 App.phraseIndex = {}; (App.data.phrases.phrases || []).forEach((p) => { App.phraseIndex[p.id] = p; });
@@ -38,6 +38,7 @@ const cases = {
   'food(d3)': () => S.food('d3'), tips: () => S.tips(), shopping: () => S.shopping(),
   photo: () => S.photo(), medical: () => S.medical(), exchange: () => S.exchange(),
   check: () => S.check(), info: () => S.info(), settings: () => S.settings(), docs: () => S.docs(), search: () => S.search(),
+  'guide(narita)': () => S.guide('narita-arrival'), 'guide(miss)': () => S.guide('zzz'),
 };
 for (const [k, fn] of Object.entries(cases)) {
   try {

@@ -92,7 +92,9 @@ window.App = window.App || {};
           <div class="stop-body">
             <h3>${esc(s.name)} ${s.nameJa ? `<small>${esc(s.nameJa)}</small>` : ''}</h3>
             ${s.station ? `<div class="stn">🚉 ${esc(s.station)}</div>` : ''}
-            ${s.desc ? `<p>${esc(s.desc)}</p>` : ''}
+            ${s.desc ? (s.guide
+              ? `<a class="stop-desc-link" href="#/guide/${s.guide}"><p>${esc(s.desc)}</p><span class="more">📖 상세 가이드 ›</span></a>`
+              : `<p>${esc(s.desc)}</p>`) : ''}
             ${tips}
             <div class="row-btns">${s.nameJa ? showBtn(s.nameJa, '', s.name) : ''}${mapBtn(s.gmap || s.name)}</div>
             ${s.fareYen ? `<div class="fare">이동 요금 ${A.fmtYen(s.fareYen)}</div>` : ''}
@@ -281,12 +283,16 @@ window.App = window.App || {};
   // ====================================================== SHOPPING
   S.shopping = function () {
     const sh = A.data.shopping;
+    const guideExists = (gid) => !!((((A.data.guides || {}).guides) || {})[gid]);
     const wish = (sh.wishlist || []).map((w) => {
       const on = !!A.state.wish[w.id];
-      return `<button class="wish ${on ? 'on' : ''}" data-action="wish" data-id="${w.id}">
-        ${A.img(A.placeImg(w.img), w.store, 'wish-img', '🛍')}
-        <div class="wish-b"><div class="wish-s">${esc(w.store)}</div><div class="wish-l">${esc(w.label)}</div></div>
-        <span class="wcheck">${on ? '✅' : '⬜'}</span></button>`;
+      const gl = (w.guide && guideExists(w.guide)) ? `<a class="wish-guide" href="#/guide/${w.guide}">📖 무엇을 살까 — 추천 굿즈 ›</a>` : '';
+      return `<div class="wish-card ${on ? 'on' : ''}">
+        <button class="wish-main" data-action="wish" data-id="${w.id}">
+          ${A.img(A.placeImg(w.img), w.store, 'wish-img', '🛍')}
+          <div class="wish-b"><div class="wish-s">${esc(w.store)}</div><div class="wish-l">${esc(w.label)}</div></div>
+          <span class="wcheck">${on ? '✅' : '⬜'}</span></button>
+        ${gl}</div>`;
     }).join('');
     const tips = (sh.giftTips || []).map((g) => `<li>${esc(g)}</li>`).join('');
     // expense tracker
@@ -438,6 +444,30 @@ window.App = window.App || {};
       ${head('검색', '회화·맛집·교통·꿀팁·일정 무엇이든')}
       <input class="search" id="gsearch" type="search" placeholder="예: 스카이라이너, 환전, 화장실, 가챠, 라멘" data-action="global-search" autocomplete="off">
       <div id="gresults" class="gresults"><p class="muted small">검색어를 입력하세요. (한국어)</p></div>
+    </section>`;
+  };
+
+  // ====================================================== GUIDE (스폿 상세 가이드)
+  S.guide = function (id) {
+    const g = (((A.data.guides || {}).guides) || {})[id];
+    if (!g) return `<section>${head('상세 가이드', '내용을 찾을 수 없어요')}<a class="btn-primary" href="#/">홈으로</a></section>`;
+    let backDay = '';
+    (A.data.itinerary.days || []).forEach((d) => (d.stops || []).forEach((s) => { if (s.guide === id) backDay = d.id; }));
+    const sec = (s) => {
+      const steps = (s.steps || []).length ? `<ol class="g-steps">${s.steps.map((x) => `<li>${esc(x)}</li>`).join('')}</ol>` : '';
+      const tips = (s.tips || []).length ? `<ul class="g-tips">${s.tips.map((x) => `<li>💡 ${esc(x)}</li>`).join('')}</ul>` : '';
+      const cau = (s.cautions || []).length ? `<ul class="g-caution">${s.cautions.map((x) => `<li>⚠️ ${esc(x)}</li>`).join('')}</ul>` : '';
+      const ph = (s.phraseIds || []).map((pid) => { const p = A.phraseIndex[pid]; return p ? `<button class="mini-show" data-action="show" data-id="${pid}">📢 ${esc(p.ko)}</button>` : ''; }).join('');
+      return `<div class="g-sec"><h3>${s.icon ? s.icon + ' ' : ''}${esc(s.heading)}</h3>${steps}${tips}${cau}${ph ? `<div class="row-btns">${ph}</div>` : ''}</div>`;
+    };
+    return `<section class="guidev">
+      ${backDay ? `<a class="g-back" href="#/day/${backDay}">‹ 일정으로</a>` : ''}
+      ${head(g.title, g.subtitle)}
+      ${g.hero ? A.img(A.placeImg(g.hero), g.title, 'g-hero', '📖') : ''}
+      ${g.intro ? `<p class="g-intro">${esc(g.intro)}</p>` : ''}
+      ${(g.sections || []).map(sec).join('')}
+      ${g.updated ? `<p class="muted small">📅 ${esc(g.updated)} · 변동 가능하니 방문 전 한 번 더 확인</p>` : ''}
+      ${backDay ? `<a class="btn-block" href="#/day/${backDay}">일정으로 돌아가기</a>` : ''}
     </section>`;
   };
 

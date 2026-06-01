@@ -1,13 +1,13 @@
 {
   "budget": { "free": "자유 쇼핑비 2만~3만엔", "gacha": "가챠 1회 1,000~2,000엔" },
   "wishlist": [
-    { "id": "sh1", "store": "Nintendo TOKYO (시부야)", "label": "마리오·젤다·동물의숲 굿즈", "img": "nintendo-tokyo" },
-    { "id": "sh2", "store": "포켓몬센터 시부야", "label": "인형·카드·문구·한정판", "img": "pokemon-center-shibuya" },
-    { "id": "sh3", "store": "시부야 로프트", "label": "스티커·펜·노트·캐릭터 잡화", "img": "shibuya-loft" },
-    { "id": "sh4", "store": "아키하바라 가챠", "label": "캡슐토이 (예산 정하기!)", "img": "akihabara" },
-    { "id": "sh5", "store": "요도바시 아키바", "label": "이어폰·폰 액세서리·게임 주변기기", "img": "yodobashi-akiba" },
-    { "id": "sh6", "store": "긴자 이토야", "label": "예쁜 펜·노트·종이·디자인 소품", "img": "ginza-itoya" },
-    { "id": "sh7", "store": "도쿄역 캐릭터스트리트", "label": "캐릭터 굿즈·귀여운 과자·기념품", "img": "tokyo-character-street" }
+    { "id": "sh1", "store": "Nintendo TOKYO (시부야)", "label": "마리오·젤다·동물의숲 굿즈", "img": "nintendo-tokyo", "guide": "buy-nintendo" },
+    { "id": "sh2", "store": "포켓몬센터 시부야", "label": "인형·카드·문구·한정판", "img": "pokemon-center-shibuya", "guide": "buy-pokemon" },
+    { "id": "sh3", "store": "시부야 로프트", "label": "스티커·펜·노트·캐릭터 잡화", "img": "shibuya-loft", "guide": "buy-loft" },
+    { "id": "sh4", "store": "아키하바라 가챠", "label": "캡슐토이 (예산 정하기!)", "img": "akihabara", "guide": "buy-gacha" },
+    { "id": "sh5", "store": "요도바시 아키바", "label": "이어폰·폰 액세서리·게임 주변기기", "img": "yodobashi-akiba", "guide": "buy-yodobashi" },
+    { "id": "sh6", "store": "긴자 이토야", "label": "예쁜 펜·노트·종이·디자인 소품", "img": "ginza-itoya", "guide": "buy-itoya" },
+    { "id": "sh7", "store": "도쿄역 캐릭터스트리트", "label": "캐릭터 굿즈·귀여운 과자·기념품", "img": "tokyo-character-street", "guide": "buy-character-street" }
   ],
   "giftTips": [
     "작고 가벼운 선물(스티커·키링·미니 과자)이 나눠주기 좋고 짐도 안 무거워요.",

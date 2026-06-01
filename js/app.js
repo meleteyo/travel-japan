@@ -176,8 +176,9 @@ window.App = window.App || {};
   }
   function toggleWish(id, btn) {
     A.state.wish[id] = !A.state.wish[id]; A.save('wish');
-    btn.classList.toggle('on', A.state.wish[id]);
-    A.$('.wcheck', btn).textContent = A.state.wish[id] ? '✅' : '⬜';
+    const card = (btn.closest && btn.closest('.wish-card')) || btn;
+    card.classList.toggle('on', A.state.wish[id]);
+    const chk = A.$('.wcheck', btn); if (chk) chk.textContent = A.state.wish[id] ? '✅' : '⬜';
   }
   function delExpense(id) {
     A.state.expenses = A.state.expenses.filter((e) => e.id !== id); A.save('expenses'); A.render();
@@ -226,6 +227,8 @@ window.App = window.App || {};
     (((D.checklist || {}).groups) || []).forEach((g) => (g.items || []).forEach((i) => add(i.text, '체크 · ' + g.label, '#/check', '✅', i.text)));
     (((D.itinerary || {}).days) || []).forEach((d) => { add(d.title + ' ' + d.summary, d.n + '일차 · ' + d.title, '#/day/' + d.id, '📅', d.summary); (d.stops || []).forEach((s) => add(s.name + ' ' + (s.nameJa || '') + ' ' + (s.desc || ''), d.n + '일차 · ' + s.name, '#/day/' + d.id, '📍', s.station || '')); });
     (((D.info || {}).reservations) || []).forEach((r) => add(r.name + ' ' + r.note, '예약 · ' + r.name, '#/info', r.icon || '🎫', r.note));
+    const G = ((D.guides || {}).guides) || {};
+    Object.keys(G).forEach((gid) => { const g = G[gid]; add(g.title + ' ' + (g.subtitle || '') + ' ' + (g.sections || []).map((s) => s.heading).join(' '), '상세가이드 · ' + g.title, '#/guide/' + gid, '📖', g.subtitle || ''); });
     A._sidx = idx; return idx;
   };
   A.runGlobalSearch = function (q) {
