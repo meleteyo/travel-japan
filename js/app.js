@@ -33,19 +33,22 @@ window.App = window.App || {};
       case 'doc-view': A.viewDoc(t.dataset.slot); break;
       case 'doc-del': delDoc(t.dataset.slot); break;
       case 'doc-add': addDoc(); break;
-      case 'refresh-weather': refreshWeatherUI(); break;
+      case 'refresh-weather': refreshWeatherUI(t); break;
     }
   });
 
-  async function refreshWeatherUI() {
-    if (typeof navigator !== 'undefined' && navigator.onLine === false) { A.toast('오프라인 — 저장된 예보 표시 중'); return; }
-    if (!A.refreshWeather) return;
-    A.toast('날씨 새로고침 중…');
-    const before = (A.data.weather || {}).updatedAt;
-    await A.refreshWeather(true);
-    const after = (A.data.weather || {}).updatedAt;
-    if (after && after !== before) A.toast('최신 날씨로 업데이트됐어요');
-    else A.toast('업데이트 실패 — 잠시 후 다시 시도');
+  async function refreshWeatherUI(btn) {
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) { A.toast('오프라인 — 저장된 예보를 보여드려요'); return; }
+    if (!A.refreshWeather || A._wxBusy) return;
+    A._wxBusy = true;
+    // 진행 표시는 버튼에 (토스트 깜빡임 방지). 결과 토스트는 마지막에 1번만.
+    if (btn) { btn.dataset.label = btn.textContent; btn.textContent = '🔄 새로고침 중…'; btn.classList.add('busy'); btn.setAttribute('aria-busy', 'true'); }
+    let status = 'fail';
+    try { status = await A.refreshWeather(true, { render: false }); } catch (e) {}
+    A._wxBusy = false;
+    if (status === 'ok') { A.render(); A.toast('최신 날씨로 업데이트됐어요'); return; } // render가 버튼 새로 그림
+    if (btn) { btn.textContent = btn.dataset.label || '🔄 새로고침'; btn.classList.remove('busy'); btn.removeAttribute('aria-busy'); }
+    A.toast(status === 'nochange' ? '예보 변동이 없어요' : '업데이트를 못 했어요 — 잠시 후 다시 시도');
   }
 
   // ---- 서류함 (기기 저장 캡처) ----

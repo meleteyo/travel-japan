@@ -80,22 +80,28 @@ window.App = window.App || {};
     return map;
   }
 
-  A.refreshWeather = async function (force) {
-    if (typeof fetch === 'undefined') return;
-    if (typeof navigator !== 'undefined' && navigator.onLine === false) return;
+  // returns: 'ok'(적용·갱신됨) | 'nochange'(받았으나 적용 0) | 'skip'(쓰로틀) | 'fail'(네트워크/파싱)
+  // opts.render(기본 true): 성공 시 A.render() 호출 여부 — 수동 새로고침은 호출부가 직접 제어하도록 false 가능
+  A.refreshWeather = async function (force, opts) {
+    opts = opts || {};
+    const doRender = opts.render !== false;
+    if (typeof fetch === 'undefined') return 'fail';
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) return 'fail';
     const now = Date.now();
-    if (!force && now - lastTry < THROTTLE) return;
+    if (!force && now - lastTry < THROTTLE) return 'skip';
     lastTry = now;
     try {
       const res = await fetch(URL, { cache: 'no-store' });
-      if (!res.ok) return;
+      if (!res.ok) return 'fail';
       const map = parse(await res.json());
-      if (!map) return;
+      if (!map) return 'fail';
       const n = A.applyWeather(map, now);
       if (n) {
         A.LS.set('wx', { ts: now, map });
-        if (typeof A.render === 'function') A.render();
+        if (doRender && typeof A.render === 'function') A.render();
+        return 'ok';
       }
-    } catch (e) { /* offline/blocked — keep fallback silently */ }
+      return 'nochange';
+    } catch (e) { return 'fail'; }
   };
 })(window.App);
