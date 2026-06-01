@@ -25,7 +25,7 @@ App.state.fxRate = App.data.exchange.ratePer100;
 
 // render everything
 const S = App.screens;
-let html = [S.home(), S.talk(), S.subway(), S.sos(), S.tips(), S.shopping(), S.photo(), S.medical(), S.exchange(), S.check(), S.info(), S.settings(), S.docs()];
+let html = [S.home(), S.talk(), S.subway(), S.sos(), S.tips(), S.shopping(), S.photo(), S.medical(), S.exchange(), S.check(), S.info(), S.settings(), S.docs(), S.search()];
 ['d1', 'd2', 'd3', 'd4'].forEach((d) => { html.push(S.day(d)); html.push(S.food(d)); });
 // dynamic sheet markup (show / show-text) — capture via the string builders
 html.push('<div class="show lvl-allergy"><button class="sheet-x"></button><div class="show-tag warn"></div><div class="show-jp"></div><div class="show-pron"></div><div class="show-ko"></div><p class="show-hint"></p></div>');

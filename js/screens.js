@@ -66,6 +66,7 @@ window.App = window.App || {};
     return `<section class="home">
       <header class="home-top"><div><h1>${esc(trip.title || '도쿄 여행')}</h1>
       <p>${esc(trip.subtitle || '')}</p></div></header>
+      <a class="home-search" href="#/search">🔍 무엇이든 검색 — 회화·맛집·교통·꿀팁…</a>
       ${hero}
       <div class="widgets">${budget}${cloth}</div>
       <div class="grid-big">${big.map(([h, i, l, c]) => `<a class="card-act ${c}" href="${h}"><span class="ca-ic">${i}</span><span>${l}</span></a>`).join('')}</div>
@@ -229,7 +230,7 @@ window.App = window.App || {};
       <h2 class="sec">🍱 도쿄에서 꼭 먹어볼 음식</h2>
       <div class="me-strip">${me}</div>
       <h2 class="sec">${esc((cur || {}).area || '')} 추천</h2>
-      <p class="muted small">※ 소형 식당은 영업·메뉴가 바뀔 수 있어요. 방문 전 지도에서 한 번 더 확인하세요.</p>
+      <p class="muted small">※ 소형 식당은 영업·메뉴가 바뀔 수 있어요. 방문 전 지도에서 확인하고, 인기 맛집은 11시 전 도착·구글맵 웨이팅 확인. 🍱 배앓이 예방: 튀김+진한 라멘 연속은 피하고 하루 한 끼는 담백하게(소바·오야코동).</p>
       <div class="restos">${cards}</div>
     </section>`;
   };
@@ -422,6 +423,15 @@ window.App = window.App || {};
       <div class="segs">${opt(st.voice, 'female', '👩 여자', 'voice')}${opt(st.voice, 'male', '👨 남자', 'voice')}</div>
       <h2 class="sec">ℹ️ 정보</h2>
       <p class="muted small">2026 도쿄 가족여행 가이드 · 오프라인 PWA. 홈 화면에 추가하면 앱처럼 쓸 수 있어요 (아이폰: 공유 → 홈 화면에 추가).</p>
+    </section>`;
+  };
+
+  // ====================================================== SEARCH (전역 검색)
+  S.search = function () {
+    return `<section class="searchv">
+      ${head('검색', '회화·맛집·교통·꿀팁·일정 무엇이든')}
+      <input class="search" id="gsearch" type="search" placeholder="예: 스카이라이너, 환전, 화장실, 가챠, 라멘" data-action="global-search" autocomplete="off">
+      <div id="gresults" class="gresults"><p class="muted small">검색어를 입력하세요. (한국어)</p></div>
     </section>`;
   };
 

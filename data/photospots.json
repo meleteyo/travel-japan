@@ -109,6 +109,46 @@
       "gmapUrl": "https://maps.google.com/?q=Ginza+Tokyo",
       "dayId": "d3",
       "imageUrl": "assets/img/e22edcf3110b6fad.webp"
+    },
+    {
+      "key": "teamlab",
+      "name": "teamLab (보더리스/플래닛츠)",
+      "nameJa": "teamLab",
+      "area": "아자부다이 / 도요스",
+      "note": "완전 실내 인터랙티브 디지털 아트 — 장마철 인생샷 1순위. 사전 예약 필수(매진 잦음). 은재(만12세)는 어린이 요금.",
+      "gmapUrl": "https://www.google.com/maps/search/?api=1&query=teamLab+Borderless+Azabudai+Tokyo",
+      "dayId": "d2",
+      "imageUrl": ""
+    },
+    {
+      "key": "shibuya-sky",
+      "name": "시부야 스카이",
+      "nameJa": "SHIBUYA SKY",
+      "area": "시부야",
+      "note": "시부야 스크램블 스퀘어 옥상 전망대. 온라인 예약 권장. ⚠️ 옥상은 폭우·강풍·번개 시 폐쇄(환불 X) — 장마엔 실내 전망층 위주, 인생샷은 teamLab이 더 안전.",
+      "gmapUrl": "https://www.google.com/maps/search/?api=1&query=SHIBUYA+SKY",
+      "dayId": "d2",
+      "imageUrl": ""
+    },
+    {
+      "key": "meiji-jingu",
+      "name": "메이지신궁",
+      "nameJa": "明治神宮",
+      "area": "하라주쿠",
+      "note": "다케시타도리에서 도보 5분. 숲속 큰 도리이 앞 기념사진 = 첫 일본 인증샷. 비 오는 날도 운치 있고 무료.",
+      "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Meiji+Jingu+Shrine",
+      "dayId": "d2",
+      "imageUrl": ""
+    },
+    {
+      "key": "ueno-science",
+      "name": "우에노 국립과학박물관",
+      "nameJa": "国立科学博物館",
+      "area": "우에노",
+      "note": "공룡·우주 전시, 완전 실내 — 비 오는 D1 Plan B. 월 휴관(여행은 수~토 OK), 단 6월 소독 휴관 가능성은 공식 캘린더 확인.",
+      "gmapUrl": "https://www.google.com/maps/search/?api=1&query=National+Museum+of+Nature+and+Science+Ueno",
+      "dayId": "d1",
+      "imageUrl": ""
     }
   ]
 }

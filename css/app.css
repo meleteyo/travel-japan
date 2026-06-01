@@ -384,6 +384,17 @@ img { background: var(--surface-2); }
 .doc-act { flex: 1; padding: 9px; border-radius: 8px; background: var(--surface-2); color: var(--text); font-weight: 700; font-size: .82rem; min-height: 40px; }
 .doc-act.del { background: var(--danger-bg); color: var(--danger); }
 
+/* ===== global search ===== */
+.home-search { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
+  padding: 13px 18px; margin: 12px 0; font-weight: 700; color: var(--text-soft); box-shadow: var(--shadow); }
+.gresults { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.gres { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r-sm); padding: 11px 14px; box-shadow: var(--shadow); }
+.gres-ic { font-size: 1.3rem; flex: 0 0 auto; }
+.gres-b { display: flex; flex-direction: column; min-width: 0; }
+.gres-b strong { font-size: .95rem; }
+.gres-b small { color: var(--text-soft); font-size: .78rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
 /* toast */
 #toast { position: fixed; left: 50%; bottom: calc(86px + env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(20px);
   background: #2A2320; color: #fff; padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: .9rem;

@@ -37,7 +37,7 @@ const cases = {
   talk: () => S.talk(), subway: () => S.subway(), sos: () => S.sos(),
   'food(d3)': () => S.food('d3'), tips: () => S.tips(), shopping: () => S.shopping(),
   photo: () => S.photo(), medical: () => S.medical(), exchange: () => S.exchange(),
-  check: () => S.check(), info: () => S.info(), settings: () => S.settings(), docs: () => S.docs(),
+  check: () => S.check(), info: () => S.info(), settings: () => S.settings(), docs: () => S.docs(), search: () => S.search(),
 };
 for (const [k, fn] of Object.entries(cases)) {
   try {
@@ -63,6 +63,15 @@ try {
   if (a === 'd2' && b === 'd3' && c === 'd4') console.log('ok    food-day-switch d2→d3→d4');
   else { fail++; console.log(`FAIL  food-day-switch got ${a},${b},${c}`); }
 } catch (e) { fail++; console.log('FAIL food-day-switch', e.message); }
+
+// regression: global search index builds + finds known items
+try {
+  const sidx = App.buildSearchIndex();
+  const hits = sidx.filter((x) => x.t.indexOf('스카이라이너') >= 0);
+  const hits2 = sidx.filter((x) => x.t.indexOf('가챠') >= 0);
+  if (sidx.length > 80 && hits.length && hits2.length) console.log(`ok    search-index (${sidx.length} entries, '스카이라이너'→${hits.length}, '가챠'→${hits2.length})`);
+  else { fail++; console.log(`FAIL  search-index len=${sidx.length} skyliner=${hits.length} gacha=${hits2.length}`); }
+} catch (e) { fail++; console.log('FAIL search-index', e.message); }
 
 console.log(fail ? `\n❌ ${fail} failures` : '\n✅ all screens rendered');
 process.exit(fail ? 1 : 0);

@@ -104,6 +104,7 @@ window.App = window.App || {};
       case 'set-rate': { const v = parseFloat(t.value); if (v > 0) { A.state.fxRate = v; A.save('fxRate'); calcFrom('jpy', parseFloat((A.$('#cjpy') || {}).value) || null); } break; }
       case 'calc-jpy': calcFrom('jpy', parseFloat(t.value)); break;
       case 'calc-krw': calcFrom('krw', parseFloat(t.value)); break;
+      case 'global-search': A.runGlobalSearch(t.value); break;
     }
   });
 
@@ -175,6 +176,46 @@ window.App = window.App || {};
   A.afterRender = function (name) {
     if (name === 'talk') { A.talkState = { cat: 'fav', q: '' }; filterTalk(); }
     if (name === 'docs') A.loadDocs();
+    if (name === 'search') { const i = A.$('#gsearch'); if (i) { try { i.focus(); } catch (e) {} A.runGlobalSearch(i.value); } }
+  };
+
+  // ---------------- 전역 검색 ----------------
+  A._sidx = null;
+  A.buildSearchIndex = function () {
+    if (A._sidx) return A._sidx;
+    const idx = [];
+    const add = (text, label, route, icon, sub) => { if (text && label) idx.push({ t: String(text).toLowerCase(), label, route, icon: icon || '🔎', sub: sub || '' }); };
+    const D = A.data || {};
+    (((D.phrases || {}).phrases) || []).forEach((p) => add(p.ko + ' ' + (p.pron || '') + ' ' + (p.note || ''), p.ko, '#/talk', '💬', p.jp));
+    (((D.tips || {}).manners) || []).forEach((m) => add(m.title + ' ' + m.body, '매너 · ' + m.title, '#/tips', m.icon || '💡', m.body));
+    (((D.tips || {}).facilities) || []).forEach((f) => add(f.title + ' ' + f.body, '편의시설 · ' + f.title, '#/tips', f.icon || '💡', f.body));
+    (((D.tips || {}).ordering) || []).forEach((o) => add(o.title + ' ' + o.step, '주문법 · ' + o.title, '#/tips', o.icon || '🎟️', o.step));
+    ((((D.tips || {}).taxfree) || {}).points || []).forEach((p) => add('면세 ' + p, '면세 · ' + p.slice(0, 16), '#/tips', '🏷️', p));
+    (((D.tips || {}).konbini) || []).forEach((k) => add('편의점 ' + k, '편의점 꿀팁', '#/tips', '🏪', k));
+    (((D.transit || {}).howto) || []).forEach((h) => add(h.title + ' ' + h.body, '교통 · ' + h.title, '#/subway', h.icon || '🚇', h.body));
+    (((D.transit || {}).routes) || []).forEach((r) => add(r.from + ' ' + r.to + ' ' + r.line, r.from + ' → ' + r.to, '#/subway', '🚇', r.line));
+    (((D.transit || {}).stations) || []).forEach((s) => add(s.ko + ' ' + s.ja + ' ' + s.roma, s.ko + '역', '#/subway', '🚉', s.ja));
+    (((D.restaurants || {}).days) || []).forEach((day) => (day.restaurants || []).forEach((r) => add(r.name + ' ' + (r.nameJa || '') + ' ' + r.food, r.name, '#/food?d=' + day.dayId, '🍜', r.food)));
+    (((D.musteat || {}).items) || []).forEach((m) => add(m.name + ' ' + (m.nameJa || ''), '꼭 먹어볼 · ' + m.name, '#/food', '🍱', m.note));
+    (((D.photospots || {}).items) || []).forEach((p) => add(p.name + ' ' + (p.nameJa || '') + ' ' + (p.note || ''), '포토스팟 · ' + p.name, '#/photo', '📸', p.area));
+    (((D.shopping || {}).wishlist) || []).forEach((w) => add(w.store + ' ' + w.label, '쇼핑 · ' + w.store, '#/shopping', '🛍', w.label));
+    (((D.emergency || {}).flows) || []).forEach((f) => add(f.title + ' ' + (f.steps || []).join(' '), '긴급 · ' + f.title, '#/sos', f.icon || '🆘', ''));
+    (((D.emergency || {}).contacts) || []).forEach((c) => add(c.label + ' ' + c.tel, '긴급 · ' + c.label, '#/sos', c.icon || '📞', c.tel));
+    (((D.medical || {}).hospitals) || []).forEach((h) => add(h.name + ' ' + (h.note || ''), '병원 · ' + h.name, '#/medical', '🏥', ''));
+    (((D.medical || {}).meds) || []).forEach((m) => add(m.ko + ' ' + m.ja + ' ' + (m.use || ''), '약 · ' + m.ko, '#/medical', '💊', m.ja));
+    (((D.exchange || {}).tips) || []).forEach((t) => add('환율 돈 예산 ' + t, '돈 · 환율', '#/exchange', '💴', t));
+    (((D.checklist || {}).groups) || []).forEach((g) => (g.items || []).forEach((i) => add(i.text, '체크 · ' + g.label, '#/check', '✅', i.text)));
+    (((D.itinerary || {}).days) || []).forEach((d) => { add(d.title + ' ' + d.summary, d.n + '일차 · ' + d.title, '#/day/' + d.id, '📅', d.summary); (d.stops || []).forEach((s) => add(s.name + ' ' + (s.nameJa || '') + ' ' + (s.desc || ''), d.n + '일차 · ' + s.name, '#/day/' + d.id, '📍', s.station || '')); });
+    (((D.info || {}).reservations) || []).forEach((r) => add(r.name + ' ' + r.note, '예약 · ' + r.name, '#/info', r.icon || '🎫', r.note));
+    A._sidx = idx; return idx;
+  };
+  A.runGlobalSearch = function (q) {
+    const el = document.getElementById('gresults'); if (!el) return;
+    q = (q || '').trim().toLowerCase();
+    if (!q) { el.innerHTML = '<p class="muted small">검색어를 입력하세요. (한국어)</p>'; return; }
+    const hits = A.buildSearchIndex().filter((x) => x.t.indexOf(q) >= 0).slice(0, 40);
+    if (!hits.length) { el.innerHTML = '<p class="muted small">결과가 없어요. 다른 단어로 검색해 보세요.</p>'; return; }
+    el.innerHTML = hits.map((h) => `<a class="gres" href="${h.route}"><span class="gres-ic">${h.icon}</span><span class="gres-b"><strong>${A.esc(h.label)}</strong>${h.sub ? `<small>${A.esc(h.sub)}</small>` : ''}</span></a>`).join('');
   };
 
   // ---------------- offline prefetch ----------------
