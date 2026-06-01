@@ -124,15 +124,26 @@ window.App = window.App || {};
   A.ttsOk = () => typeof window !== 'undefined' && 'speechSynthesis' in window;
   A.voices = [];
   A.loadVoices = () => { try { A.voices = window.speechSynthesis.getVoices() || []; } catch (e) { A.voices = []; } };
-  const MALE = /otoya|ichiro|hattori|daichi|takumi|male|男性|男/i;
-  const FEMALE = /kyoko|haruka|ayumi|nanami|sayaka|mizuki|o-?ren|female|女性|女/i;
-  A.pickVoice = (gender) => {
-    const ja = A.voices.filter((v) => /ja([-_]?jp)?/i.test(v.lang));
-    if (!ja.length) return null;
-    let pool;
-    if (gender === 'male') pool = ja.filter((v) => MALE.test(v.name));
-    else pool = ja.filter((v) => FEMALE.test(v.name) || !MALE.test(v.name)); // 대부분 ja 기본음은 여성
-    return pool[0] || ja[0];
+  const MALE = /otoya|ichiro|hattori|daichi|takumi|kenji|男性|男/i;
+  const FEMALE = /kyoko|haruka|ayumi|nanami|sayaka|mizuki|o-?ren|google|female|女性|女/i;
+  // returns {voice, matched, pitch, rate}: matched=true means a real gendered
+  // voice exists; otherwise we fake gender with pitch (works on 1-voice phones).
+  A.ttsParams = (gender) => {
+    const g = gender || A.state.voice || 'female';
+    const ja = A.voices.filter((v) => /^ja(-|_|$)/i.test(v.lang));
+    const female = ja.find((v) => FEMALE.test(v.name));
+    const male = ja.find((v) => MALE.test(v.name));
+    let voice = null, matched = false;
+    if (g === 'male') {
+      if (male) { voice = male; matched = true; }
+      else voice = ja.find((v) => !FEMALE.test(v.name)) || ja[0] || null;
+    } else {
+      if (female) { voice = female; matched = true; }
+      else voice = ja.find((v) => !MALE.test(v.name)) || ja[0] || null;
+    }
+    const pitch = matched ? 1.0 : (g === 'male' ? 0.7 : 1.4);
+    const rate = matched ? 0.92 : (g === 'male' ? 0.9 : 0.96);
+    return { voice, matched, pitch, rate, gender: g };
   };
   A.speak = (text, gender) => {
     if (!text) return;
@@ -141,10 +152,10 @@ window.App = window.App || {};
       const ss = window.speechSynthesis;
       ss.cancel();
       if (!A.voices.length) A.loadVoices();
+      const p = A.ttsParams(gender);
       const u = new SpeechSynthesisUtterance(String(text));
-      u.lang = 'ja-JP'; u.rate = 0.92; u.pitch = 1;
-      const v = A.pickVoice(gender || A.state.voice || 'female');
-      if (v) u.voice = v;
+      u.lang = 'ja-JP'; u.pitch = p.pitch; u.rate = p.rate;
+      if (p.voice) u.voice = p.voice;
       ss.speak(u);
     } catch (e) { A.toast('음성 재생 실패'); }
   };
