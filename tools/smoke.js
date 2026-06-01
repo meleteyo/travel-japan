@@ -8,12 +8,14 @@ const noopEl = () => ({ style: { setProperty() {} }, classList: { add() {}, remo
   addEventListener() {}, dataset: {}, textContent: '', innerHTML: '', hidden: false });
 
 global.window = global;
+global.scrollTo = () => {};
 global.localStorage = { store: {}, getItem(k) { return k in this.store ? this.store[k] : null; }, setItem(k, v) { this.store[k] = v; } };
 global.navigator = { onLine: true, serviceWorker: { register() { return Promise.resolve(); } }, wakeLock: { request() { return Promise.resolve({ release() {} }); } } };
 global.location = { hash: '#/', search: '', pathname: '/travel-japan/' };
 global.matchMedia = () => ({ matches: false, addEventListener() {} });
+const appEl = noopEl();
 global.document = Object.assign(noopEl(), { readyState: 'loading',
-  createElement: () => noopEl(), querySelector: () => null, querySelectorAll: () => [],
+  createElement: () => noopEl(), querySelector: (s) => (s === '#app' ? appEl : null), querySelectorAll: () => [],
   body: noopEl(), documentElement: { dataset: {}, style: { setProperty() {} } } });
 
 for (const f of ['util', 'data', 'screens', 'panzoom', 'router', 'app'])
@@ -49,5 +51,18 @@ for (const [k, fn] of Object.entries(cases)) {
 try { console.log('fmtYen', App.fmtYen(1930).replace(/<[^>]+>/g, '')); } catch (e) { fail++; console.log('FAIL fmtYen', e.message); }
 try { console.log('fmtRange', App.fmtRange('¥3,960–¥19,800').replace(/<[^>]+>/g, '')); } catch (e) { fail++; console.log('FAIL fmtRange', e.message); }
 try { const t = App.tripDay(); console.log('tripDay', t.phase, t.day && t.day.id); } catch (e) { fail++; console.log('FAIL tripDay', e.message); }
+
+// regression: food day-tabs must follow the URL (?d=), not snap back
+try {
+  global.location.hash = '#/food?d=d2'; App.render();
+  const a = App._foodDay;
+  global.location.hash = '#/food?d=d3'; App.render();   // simulate tapping "3일" tab
+  const b = App._foodDay;
+  global.location.hash = '#/food?d=d4'; App.render();
+  const c = App._foodDay;
+  if (a === 'd2' && b === 'd3' && c === 'd4') console.log('ok    food-day-switch d2→d3→d4');
+  else { fail++; console.log(`FAIL  food-day-switch got ${a},${b},${c}`); }
+} catch (e) { fail++; console.log('FAIL food-day-switch', e.message); }
+
 console.log(fail ? `\n❌ ${fail} failures` : '\n✅ all screens rendered');
 process.exit(fail ? 1 : 0);

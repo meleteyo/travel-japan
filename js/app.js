@@ -18,7 +18,7 @@ window.App = window.App || {};
       case 'check': toggleCheck(id, t); break;
       case 'wish': toggleWish(id, t); break;
       case 'del-expense': delExpense(id); break;
-      case 'food-day': A._foodDay = t.dataset.day; A.render(); break;
+      case 'food-day': location.hash = '#/food?d=' + t.dataset.day; break;
       case 'lightbox': A.lightbox(t.dataset.src, t.dataset.alt); break;
       case 'theme': A.state.theme = t.dataset.val; A.save('theme'); A.applyTheme(); A.render(); break;
       case 'font': A.state.font = parseFloat(t.dataset.val); A.save('font'); A.applyTheme(); A.render(); break;
