@@ -56,13 +56,13 @@ window.App = window.App || {};
     const small = [
       ['#/day/' + ((t.day || {}).id || 'd1'), 'calendar', '일정'],
       ['#/shopping', 'bag', '쇼핑'],
+      ['#/info', 'clipboard', '예약·정보'],
+      ['#/docs', 'folder', '서류함'],
       ['#/tips', 'bulb', '정보·꿀팁'],
       ['#/photo', 'camera', '포토'],
       ['#/exchange', 'swap', '환율'],
       ['#/medical', 'medical', '병원·약국'],
-      ['#/docs', 'folder', '서류함'],
       ['#/check', 'check', '체크'],
-      ['#/info', 'clipboard', '예약·정보'],
     ];
     return `<section class="home">
       <header class="home-top"><div><h1>${esc(trip.title || '도쿄 여행')}</h1>
