@@ -460,11 +460,15 @@ window.App = window.App || {};
       const ph = (s.phraseIds || []).map((pid) => { const p = A.phraseIndex[pid]; return p ? `<button class="mini-show" data-action="show" data-id="${pid}">📢 ${esc(p.ko)}</button>` : ''; }).join('');
       return `<div class="g-sec"><h3>${s.icon ? s.icon + ' ' : ''}${esc(s.heading)}</h3>${steps}${tips}${cau}${ph ? `<div class="row-btns">${ph}</div>` : ''}</div>`;
     };
+    const heroSrc = g.heroImg || (g.hero ? A.placeImg(g.hero) : '');
+    const gallery = (g.gallery || []).length ? `<div class="g-gallery">${g.gallery.map((im) =>
+      `<button class="g-gimg" data-action="lightbox" data-src="${esc(im.src)}" data-alt="${esc(im.caption || '')}">${A.img(im.src, im.caption, 'g-gimg-i', '🛍')}${im.caption ? `<span>${esc(im.caption)}</span>` : ''}</button>`).join('')}</div>` : '';
     return `<section class="guidev">
       ${backDay ? `<a class="g-back" href="#/day/${backDay}">‹ 일정으로</a>` : ''}
       ${head(g.title, g.subtitle)}
-      ${g.hero ? A.img(A.placeImg(g.hero), g.title, 'g-hero', '📖') : ''}
+      ${heroSrc ? A.img(heroSrc, g.title, 'g-hero', '📖') : ''}
       ${g.intro ? `<p class="g-intro">${esc(g.intro)}</p>` : ''}
+      ${gallery}
       ${(g.sections || []).map(sec).join('')}
       ${g.updated ? `<p class="muted small">📅 ${esc(g.updated)} · 변동 가능하니 방문 전 한 번 더 확인</p>` : ''}
       ${backDay ? `<a class="btn-block" href="#/day/${backDay}">일정으로 돌아가기</a>` : ''}

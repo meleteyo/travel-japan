@@ -1697,7 +1697,18 @@
           ]
         }
       ],
-      "updated": "2026-06-01"
+      "updated": "2026-06-01",
+      "gallery": [
+        {
+          "src": "assets/img/08aec38152cb1240.webp",
+          "caption": "amiibo 피규어"
+        },
+        {
+          "src": "assets/img/5831e353cb5c3995.webp",
+          "caption": "닌텐도 스토어"
+        }
+      ],
+      "heroImg": "assets/img/08aec38152cb1240.webp"
     },
     "buy-pokemon": {
       "id": "buy-pokemon",
@@ -1774,7 +1785,18 @@
           ]
         }
       ],
-      "updated": "2026-06-01"
+      "updated": "2026-06-01",
+      "gallery": [
+        {
+          "src": "assets/img/7202937119d1e3f6.webp",
+          "caption": "포켓몬 카드(TCG)"
+        },
+        {
+          "src": "assets/img/1108c22d73232903.webp",
+          "caption": "포켓몬센터"
+        }
+      ],
+      "heroImg": "assets/img/7202937119d1e3f6.webp"
     },
     "buy-loft": {
       "id": "buy-loft",
@@ -1843,7 +1865,18 @@
           ]
         }
       ],
-      "updated": "2026-06-01"
+      "updated": "2026-06-01",
+      "gallery": [
+        {
+          "src": "assets/img/0e2d550f88506d73.webp",
+          "caption": "마스킹테이프"
+        },
+        {
+          "src": "assets/img/599bdde368959870.webp",
+          "caption": "스티커·문구"
+        }
+      ],
+      "heroImg": "assets/img/0e2d550f88506d73.webp"
     },
     "buy-gacha": {
       "id": "buy-gacha",
@@ -1940,7 +1973,18 @@
           ]
         }
       ],
-      "updated": "2026-06-01"
+      "updated": "2026-06-01",
+      "gallery": [
+        {
+          "src": "assets/img/e30596ef00ae13e0.webp",
+          "caption": "가챠폰 기계"
+        },
+        {
+          "src": "assets/img/cdb46adc6bae6681.webp",
+          "caption": "캡슐토이"
+        }
+      ],
+      "heroImg": "assets/img/e30596ef00ae13e0.webp"
     },
     "buy-yodobashi": {
       "id": "buy-yodobashi",
@@ -2019,7 +2063,22 @@
           ]
         }
       ],
-      "updated": "2026-06-01"
+      "updated": "2026-06-01",
+      "gallery": [
+        {
+          "src": "assets/img/1751cf4abe58e87d.webp",
+          "caption": "이어폰·헤드폰"
+        },
+        {
+          "src": "assets/img/ee4b541345b7291c.webp",
+          "caption": "전자제품 매장"
+        },
+        {
+          "src": "assets/img/ff32b995c65448cd.webp",
+          "caption": "게임 주변기기"
+        }
+      ],
+      "heroImg": "assets/img/1751cf4abe58e87d.webp"
     },
     "buy-itoya": {
       "id": "buy-itoya",
@@ -2107,7 +2166,22 @@
           ]
         }
       ],
-      "updated": "2026-06-01"
+      "updated": "2026-06-01",
+      "gallery": [
+        {
+          "src": "assets/img/503f7368fd0e97dc.webp",
+          "caption": "만년필"
+        },
+        {
+          "src": "assets/img/b5a21f2a6244b3cb.webp",
+          "caption": "노트·문구"
+        },
+        {
+          "src": "assets/img/34fe9da6fd5f2a15.webp",
+          "caption": "편지지·종이"
+        }
+      ],
+      "heroImg": "assets/img/503f7368fd0e97dc.webp"
     },
     "buy-character-street": {
       "id": "buy-character-street",
@@ -2183,7 +2257,18 @@
           ]
         }
       ],
-      "updated": "2026-06-01"
+      "updated": "2026-06-01",
+      "gallery": [
+        {
+          "src": "assets/img/20d95157223ca833.webp",
+          "caption": "도쿄 캐릭터스트리트"
+        },
+        {
+          "src": "assets/img/6e00ebdda15e0ba6.webp",
+          "caption": "기념품 과자"
+        }
+      ],
+      "heroImg": "assets/img/20d95157223ca833.webp"
     }
   }
 }
