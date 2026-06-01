@@ -24,6 +24,7 @@ window.App = window.App || {};
     fxRate: LS.get('fxRate', null),         // KRW per 100 JPY
     theme: LS.get('theme', 'auto'),         // light|dark|auto
     font: LS.get('font', 1),                // 1 | 1.1 | 1.22
+    voice: LS.get('voice', 'female'),       // female | male (일본어 TTS)
   };
   A.save = (k) => LS.set(k, A.state[k]);
 
@@ -117,5 +118,34 @@ window.App = window.App || {};
     const dark = t === 'dark' || (t === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
     document.documentElement.style.setProperty('--font-scale', A.state.font);
+  };
+
+  // ---- 일본어 TTS (Web Speech API) ----
+  A.ttsOk = () => typeof window !== 'undefined' && 'speechSynthesis' in window;
+  A.voices = [];
+  A.loadVoices = () => { try { A.voices = window.speechSynthesis.getVoices() || []; } catch (e) { A.voices = []; } };
+  const MALE = /otoya|ichiro|hattori|daichi|takumi|male|男性|男/i;
+  const FEMALE = /kyoko|haruka|ayumi|nanami|sayaka|mizuki|o-?ren|female|女性|女/i;
+  A.pickVoice = (gender) => {
+    const ja = A.voices.filter((v) => /ja([-_]?jp)?/i.test(v.lang));
+    if (!ja.length) return null;
+    let pool;
+    if (gender === 'male') pool = ja.filter((v) => MALE.test(v.name));
+    else pool = ja.filter((v) => FEMALE.test(v.name) || !MALE.test(v.name)); // 대부분 ja 기본음은 여성
+    return pool[0] || ja[0];
+  };
+  A.speak = (text, gender) => {
+    if (!text) return;
+    if (!A.ttsOk()) { A.toast('이 기기는 음성 재생을 지원하지 않아요'); return; }
+    try {
+      const ss = window.speechSynthesis;
+      ss.cancel();
+      if (!A.voices.length) A.loadVoices();
+      const u = new SpeechSynthesisUtterance(String(text));
+      u.lang = 'ja-JP'; u.rate = 0.92; u.pitch = 1;
+      const v = A.pickVoice(gender || A.state.voice || 'female');
+      if (v) u.voice = v;
+      ss.speak(u);
+    } catch (e) { A.toast('음성 재생 실패'); }
   };
 })(window.App);

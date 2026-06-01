@@ -141,12 +141,15 @@ window.App = window.App || {};
     A.showText(p.jp, p.pron, p.ko, p.level);
   };
   A.showText = function (jp, pron, ko, level) {
+    A._lastShownJp = jp;
+    const tts = A.ttsOk() ? `<div class="show-tts"><button class="tts-play" data-action="tts" data-text="${esc(jp)}">🔊 듣기</button></div>` : '';
     A.openSheet(`<div class="show lvl-${level || 'n'}">
       <button class="sheet-x" data-action="close-sheet" aria-label="닫기">✕</button>
       ${level === 'allergy' ? '<div class="show-tag warn">⚠️ 알레르기</div>' : level === 'emergency' ? '<div class="show-tag danger">🆘 긴급</div>' : ''}
       <div class="show-jp" lang="ja">${esc(jp)}</div>
       <div class="show-pron">${esc(pron || '')}</div>
       <div class="show-ko">${esc(ko || '')}</div>
+      ${tts}
       <p class="show-hint">이 화면을 상대에게 돌려서 보여주세요</p>
     </div>`);
   };
@@ -411,6 +414,9 @@ window.App = window.App || {};
       <div class="segs">${opt(st.theme, 'auto', '자동', 'theme')}${opt(st.theme, 'light', '밝게', 'theme')}${opt(st.theme, 'dark', '어둡게', 'theme')}</div>
       <h2 class="sec">🔤 글자 크기</h2>
       <div class="segs">${opt(st.font, 1, '보통', 'font')}${opt(st.font, 1.1, '크게', 'font')}${opt(st.font, 1.22, '더 크게', 'font')}</div>
+      <h2 class="sec">🔊 일본어 음성</h2>
+      <p class="muted small">회화·주소·역 이름 등 일본어 '보여주기' 화면에서 🔊 듣기를 누르면 이 목소리로 읽어줘요. (기기에 따라 남/여 구분이 제한될 수 있어요)</p>
+      <div class="segs">${opt(st.voice, 'female', '👩 여자', 'voice')}${opt(st.voice, 'male', '👨 남자', 'voice')}</div>
       <h2 class="sec">ℹ️ 정보</h2>
       <p class="muted small">2026 도쿄 가족여행 가이드 · 오프라인 PWA. 홈 화면에 추가하면 앱처럼 쓸 수 있어요 (아이폰: 공유 → 홈 화면에 추가).</p>
     </section>`;

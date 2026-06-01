@@ -203,6 +203,12 @@ img { background: var(--surface-2); }
 .show-pron { font-size: 1.5rem; color: #555; margin-top: 14px; }
 .show-ko { font-size: 1.1rem; color: #888; margin-top: 8px; }
 .show-hint { margin-top: 22px; font-size: .9rem; color: #aaa; }
+.show-tts { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.tts-play { background: #2A2320; color: #fff; padding: 12px 22px; border-radius: 999px; font-weight: 800; font-size: 1.05rem; min-height: 48px; }
+.tts-play:active { transform: scale(.97); }
+.vseg { display: inline-flex; border: 1px solid #e2ddd5; border-radius: 999px; overflow: hidden; }
+.vbtn { padding: 11px 16px; font-weight: 800; color: #6B5E55; background: #F3EBE0; min-height: 48px; }
+.vbtn.on { background: #E8743B; color: #fff; }
 
 /* lightbox */
 #lightbox { position: fixed; inset: 0; z-index: 70; background: rgba(0,0,0,.92); display: none; align-items: center; justify-content: center; overflow: hidden; }

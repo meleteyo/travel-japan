@@ -24,8 +24,18 @@ window.App = window.App || {};
       case 'font': A.state.font = parseFloat(t.dataset.val); A.save('font'); A.applyTheme(); A.render(); break;
       case 'prefetch': A.prefetchAll(A.$('#pf-status')); break;
       case 'calc-quick': calcFrom('jpy', parseFloat(t.dataset.v)); break;
+      case 'tts': A.speak(t.dataset.text); break;
+      case 'voice': setVoice(t.dataset.val); break;
     }
   });
+
+  function setVoice(g) {
+    A.state.voice = g; A.save('voice');
+    A.$$('[data-action="voice"]').forEach((b) => b.classList.toggle('on', b.dataset.val === g));
+    // 즉시 들려주기: 보여주기 시트가 열려 있으면 그 문장을, 아니면 샘플을
+    const sheetOpen = A.$('#sheet') && A.$('#sheet').classList.contains('open');
+    A.speak(sheetOpen && A._lastShownJp ? A._lastShownJp : 'ありがとうございます', g);
+  }
 
   document.addEventListener('input', function (e) {
     const t = e.target.closest('[data-action]'); if (!t) return;
@@ -141,6 +151,7 @@ window.App = window.App || {};
   // ---------------- boot ----------------
   async function boot() {
     A.applyTheme();
+    if (A.ttsOk()) { A.loadVoices(); try { window.speechSynthesis.onvoiceschanged = A.loadVoices; } catch (e) {} }
     if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', A.applyTheme);
     try { await A.load(); } catch (e) { console.error(e); }
     // bottom tab "일정" → today's day
