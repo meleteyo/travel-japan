@@ -83,3 +83,8 @@
 - `assets/img/34fe9da6fd5f2a15.webp` (guide:buy-itoya) <- https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Christmas_Stationery_-_Accept_This_Message_%28Letter%29_-_DPLA_-_08a8692abc25ce501a9094e5cc8fd050.jpg/960px-Christmas_Stationery_-_Accept_This_Message_%28Letter%29_-_DPLA_-_08a8692abc25ce501a9094e5cc8fd050.jpg
 - `assets/img/20d95157223ca833.webp` (guide:buy-character-street) <- https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/At_Tokyo_2024_291.jpg/960px-At_Tokyo_2024_291.jpg
 - `assets/img/6e00ebdda15e0ba6.webp` (guide:buy-character-street) <- https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/ESEAP_conference_Kota_Kinabalu_Pens_from_JaUG.jpg/960px-ESEAP_conference_Kota_Kinabalu_Pens_from_JaUG.jpg
+- `assets/img/69e406a5638b403e.webp` (guide:narita-arrival fetch:Narita International Airport Terminal 2 interior)
+- `assets/img/b12334235eee5a3c.webp` (guide:skyliner fetch:Nippori Station platform)
+- `assets/img/075c5c7a2213fb3c.webp` (guide:yanaka-ginza fetch:menchi katsu)
+- `assets/img/d1c92ff3b754a793.webp` (guide:checkout-luggage fetch:coin locker train station Japan)
+- `assets/img/6fef201446a04307.webp` (guide:departure fetch:Narita Airport departure terminal check-in)

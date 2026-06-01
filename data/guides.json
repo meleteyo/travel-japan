@@ -144,7 +144,21 @@
           ]
         }
       ],
-      "hero": "keisei-skyliner"
+      "hero": "keisei-skyliner",
+      "gallery": [
+        {
+          "src": "assets/img/7fa31ad2091c88ce.webp",
+          "caption": "스카이라이너"
+        },
+        {
+          "src": "assets/img/29b856652ab3b012.webp",
+          "caption": "Welcome Suica 카드"
+        },
+        {
+          "src": "assets/img/69e406a5638b403e.webp",
+          "caption": "나리타 제2터미널"
+        }
+      ]
     },
     "skyliner": {
       "id": "skyliner",
@@ -275,7 +289,17 @@
         }
       ],
       "updated": "2026-06 기준 종합 (게이세이전철 공식·아빠상세가이드 PDF·현지 여행기 참고)",
-      "hero": "keisei-skyliner"
+      "hero": "keisei-skyliner",
+      "gallery": [
+        {
+          "src": "assets/img/7fa31ad2091c88ce.webp",
+          "caption": "스카이라이너"
+        },
+        {
+          "src": "assets/img/b12334235eee5a3c.webp",
+          "caption": "닛포리역"
+        }
+      ]
     },
     "hotel-checkin": {
       "id": "hotel-checkin",
@@ -536,7 +560,17 @@
         }
       ],
       "updated": "2025~2026년 최신 정보 기준 종합 (yanakaginza.com · japan-guide.com · jw-webmagazine.com 등 참조)",
-      "hero": "yanaka-ginza"
+      "hero": "yanaka-ginza",
+      "gallery": [
+        {
+          "src": "assets/img/2a63dad4d7695d9c.webp",
+          "caption": "야나카긴자"
+        },
+        {
+          "src": "assets/img/075c5c7a2213fb3c.webp",
+          "caption": "멘치카츠 간식"
+        }
+      ]
     },
     "ueno-ameyoko": {
       "id": "ueno-ameyoko",
@@ -662,7 +696,17 @@
         }
       ],
       "updated": "2025~2026 검색 기준 종합",
-      "hero": "ameyoko"
+      "hero": "ameyoko",
+      "gallery": [
+        {
+          "src": "assets/img/c8d3ed33e7a6f0be.webp",
+          "caption": "아메요코 시장"
+        },
+        {
+          "src": "assets/img/6072d2462728b251.webp",
+          "caption": "우에노 공원"
+        }
+      ]
     },
     "shibuya-parco": {
       "id": "shibuya-parco",
@@ -793,7 +837,21 @@
           ]
         }
       ],
-      "hero": "pokemon-center-shibuya"
+      "hero": "pokemon-center-shibuya",
+      "gallery": [
+        {
+          "src": "assets/img/a7fef3e737e76122.webp",
+          "caption": "닌텐도 TOKYO"
+        },
+        {
+          "src": "assets/img/1c8c930e03e02efb.webp",
+          "caption": "포켓몬센터"
+        },
+        {
+          "src": "assets/img/39386faae71d4f9a.webp",
+          "caption": "시부야 스크램블"
+        }
+      ]
     },
     "shibuya-loft": {
       "id": "shibuya-loft",
@@ -929,7 +987,17 @@
         }
       ],
       "updated": "2026-06 기준 종합 (loft.co.jp 공식 · sumifuku.net · thetokyohibi.com · digjapan.travel · en.japantravel.com 참조)",
-      "hero": "shibuya-loft"
+      "hero": "shibuya-loft",
+      "gallery": [
+        {
+          "src": "assets/img/0e2d550f88506d73.webp",
+          "caption": "마스킹테이프"
+        },
+        {
+          "src": "assets/img/599bdde368959870.webp",
+          "caption": "스티커·문구"
+        }
+      ]
     },
     "harajuku": {
       "id": "harajuku",
@@ -1075,7 +1143,21 @@
         }
       ],
       "updated": "2026-06 기준 최신 정보 종합 (GoTokyo 공식, LiveJapan, Trip.com, JRPass 등 참조)",
-      "hero": "harajuku-takeshita"
+      "hero": "harajuku-takeshita",
+      "gallery": [
+        {
+          "src": "assets/img/4f831282bb619fdc.webp",
+          "caption": "다케시타도리"
+        },
+        {
+          "src": "assets/img/887007adf6a09f41.webp",
+          "caption": "캣스트리트"
+        },
+        {
+          "src": "assets/img/c4818923bbe364a5.webp",
+          "caption": "하라주쿠 크레페"
+        }
+      ]
     },
     "omotesando": {
       "id": "omotesando",
@@ -1164,7 +1246,21 @@
           ]
         }
       ],
-      "hero": "omotesando"
+      "hero": "omotesando",
+      "gallery": [
+        {
+          "src": "assets/img/9d0ba74ce45d8f8e.webp",
+          "caption": "오모테산도"
+        },
+        {
+          "src": "assets/img/003ed1488a480ecb.webp",
+          "caption": "메이지신궁"
+        },
+        {
+          "src": "assets/img/caa996b277c67c86.webp",
+          "caption": "파르페"
+        }
+      ]
     },
     "yodobashi-akiba": {
       "id": "yodobashi-akiba",
@@ -1233,7 +1329,21 @@
         }
       ],
       "updated": "2026-06-01",
-      "hero": "yodobashi-akiba"
+      "hero": "yodobashi-akiba",
+      "gallery": [
+        {
+          "src": "assets/img/1751cf4abe58e87d.webp",
+          "caption": "이어폰·헤드폰"
+        },
+        {
+          "src": "assets/img/ff32b995c65448cd.webp",
+          "caption": "게임 주변기기"
+        },
+        {
+          "src": "assets/img/1ce8c6f09d6e71c3.webp",
+          "caption": "요도바시 매장"
+        }
+      ]
     },
     "akihabara-gacha": {
       "id": "akihabara-gacha",
@@ -1326,7 +1436,21 @@
         }
       ],
       "updated": "2026-06-01",
-      "hero": "akihabara"
+      "hero": "akihabara",
+      "gallery": [
+        {
+          "src": "assets/img/e30596ef00ae13e0.webp",
+          "caption": "가챠폰 기계"
+        },
+        {
+          "src": "assets/img/cdb46adc6bae6681.webp",
+          "caption": "캡슐토이"
+        },
+        {
+          "src": "assets/img/2047d8f35fe27f41.webp",
+          "caption": "아키하바라"
+        }
+      ]
     },
     "ginza-itoya": {
       "id": "ginza-itoya",
@@ -1394,7 +1518,21 @@
           ]
         }
       ],
-      "hero": "ginza-itoya"
+      "hero": "ginza-itoya",
+      "gallery": [
+        {
+          "src": "assets/img/503f7368fd0e97dc.webp",
+          "caption": "만년필"
+        },
+        {
+          "src": "assets/img/b5a21f2a6244b3cb.webp",
+          "caption": "노트·문구"
+        },
+        {
+          "src": "assets/img/e22edcf3110b6fad.webp",
+          "caption": "긴자 이토야"
+        }
+      ]
     },
     "checkout-luggage": {
       "id": "checkout-luggage",
@@ -1460,7 +1598,17 @@
         }
       ],
       "updated": "2026-06-01",
-      "hero": "hotel"
+      "hero": "hotel",
+      "gallery": [
+        {
+          "src": "assets/img/0320ae3d743e9ebe.webp",
+          "caption": "도쿄역"
+        },
+        {
+          "src": "assets/img/d1c92ff3b754a793.webp",
+          "caption": "코인락커"
+        }
+      ]
     },
     "tokyo-character-street": {
       "id": "tokyo-character-street",
@@ -1553,7 +1701,21 @@
           ]
         }
       ],
-      "hero": "tokyo-character-street"
+      "hero": "tokyo-character-street",
+      "gallery": [
+        {
+          "src": "assets/img/45eee2782b3cef15.webp",
+          "caption": "캐릭터스트리트"
+        },
+        {
+          "src": "assets/img/6a816b240a90f6be.webp",
+          "caption": "츠케멘(라멘스트리트)"
+        },
+        {
+          "src": "assets/img/45f76ef1bb0c5ad9.webp",
+          "caption": "에키벤·주먹밥"
+        }
+      ]
     },
     "departure": {
       "id": "departure",
@@ -1628,7 +1790,17 @@
         }
       ],
       "updated": "2026-06-01",
-      "hero": "keisei-skyliner"
+      "hero": "keisei-skyliner",
+      "gallery": [
+        {
+          "src": "assets/img/7fa31ad2091c88ce.webp",
+          "caption": "스카이라이너"
+        },
+        {
+          "src": "assets/img/6fef201446a04307.webp",
+          "caption": "나리타 출국·체크인"
+        }
+      ]
     },
     "buy-nintendo": {
       "id": "buy-nintendo",
