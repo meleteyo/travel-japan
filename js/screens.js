@@ -121,6 +121,7 @@ window.App = window.App || {};
           <div class="p-ko">${esc(p.ko)}</div>
           <div class="p-jp" lang="ja">${esc(p.jp)}</div>
           <div class="p-pron">${esc(p.pron)}</div>
+          ${p.note ? `<div class="p-note">💡 ${esc(p.note)}</div>` : ''}
         </button>
         <button class="fav ${on ? 'on' : ''}" data-action="fav" data-id="${p.id}" aria-label="즐겨찾기">${on ? '★' : '☆'}</button>
       </div>`;

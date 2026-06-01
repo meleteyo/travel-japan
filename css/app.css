@@ -185,6 +185,7 @@ img { background: var(--surface-2); }
 .p-ko { font-weight: 800; font-size: 1.05rem; }
 .p-jp { font-size: 1rem; color: var(--text); margin-top: 2px; }
 .p-pron { font-size: .82rem; color: var(--text-soft); }
+.p-note { font-size: .75rem; color: var(--info); margin-top: 3px; }
 .fav { width: 52px; font-size: 1.4rem; color: var(--text-soft); border-left: 1px solid var(--line); }
 .fav.on { color: #F0B429; }
 
