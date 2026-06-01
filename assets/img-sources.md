@@ -93,3 +93,8 @@
 - `assets/img/075c5c7a2213fb3c.webp` (guide:yanaka-ginza fetch:menchi katsu)
 - `assets/img/d1c92ff3b754a793.webp` (guide:checkout-luggage fetch:coin locker train station Japan)
 - `assets/img/6fef201446a04307.webp` (guide:departure fetch:Narita Airport departure terminal check-in)
+- `assets/img/69e406a5638b403e.webp` (guide:narita-arrival fetch:Narita International Airport Terminal 2 interior)
+- `assets/img/b12334235eee5a3c.webp` (guide:skyliner fetch:Nippori Station platform)
+- `assets/img/075c5c7a2213fb3c.webp` (guide:yanaka-ginza fetch:menchi katsu)
+- `assets/img/d1c92ff3b754a793.webp` (guide:checkout-luggage fetch:coin locker train station Japan)
+- `assets/img/6fef201446a04307.webp` (guide:departure fetch:Narita Airport departure terminal check-in)

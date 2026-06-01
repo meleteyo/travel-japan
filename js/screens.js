@@ -95,7 +95,9 @@ window.App = window.App || {};
             ${s.station ? `<div class="stn">🚉 ${esc(s.station)}</div>` : ''}
             ${s.desc ? (s.guide
               ? `<a class="stop-desc-link" href="#/guide/${s.guide}"><p>${esc(s.desc)}</p><span class="more">📖 상세 가이드 ›</span></a>`
-              : `<p>${esc(s.desc)}</p>`) : ''}
+              : (s.link
+                ? `<a class="stop-desc-link" href="${esc(s.link)}"><p>${esc(s.desc)}</p><span class="more">${esc(s.linkLabel || '자세히 ›')}</span></a>`
+                : `<p>${esc(s.desc)}</p>`)) : ''}
             ${tips}
             <div class="row-btns">${s.nameJa ? showBtn(s.nameJa, '', s.name) : ''}${mapBtn(s.gmap || s.name)}</div>
             ${s.fareYen ? `<div class="fare">이동 요금 ${A.fmtYen(s.fareYen)}</div>` : ''}
@@ -106,7 +108,7 @@ window.App = window.App || {};
     return `<section class="dayv">
       ${head(d.n + '일차 · ' + d.title, d.date + ' (' + d.dow + ') · ' + d.mood)}
       <div class="chips">${chips}</div>
-      ${w ? `<div class="weather-band">${w.icon} <strong>${esc(w.summary)} · 비 ${w.rainPct}% · ${w.tempMin}~${w.tempMax}°</strong>${wLive() ? ` <span class="wlive">${wLive()}</span>` : ' <span class="wlive">예보</span>'}<br><span>${esc(w.advice)}</span></div>` : ''}
+      ${w ? `<div class="weather-band">${w.icon} <strong>${esc(w.summary)} · 비 ${w.rainPct}% · ${w.tempMin}~${w.tempMax}°</strong> <button class="wlive" data-action="refresh-weather" aria-label="날씨 새로고침">${wLive() || '🔄 예보 · 새로고침'}</button><br><span>${esc(w.advice)}</span></div>` : ''}
       ${d.moveNote ? `<p class="movenote">🧭 ${esc(d.moveNote)}</p>` : ''}
       <div class="timeline">${stops}</div>
       <a class="btn-block" href="#/food?d=${d.id}">🍜 이 날 맛집·식사 보기</a>

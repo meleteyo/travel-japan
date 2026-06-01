@@ -10,6 +10,9 @@ guides = set(json.load(open(os.path.join(ROOT, "data", "guides.json"), encoding=
 RULES = [
     ("나리타공항 도착", "narita-arrival"),
     ("스카이라이너 → 닛포리", "skyliner"),
+    ("닛포리 → 시부야", "ride-shibuya"),
+    ("닛포리 → 아키하바라", "ride-akihabara"),
+    ("짐 찾기", "checkout-luggage"),
     ("호텔 체크인", "hotel-checkin"),
     ("야나카긴자", "yanaka-ginza"),
     ("아메요코", "ueno-ameyoko"),

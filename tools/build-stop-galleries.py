@@ -73,6 +73,8 @@ GAL = {
     "checkout-luggage": [("도쿄역", "p:tokyo-station"), ("코인락커", "f:coin locker train station Japan")],
     "tokyo-character-street": [("캐릭터스트리트", "p:tokyo-character-street"), ("츠케멘(라멘스트리트)", "m:tsukemen"), ("에키벤·주먹밥", "m:onigiri")],
     "departure": [("스카이라이너", "p:keisei-skyliner"), ("나리타 출국·체크인", "f:Narita Airport departure terminal check-in")],
+    "ride-shibuya": [("시부야 스크램블", "p:shibuya-scramble"), ("하치코 출구", "p:hachiko")],
+    "ride-akihabara": [("아키하바라 전기가", "p:akihabara"), ("요도바시 아키바", "p:yodobashi-akiba")],
 }
 
 def resolve(ref):

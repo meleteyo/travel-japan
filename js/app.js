@@ -33,8 +33,20 @@ window.App = window.App || {};
       case 'doc-view': A.viewDoc(t.dataset.slot); break;
       case 'doc-del': delDoc(t.dataset.slot); break;
       case 'doc-add': addDoc(); break;
+      case 'refresh-weather': refreshWeatherUI(); break;
     }
   });
+
+  async function refreshWeatherUI() {
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) { A.toast('오프라인 — 저장된 예보 표시 중'); return; }
+    if (!A.refreshWeather) return;
+    A.toast('날씨 새로고침 중…');
+    const before = (A.data.weather || {}).updatedAt;
+    await A.refreshWeather(true);
+    const after = (A.data.weather || {}).updatedAt;
+    if (after && after !== before) A.toast('최신 날씨로 업데이트됐어요');
+    else A.toast('업데이트 실패 — 잠시 후 다시 시도');
+  }
 
   // ---- 서류함 (기기 저장 캡처) ----
   document.addEventListener('change', async function (e) {
