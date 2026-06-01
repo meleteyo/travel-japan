@@ -25,6 +25,7 @@ window.App = window.App || {};
     theme: LS.get('theme', 'auto'),         // light|dark|auto
     font: LS.get('font', 1),                // 1 | 1.1 | 1.22
     voice: LS.get('voice', 'female'),       // female | male (일본어 TTS)
+    docExtra: LS.get('docExtra', []),       // 서류함 커스텀 슬롯 [{id,label}]
   };
   A.save = (k) => LS.set(k, A.state[k]);
 
@@ -159,4 +160,24 @@ window.App = window.App || {};
       ss.speak(u);
     } catch (e) { A.toast('음성 재생 실패'); }
   };
+
+  // ---- 서류 캡처: 파일 → 다운스케일된 dataURL (기기 저장용) ----
+  A.downscaleToDataURL = (file, max) => new Promise((resolve, reject) => {
+    max = max || 1600;
+    const fr = new FileReader();
+    fr.onerror = () => reject(new Error('read'));
+    fr.onload = () => {
+      const img = new Image();
+      img.onerror = () => reject(new Error('decode'));
+      img.onload = () => {
+        let w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+        if (Math.max(w, h) > max) { const s = max / Math.max(w, h); w = Math.round(w * s); h = Math.round(h * s); }
+        const c = document.createElement('canvas'); c.width = w; c.height = h;
+        c.getContext('2d').drawImage(img, 0, 0, w, h);
+        try { resolve(c.toDataURL('image/jpeg', 0.82)); } catch (e) { reject(e); }
+      };
+      img.src = fr.result;
+    };
+    fr.readAsDataURL(file);
+  });
 })(window.App);

@@ -59,6 +59,7 @@ window.App = window.App || {};
       ['#/photo', '📸', '포토'],
       ['#/exchange', '💱', '환율'],
       ['#/medical', '🏥', '병원·약국'],
+      ['#/docs', '🗂', '서류함'],
       ['#/check', '✅', '체크'],
       ['#/info', '📋', '예약·정보'],
     ];
@@ -388,6 +389,7 @@ window.App = window.App || {};
     const five = (inf.firstFive || []).map((x) => `<li>${esc(x)}</li>`).join('');
     return `<section class="infov">
       ${head('예약 · 정보')}
+      <a class="doc-link" href="#/docs">🗂 실제 캡처(여권·항공권·호텔·보험·QR)는 <b>서류함</b>에서 불러와 보관하세요 →</a>
       <div class="hotel-card">${A.img(A.placeImg('hotel'), h.name, 'hc-img', '🏨')}
         <div class="hc-b"><h3>🏨 ${esc(h.name)}</h3><div lang="ja" class="hc-ja">${esc(h.nameJa || '')}</div>
         <p>${esc(h.addrEn || '')}</p><p>체크인 ${esc(h.checkin)} · 체크아웃 ${esc(h.checkout)}</p>
@@ -420,6 +422,28 @@ window.App = window.App || {};
       <div class="segs">${opt(st.voice, 'female', '👩 여자', 'voice')}${opt(st.voice, 'male', '👨 남자', 'voice')}</div>
       <h2 class="sec">ℹ️ 정보</h2>
       <p class="muted small">2026 도쿄 가족여행 가이드 · 오프라인 PWA. 홈 화면에 추가하면 앱처럼 쓸 수 있어요 (아이폰: 공유 → 홈 화면에 추가).</p>
+    </section>`;
+  };
+
+  // ====================================================== DOCS (서류함)
+  S.docs = function () {
+    const d = A.data.docs || { groups: [] };
+    const extras = A.state.docExtra || [];
+    const slotCard = (s, icon) => `<div class="doc-slot">
+      <div class="doc-label">${icon || '📄'} ${esc(s.label)}</div>
+      <div class="doc-body" id="docbody-${esc(s.id)}">
+        <button class="doc-pick" data-action="doc-pick" data-slot="${esc(s.id)}">＋ 불러오기</button>
+      </div></div>`;
+    const groups = (d.groups || []).map((g) =>
+      `<h2 class="sec">${g.icon} ${esc(g.label)}</h2><div class="doc-grid">${(g.slots || []).map((s) => slotCard(s, g.icon)).join('')}</div>`).join('');
+    const extraCards = extras.length ? `<h2 class="sec">📎 추가 캡처</h2><div class="doc-grid">${extras.map((s) => slotCard(s, '📎')).join('')}</div>` : '';
+    return `<section class="docsv">
+      ${head('서류함', '여권·예약·보험·QR 캡처를 폰에서 불러와 보관')}
+      <div class="doc-note">🔒 불러온 캡처는 <b>이 기기에만</b> 저장돼요. 인터넷에 올라가지 않습니다. 한 번 불러오면 다음부터 바로 보여요. <span class="muted">(홈 화면에 추가하면 더 안전)</span></div>
+      ${groups}
+      ${extraCards}
+      <button class="btn-block" data-action="doc-add">➕ 사진 추가</button>
+      <input type="file" accept="image/*" id="doc-file" hidden>
     </section>`;
   };
 

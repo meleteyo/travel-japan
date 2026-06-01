@@ -29,6 +29,7 @@ window.App = window.App || {};
         case 'shopping': html = S.shopping(); tab = 'home'; break;
         case 'photo': html = S.photo(); tab = 'home'; break;
         case 'medical': html = S.medical(); tab = 'sos'; break;
+        case 'docs': html = S.docs(); tab = 'home'; break;
         case 'exchange': html = S.exchange(); tab = 'home'; break;
         case 'check': html = S.check(); tab = 'home'; break;
         case 'info': html = S.info(); tab = 'home'; break;

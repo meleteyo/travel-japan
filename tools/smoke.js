@@ -18,12 +18,12 @@ global.document = Object.assign(noopEl(), { readyState: 'loading',
   createElement: () => noopEl(), querySelector: (s) => (s === '#app' ? appEl : null), querySelectorAll: () => [],
   body: noopEl(), documentElement: { dataset: {}, style: { setProperty() {} } } });
 
-for (const f of ['util', 'data', 'screens', 'panzoom', 'router', 'app'])
+for (const f of ['util', 'idb', 'data', 'screens', 'panzoom', 'router', 'app'])
   require(path.join(ROOT, 'js', f + '.js'));
 const App = global.App;
 
 const FILES = ['itinerary', 'phrases', 'emergency', 'info', 'transit', 'exchange', 'weather',
-  'checklist', 'shopping', 'tips', 'restaurants', 'musteat', 'places', 'photospots', 'medical'];
+  'checklist', 'shopping', 'tips', 'restaurants', 'musteat', 'places', 'photospots', 'medical', 'docs'];
 FILES.forEach((f) => { App.data[f] = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', f + '.json'))); });
 App.buildPlaceIndex();
 App.phraseIndex = {}; (App.data.phrases.phrases || []).forEach((p) => { App.phraseIndex[p.id] = p; });
@@ -37,7 +37,7 @@ const cases = {
   talk: () => S.talk(), subway: () => S.subway(), sos: () => S.sos(),
   'food(d3)': () => S.food('d3'), tips: () => S.tips(), shopping: () => S.shopping(),
   photo: () => S.photo(), medical: () => S.medical(), exchange: () => S.exchange(),
-  check: () => S.check(), info: () => S.info(), settings: () => S.settings(),
+  check: () => S.check(), info: () => S.info(), settings: () => S.settings(), docs: () => S.docs(),
 };
 for (const [k, fn] of Object.entries(cases)) {
   try {

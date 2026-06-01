@@ -26,8 +26,68 @@ window.App = window.App || {};
       case 'calc-quick': calcFrom('jpy', parseFloat(t.dataset.v)); break;
       case 'tts': A.speak(t.dataset.text); break;
       case 'voice': setVoice(t.dataset.val); break;
+      case 'doc-pick': A._docTarget = t.dataset.slot; { const inp = A.$('#doc-file'); if (inp) inp.click(); } break;
+      case 'doc-view': A.viewDoc(t.dataset.slot); break;
+      case 'doc-del': delDoc(t.dataset.slot); break;
+      case 'doc-add': addDoc(); break;
     }
   });
+
+  // ---- 서류함 (기기 저장 캡처) ----
+  document.addEventListener('change', async function (e) {
+    const inp = e.target.closest && e.target.closest('#doc-file');
+    if (!inp || !inp.files || !inp.files[0]) return;
+    const slot = A._docTarget;
+    if (!slot || !A.idb || !A.idb.available()) { A.toast('이 브라우저는 기기 저장을 지원하지 않아요'); inp.value = ''; return; }
+    try {
+      const url = await A.downscaleToDataURL(inp.files[0]);
+      await A.idb.set(slot, { dataURL: url, ts: Date.now() });
+      await A.fillDocSlot(slot);
+      A.toast('저장됐어요 · 이 기기에만');
+    } catch (err) { A.toast('불러오기 실패'); }
+    inp.value = '';
+  });
+
+  A.docSlotIds = function () {
+    const ids = [];
+    (((A.data.docs || {}).groups) || []).forEach((g) => (g.slots || []).forEach((s) => ids.push(s.id)));
+    (A.state.docExtra || []).forEach((s) => ids.push(s.id));
+    return ids;
+  };
+  A.fillDocSlot = async function (id) {
+    const body = document.getElementById('docbody-' + id);
+    if (!body) return;
+    let rec = null;
+    try { if (A.idb && A.idb.available()) rec = await A.idb.get(id); } catch (e) {}
+    if (rec && rec.dataURL) {
+      body.innerHTML = `<button class="doc-thumb" data-action="doc-view" data-slot="${id}"><img src="${rec.dataURL}" alt="저장된 캡처"></button>
+        <div class="doc-acts"><button class="doc-act" data-action="doc-pick" data-slot="${id}">교체</button>
+        <button class="doc-act del" data-action="doc-del" data-slot="${id}">삭제</button></div>`;
+    } else {
+      body.innerHTML = `<button class="doc-pick" data-action="doc-pick" data-slot="${id}">＋ 불러오기</button>`;
+    }
+  };
+  A.loadDocs = function () { A.docSlotIds().forEach((id) => A.fillDocSlot(id)); };
+  A.viewDoc = async function (id) {
+    try { const r = (A.idb && A.idb.available()) ? await A.idb.get(id) : null; if (r && r.dataURL) A.lightbox(r.dataURL, '저장된 캡처'); else A.toast('아직 불러온 캡처가 없어요'); } catch (e) {}
+  };
+  async function delDoc(id) {
+    if (!confirm('이 캡처를 삭제할까요?')) return;
+    try { if (A.idb && A.idb.available()) await A.idb.del(id); } catch (e) {}
+    if (/^extra-/.test(id)) { A.state.docExtra = (A.state.docExtra || []).filter((s) => s.id !== id); A.save('docExtra'); A.render(); }
+    else A.fillDocSlot(id);
+    A.toast('삭제했어요');
+  }
+  function addDoc() {
+    const label = (prompt('어떤 캡처인가요? (이름)', '추가 캡처') || '').trim();
+    if (!label) return;
+    const id = 'extra-' + Date.now();
+    A.state.docExtra = (A.state.docExtra || []).concat([{ id, label }]);
+    A.save('docExtra');
+    A._docTarget = id;
+    A.render();
+    setTimeout(() => { const inp = A.$('#doc-file'); if (inp) inp.click(); }, 60);
+  }
 
   function setVoice(g) {
     A.state.voice = g; A.save('voice');
@@ -114,6 +174,7 @@ window.App = window.App || {};
   // ---------------- after render hooks ----------------
   A.afterRender = function (name) {
     if (name === 'talk') { A.talkState = { cat: 'fav', q: '' }; filterTalk(); }
+    if (name === 'docs') A.loadDocs();
   };
 
   // ---------------- offline prefetch ----------------
@@ -151,6 +212,7 @@ window.App = window.App || {};
   // ---------------- boot ----------------
   async function boot() {
     A.applyTheme();
+    try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}
     if (A.ttsOk()) { A.loadVoices(); try { window.speechSynthesis.onvoiceschanged = A.loadVoices; } catch (e) {} }
     if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', A.applyTheme);
     try { await A.load(); } catch (e) { console.error(e); }

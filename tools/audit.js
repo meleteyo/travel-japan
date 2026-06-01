@@ -14,9 +14,9 @@ const appEl = noopEl();
 global.document = Object.assign(noopEl(), { readyState: 'loading', createElement: () => noopEl(),
   querySelector: (s) => (s === '#app' ? appEl : null), querySelectorAll: () => [], body: noopEl(),
   documentElement: { dataset: {}, style: { setProperty() {} } } });
-for (const f of ['util', 'data', 'screens', 'panzoom', 'router', 'app']) require(path.join(ROOT, 'js', f + '.js'));
+for (const f of ['util', 'idb', 'data', 'screens', 'panzoom', 'router', 'app']) require(path.join(ROOT, 'js', f + '.js'));
 const App = global.App;
-['itinerary', 'phrases', 'emergency', 'info', 'transit', 'exchange', 'weather', 'checklist', 'shopping', 'tips', 'restaurants', 'musteat', 'places', 'photospots', 'medical']
+['itinerary', 'phrases', 'emergency', 'info', 'transit', 'exchange', 'weather', 'checklist', 'shopping', 'tips', 'restaurants', 'musteat', 'places', 'photospots', 'medical', 'docs']
   .forEach((f) => { App.data[f] = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', f + '.json'))); });
 App.buildPlaceIndex();
 App.phraseIndex = {}; (App.data.phrases.phrases || []).forEach((p) => { App.phraseIndex[p.id] = p; });
@@ -25,7 +25,7 @@ App.state.fxRate = App.data.exchange.ratePer100;
 
 // render everything
 const S = App.screens;
-let html = [S.home(), S.talk(), S.subway(), S.sos(), S.tips(), S.shopping(), S.photo(), S.medical(), S.exchange(), S.check(), S.info(), S.settings()];
+let html = [S.home(), S.talk(), S.subway(), S.sos(), S.tips(), S.shopping(), S.photo(), S.medical(), S.exchange(), S.check(), S.info(), S.settings(), S.docs()];
 ['d1', 'd2', 'd3', 'd4'].forEach((d) => { html.push(S.day(d)); html.push(S.food(d)); });
 // dynamic sheet markup (show / show-text) — capture via the string builders
 html.push('<div class="show lvl-allergy"><button class="sheet-x"></button><div class="show-tag warn"></div><div class="show-jp"></div><div class="show-pron"></div><div class="show-ko"></div><p class="show-hint"></p></div>');

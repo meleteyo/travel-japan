@@ -367,6 +367,23 @@ img { background: var(--surface-2); }
 .seg.on { background: var(--primary); color: var(--primary-ink); border-color: var(--primary); }
 #pf-status { margin-top: 8px; }
 
+/* ===== docs (서류함) ===== */
+.doc-note { background: var(--ok-soft); color: var(--text); border: 1px solid var(--ok); border-radius: var(--r-sm);
+  padding: 12px 14px; font-size: .88rem; line-height: 1.5; }
+.doc-link { display: block; background: var(--primary-soft); color: var(--text); border-radius: var(--r-sm);
+  padding: 12px 14px; font-weight: 700; font-size: .9rem; margin-bottom: 12px; }
+.doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.doc-slot { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px; box-shadow: var(--shadow); }
+.doc-label { font-weight: 800; font-size: .85rem; margin-bottom: 8px; }
+.doc-body { min-height: 96px; display: flex; flex-direction: column; gap: 6px; }
+.doc-pick { flex: 1; min-height: 90px; border: 2px dashed var(--line); border-radius: 10px; color: var(--text-soft);
+  font-weight: 700; font-size: .9rem; background: var(--surface-2); }
+.doc-thumb { display: block; width: 100%; border-radius: 10px; overflow: hidden; background: var(--surface-2); }
+.doc-thumb img { width: 100%; height: 120px; object-fit: cover; }
+.doc-acts { display: flex; gap: 6px; }
+.doc-act { flex: 1; padding: 9px; border-radius: 8px; background: var(--surface-2); color: var(--text); font-weight: 700; font-size: .82rem; min-height: 40px; }
+.doc-act.del { background: var(--danger-bg); color: var(--danger); }
+
 /* toast */
 #toast { position: fixed; left: 50%; bottom: calc(86px + env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(20px);
   background: #2A2320; color: #fff; padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: .9rem;

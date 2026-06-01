@@ -4,7 +4,7 @@ window.App = window.App || {};
   'use strict';
   const FILES = ['itinerary', 'phrases', 'emergency', 'info', 'transit', 'exchange',
     'weather', 'checklist', 'shopping', 'tips', 'restaurants', 'musteat', 'places',
-    'photospots', 'medical'];
+    'photospots', 'medical', 'docs'];
 
   A.data = {};
   A.load = async function () {
