@@ -25,6 +25,7 @@ window.App = window.App || {};
     theme: LS.get('theme', 'auto'),         // light|dark|auto
     font: LS.get('font', 1),                // 1 | 1.1 | 1.22
     voice: LS.get('voice', 'female'),       // female | male (일본어 TTS)
+    ttsRate: LS.get('ttsRate', 1),          // 말하기 속도 0.8 | 1 | 1.2 | 1.4
     docExtra: LS.get('docExtra', []),       // 서류함 커스텀 슬롯 [{id,label}]
   };
   A.save = (k) => LS.set(k, A.state[k]);
@@ -155,7 +156,8 @@ window.App = window.App || {};
       if (!A.voices.length) A.loadVoices();
       const p = A.ttsParams(gender);
       const u = new SpeechSynthesisUtterance(String(text));
-      u.lang = 'ja-JP'; u.pitch = p.pitch; u.rate = p.rate;
+      const rate = Math.min(2, Math.max(0.5, A.state.ttsRate || 1));
+      u.lang = 'ja-JP'; u.pitch = p.pitch; u.rate = rate;
       if (p.voice) u.voice = p.voice;
       ss.speak(u);
     } catch (e) { A.toast('음성 재생 실패'); }

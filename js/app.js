@@ -26,6 +26,7 @@ window.App = window.App || {};
       case 'calc-quick': calcFrom('jpy', parseFloat(t.dataset.v)); break;
       case 'tts': A.speak(t.dataset.text); break;
       case 'voice': setVoice(t.dataset.val); break;
+      case 'tts-rate': setTtsRate(parseFloat(t.dataset.val)); break;
       case 'doc-pick': A._docTarget = t.dataset.slot; { const inp = A.$('#doc-file'); if (inp) inp.click(); } break;
       case 'doc-view': A.viewDoc(t.dataset.slot); break;
       case 'doc-del': delDoc(t.dataset.slot); break;
@@ -95,6 +96,12 @@ window.App = window.App || {};
     // 즉시 들려주기: 보여주기 시트가 열려 있으면 그 문장을, 아니면 샘플을
     const sheetOpen = A.$('#sheet') && A.$('#sheet').classList.contains('open');
     A.speak(sheetOpen && A._lastShownJp ? A._lastShownJp : 'ありがとうございます', g);
+  }
+  function setTtsRate(r) {
+    if (!(r > 0)) return;
+    A.state.ttsRate = r; A.save('ttsRate');
+    A.$$('[data-action="tts-rate"]').forEach((b) => b.classList.toggle('on', parseFloat(b.dataset.val) === r));
+    A.speak('すみません、ありがとうございます'); // 미리듣기
   }
 
   document.addEventListener('input', function (e) {

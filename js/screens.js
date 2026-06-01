@@ -424,6 +424,9 @@ window.App = window.App || {};
       <h2 class="sec">🔊 일본어 음성</h2>
       <p class="muted small">회화·주소·역 이름 등 일본어 '보여주기' 화면에서 🔊 듣기를 누르면 이 목소리로 읽어줘요. 기기에 일본어 음성이 하나뿐이면 음높이로 남/여를 구분합니다.</p>
       <div class="segs">${opt(st.voice, 'female', '👩 여자', 'voice')}${opt(st.voice, 'male', '👨 남자', 'voice')}</div>
+      <h2 class="sec">🗣 말하기 속도</h2>
+      <p class="muted small">🔊 듣기 음성의 속도. 고르면 바로 미리 들려줘요.</p>
+      <div class="segs">${opt(st.ttsRate, 0.8, '느리게', 'tts-rate')}${opt(st.ttsRate, 1, '보통', 'tts-rate')}${opt(st.ttsRate, 1.2, '빠르게', 'tts-rate')}${opt(st.ttsRate, 1.4, '더 빠르게', 'tts-rate')}</div>
       <h2 class="sec">ℹ️ 정보</h2>
       <p class="muted small">2026 도쿄 가족여행 가이드 · 오프라인 PWA. 홈 화면에 추가하면 앱처럼 쓸 수 있어요 (아이폰: 공유 → 홈 화면에 추가).</p>
     </section>`;
