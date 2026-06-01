@@ -118,7 +118,7 @@
       "note": "완전 실내 인터랙티브 디지털 아트 — 장마철 인생샷 1순위. 사전 예약 필수(매진 잦음). 은재(만12세)는 어린이 요금.",
       "gmapUrl": "https://www.google.com/maps/search/?api=1&query=teamLab+Borderless+Azabudai+Tokyo",
       "dayId": "d2",
-      "imageUrl": ""
+      "imageUrl": "assets/img/e238cd2d76d7b17e.webp"
     },
     {
       "key": "shibuya-sky",
@@ -128,7 +128,7 @@
       "note": "시부야 스크램블 스퀘어 옥상 전망대. 온라인 예약 권장. ⚠️ 옥상은 폭우·강풍·번개 시 폐쇄(환불 X) — 장마엔 실내 전망층 위주, 인생샷은 teamLab이 더 안전.",
       "gmapUrl": "https://www.google.com/maps/search/?api=1&query=SHIBUYA+SKY",
       "dayId": "d2",
-      "imageUrl": ""
+      "imageUrl": "assets/img/a7fef3e737e76122.webp"
     },
     {
       "key": "meiji-jingu",
@@ -138,7 +138,7 @@
       "note": "다케시타도리에서 도보 5분. 숲속 큰 도리이 앞 기념사진 = 첫 일본 인증샷. 비 오는 날도 운치 있고 무료.",
       "gmapUrl": "https://www.google.com/maps/search/?api=1&query=Meiji+Jingu+Shrine",
       "dayId": "d2",
-      "imageUrl": ""
+      "imageUrl": "assets/img/003ed1488a480ecb.webp"
     },
     {
       "key": "ueno-science",
@@ -148,7 +148,7 @@
       "note": "공룡·우주 전시, 완전 실내 — 비 오는 D1 Plan B. 월 휴관(여행은 수~토 OK), 단 6월 소독 휴관 가능성은 공식 캘린더 확인.",
       "gmapUrl": "https://www.google.com/maps/search/?api=1&query=National+Museum+of+Nature+and+Science+Ueno",
       "dayId": "d1",
-      "imageUrl": ""
+      "imageUrl": "assets/img/67aa5484216076fc.webp"
     }
   ]
 }

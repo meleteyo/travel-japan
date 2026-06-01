@@ -63,3 +63,7 @@
 - `assets/img/45eee2782b3cef15.webp` ← https://upload.wikimedia.org/wikipedia/commons/4/48/Tokyo_station_%22Ichibangai_-_Character_Street%22.jpg
 - `assets/img/7fa31ad2091c88ce.webp` ← https://upload.wikimedia.org/wikipedia/commons/6/68/Keisei-Type-AE.jpg
 - `assets/img/29b856652ab3b012.webp` ← https://upload.wikimedia.org/wikipedia/commons/1/1b/IOcardSuica_06x0400.jpg
+- `assets/img/a7fef3e737e76122.webp` (photospot:shibuya-sky) <- https://upload.wikimedia.org/wikipedia/commons/4/45/SHIBUYA_SCRAMBLE_SQUARE_East_Tower.jpg
+- `assets/img/003ed1488a480ecb.webp` (photospot:meiji-jingu) <- https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Meiji_Jingu_2023-3.jpg/3840px-Meiji_Jingu_2023-3.jpg
+- `assets/img/67aa5484216076fc.webp` (photospot:ueno-science) <- https://upload.wikimedia.org/wikipedia/commons/3/3d/NMNC01s3200.jpg
+- `assets/img/e238cd2d76d7b17e.webp` (photospot:teamlab) <- https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Azabudai_Hills%2C_opening_day_67.jpg/1280px-Azabudai_Hills%2C_opening_day_67.jpg
