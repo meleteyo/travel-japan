@@ -413,6 +413,7 @@ body.reordering .prow-main { pointer-events: none; }
 .bc-top { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
 .bc-k { font-size: .82rem; font-weight: 600; color: var(--text-soft); white-space: nowrap; }
 .bc-v { font-size: 1.45rem; font-weight: 780; letter-spacing: -0.03em; }
+.bc-yen { font-size: .85rem; font-weight: 600; color: var(--text-soft); letter-spacing: 0; }
 .bc-bar { height: 10px; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin: 12px 0 8px; }
 .bc-bar > span { display: block; height: 100%; border-radius: 999px; background: var(--ok); transition: width .6s var(--ease); }
 .bc-bar.warn > span { background: var(--warn); } .bc-bar.over > span { background: var(--danger); }

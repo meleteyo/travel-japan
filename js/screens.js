@@ -402,9 +402,9 @@ window.App = window.App || {};
     const pct = Math.min(100, Math.round(totalKRW / budgetKRW * 100));
     const lvl = pct >= 100 ? 'over' : pct >= 80 ? 'warn' : 'ok';
     const budgetCard = `<div class="budget-card">
-      <div class="bc-top"><span class="bc-k">지출 합계</span><span class="bc-v">${A.fmtYen(total)}</span></div>
+      <div class="bc-top"><span class="bc-k">지출 합계</span><span class="bc-v">${won(totalKRW)} <span class="bc-yen">¥${total.toLocaleString('ko-KR')}</span></span></div>
       <div class="bc-bar ${lvl}"><span style="width:${pct}%"></span></div>
-      <div class="bc-foot"><span>${pct}% 사용 · ${won(totalKRW)}</span><span>여행 총예산 ${won(budgetKRW)}</span></div>
+      <div class="bc-foot"><span>${pct}% 사용</span><span>여행 총예산 ${won(budgetKRW)}</span></div>
     </div>`;
     return `<section class="shopv">
       ${head('쇼핑 · 예산', (sh.budget && sh.budget.free) || '')}
