@@ -18,6 +18,7 @@ window.App = window.App || {};
     check: '<circle cx="12" cy="12" r="8.5"/><path d="M8.4 12.3l2.5 2.5 4.7-4.9"/>',
     clipboard: '<rect x="5" y="5" width="14" height="16" rx="2.5"/><path d="M9 5V4.2A1.2 1.2 0 0 1 10.2 3h3.6A1.2 1.2 0 0 1 15 4.2V5"/><path d="M8.5 11h7M8.5 15h4.5"/>',
     back: '<path d="M14.5 6 8.5 12l6 6"/>',
+    next: '<path d="M9.5 6l6 6-6 6"/>',
     settings: '<path d="M4 8h9M17 8h3"/><path d="M4 16h3M11 16h9"/><circle cx="15" cy="8" r="2"/><circle cx="9" cy="16" r="2"/>',
     search: '<circle cx="11" cy="11" r="7"/><path d="M20.5 20.5 16 16"/>',
     pin: '<path d="M12 21s6.5-5.8 6.5-11A6.5 6.5 0 0 0 5.5 10c0 5.2 6.5 11 6.5 11z"/><circle cx="12" cy="10" r="2.4"/>'

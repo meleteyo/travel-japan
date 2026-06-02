@@ -44,11 +44,22 @@ window.App = window.App || {};
       html = '<section class="scr-head"><h1>문제가 발생했어요</h1><p>' + A.esc(String(e)) + '</p><a class="btn-primary" href="#/">홈으로</a></section>';
     }
     const app = A.$('#app');
-    app.innerHTML = html;
-    app.scrollTop = 0; window.scrollTo(0, 0);
-    setActiveTab(tab);
-    toggleBack(name);
-    A.afterRender(name);
+    const paint = function () {
+      app.innerHTML = html;
+      app.scrollTop = 0; window.scrollTo(0, 0);
+      setActiveTab(tab);
+      toggleBack(name);
+      A.afterRender(name);
+    };
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (document.startViewTransition && !reduce) {
+      document.documentElement.dataset.vt = (name === 'home' || name === A._prevName) ? 'fade' : 'push';
+      A._prevName = name;
+      document.startViewTransition(paint);
+    } else {
+      A._prevName = name;
+      paint();
+    }
   };
 
   // tab-root screens reachable from the bottom bar — no back arrow needed.

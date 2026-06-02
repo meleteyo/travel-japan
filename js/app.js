@@ -143,6 +143,7 @@ window.App = window.App || {};
       case 'calc-jpy': calcFrom('jpy', parseFloat(t.value)); break;
       case 'calc-krw': calcFrom('krw', parseFloat(t.value)); break;
       case 'global-search': A.runGlobalSearch(t.value); break;
+      case 'search-eg': { const i = A.$('#gsearch'); if (i) { i.value = t.dataset.q; A.runGlobalSearch(t.dataset.q); } break; }
       case 'force-update': forceUpdate(); break;
     }
   });
@@ -184,10 +185,10 @@ window.App = window.App || {};
   function guideJump(idx) {
     const el = document.getElementById('g-sec-' + idx);
     if (!el) return;
+    if (el.tagName === 'DETAILS') el.open = true;   // 접힌 섹션이면 펼치고 이동
     const bar = A.$('.appbar');
     const offset = (bar ? bar.offsetHeight : 56) + 8;
     const y = Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - offset);
-    // positional scroll works everywhere; html{scroll-behavior:smooth} adds easing where supported.
     window.scrollTo(0, y);
   }
 
@@ -286,9 +287,9 @@ window.App = window.App || {};
   A.runGlobalSearch = function (q) {
     const el = document.getElementById('gresults'); if (!el) return;
     q = (q || '').trim().toLowerCase();
-    if (!q) { el.innerHTML = '<p class="muted small">검색어를 입력하세요. (한국어)</p>'; return; }
+    if (!q) { el.innerHTML = ''; return; }
     const hits = A.buildSearchIndex().filter((x) => x.t.indexOf(q) >= 0).slice(0, 40);
-    if (!hits.length) { el.innerHTML = '<p class="muted small">결과가 없어요. 다른 단어로 검색해 보세요.</p>'; return; }
+    if (!hits.length) { el.innerHTML = '<div class="empty"><div class="e-ic">' + A.icon('search') + '</div><strong>결과가 없어요</strong><p>다른 단어로 검색해 보세요. (한국어)</p></div>'; return; }
     el.innerHTML = hits.map((h) => `<a class="gres" href="${h.route}"><span class="gres-ic">${h.icon}</span><span class="gres-b"><strong>${A.esc(h.label)}</strong>${h.sub ? `<small>${A.esc(h.sub)}</small>` : ''}</span></a>`).join('');
   };
 

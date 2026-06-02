@@ -47,30 +47,38 @@ window.App = window.App || {};
     const cloth = w ? `<a class="widget" href="#/day/${(t.day||{}).id||'d1'}"><span class="w-ic">${w.icon}</span>
       <span class="w-k">오늘 옷차림</span><span class="w-v small">${(w.clothing||[]).map(esc).join(' · ')}</span></a>` : '';
 
-    const big = [
-      ['#/talk', 'chat', '회화', 'big primary'],
-      ['#/sos', 'alert', '긴급', 'big danger'],
-      ['#/subway', 'map', '노선도', 'big'],
-      ['#/food', 'food', '맛집', 'big'],
-    ];
     const small = [
       ['#/day/' + ((t.day || {}).id || 'd1'), 'calendar', '일정'],
-      ['#/shopping', 'bag', '쇼핑'],
       ['#/info', 'clipboard', '예약·정보'],
       ['#/docs', 'folder', '서류함'],
-      ['#/tips', 'bulb', '정보·꿀팁'],
+      ['#/tips', 'bulb', '꿀팁'],
       ['#/photo', 'camera', '포토'],
       ['#/exchange', 'swap', '환율'],
-      ['#/medical', 'medical', '병원·약국'],
+      ['#/medical', 'medical', '병원'],
       ['#/check', 'check', '체크'],
     ];
+    const greet = t.phase === 'before' ? '여행 준비 중' : t.phase === 'after' ? '다녀온 여행' : '여행 중';
     return `<section class="home">
-      <header class="home-top"><div><h1>${esc(trip.title || '도쿄 여행')}</h1>
-      <p>${esc(trip.subtitle || '')}</p></div></header>
+      <header class="home-top">
+        <span class="home-eyebrow">${esc(greet)}</span>
+        <h1>${esc(trip.title || '도쿄 여행')}</h1>
+        <p>${esc(trip.subtitle || '')}</p>
+      </header>
       <a class="home-search" href="#/search">${A.icon('search')}<span>무엇이든 검색 — 회화·맛집·교통·꿀팁…</span></a>
       ${hero}
       <div class="widgets">${budget}${cloth}</div>
-      <div class="grid-big">${big.map(([h, i, l, c]) => `<a class="card-act ${c}" href="${h}"><span class="ca-ic">${A.icon(i)}</span><span>${l}</span></a>`).join('')}</div>
+      <h2 class="sec">바로가기</h2>
+      <div class="bento">
+        <a class="tile feature" href="#/talk">
+          <span class="tile-ic">${A.icon('chat')}</span>
+          <span class="tile-txt"><b>회화 · 보여주기</b><small>말이 안 통할 땐 화면으로 보여주세요</small></span>
+          <span class="tile-go">${A.icon('next')}</span>
+        </a>
+        <a class="tile danger" href="#/sos"><span class="tile-ic">${A.icon('alert')}</span><b>긴급</b></a>
+        <a class="tile" href="#/subway"><span class="tile-ic">${A.icon('map')}</span><b>노선도</b></a>
+        <a class="tile" href="#/food"><span class="tile-ic">${A.icon('food')}</span><b>맛집</b></a>
+        <a class="tile" href="#/shopping"><span class="tile-ic">${A.icon('bag')}</span><b>쇼핑</b></a>
+      </div>
       <h2 class="sec">더 보기</h2>
       <div class="grid-small">${small.map(([h, i, l]) => `<a class="card-act sm" href="${h}"><span class="ca-ic">${A.icon(i)}</span><span>${l}</span></a>`).join('')}</div>
       <p class="foot-note">출발 전 와이파이에서 <a href="#/settings">오프라인 전체 저장</a>을 한 번 실행하면 인터넷 없이도 모두 열려요.</p>
@@ -84,17 +92,32 @@ window.App = window.App || {};
     if (!d) return head('일정');
     const w = weatherOf(d.id);
     const chips = days.map((x) => `<a class="chip ${x.id === d.id ? 'on' : ''}" href="#/day/${x.id}">${x.n}일 ${x.dow}</a>`).join('');
-    const stops = (d.stops || []).map((s) => {
+    // 오늘 보는 날이면 현재 시각 기준으로 지난/지금 스팟 표시
+    const tnow = A.tripDay();
+    const isToday = tnow.phase === 'during' && tnow.day && tnow.day.id === d.id;
+    let nowMin = -1, curIdx = -1;
+    if (isToday) {
+      try {
+        const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+        const hh = +parts.find((p) => p.type === 'hour').value, mm = +parts.find((p) => p.type === 'minute').value;
+        nowMin = hh * 60 + mm;
+      } catch (e) { nowMin = -1; }
+      const mins = (d.stops || []).map((s) => { const m = /(\d{1,2}):(\d{2})/.exec(s.time || ''); return m ? (+m[1]) * 60 + (+m[2]) : -1; });
+      for (let i = 0; i < mins.length; i++) { if (mins[i] >= 0 && mins[i] <= nowMin) curIdx = i; }
+    }
+    const stops = (d.stops || []).map((s, i) => {
       const tips = (s.tips || []).length ? `<ul class="tips">${s.tips.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : '';
-      return `<div class="stop">
-        <div class="stop-time">${esc(s.time || '')}</div>
+      const state = isToday ? (i < curIdx ? ' past' : (i === curIdx ? ' now' : '')) : '';
+      return `<div class="stop${state}">
+        <div class="stop-rail"><span class="stop-time">${esc(s.time || '')}</span><span class="stop-node"></span></div>
         <div class="stop-card">
+          ${i === curIdx ? '<span class="now-tag">지금</span>' : ''}
           ${A.img(A.placeImg(s.img), s.name, 'stop-img')}
           <div class="stop-body">
             <h3>${esc(s.name)} ${s.nameJa ? `<small>${esc(s.nameJa)}</small>` : ''}</h3>
-            ${s.station ? `<div class="stn">🚉 ${esc(s.station)}</div>` : ''}
+            ${s.station ? `<div class="stn">${A.icon('pin')} ${esc(s.station)}</div>` : ''}
             ${s.desc ? (s.guide
-              ? `<a class="stop-desc-link" href="#/guide/${s.guide}"><p>${esc(s.desc)}</p><span class="more">📖 상세 가이드 ›</span></a>`
+              ? `<a class="stop-desc-link" href="#/guide/${s.guide}"><p>${esc(s.desc)}</p><span class="more">상세 가이드 ›</span></a>`
               : (s.link
                 ? `<a class="stop-desc-link" href="${esc(s.link)}"><p>${esc(s.desc)}</p><span class="more">${esc(s.linkLabel || '자세히 ›')}</span></a>`
                 : `<p>${esc(s.desc)}</p>`)) : ''}
@@ -110,17 +133,17 @@ window.App = window.App || {};
       <div class="chips">${chips}</div>
       ${w ? `<div class="weather-band">${w.icon} <strong>${esc(w.summary)} · 비 ${w.rainPct}% · ${w.tempMin}~${w.tempMax}°</strong> <button class="wlive" data-action="refresh-weather" aria-label="날씨 새로고침">${wLive() || '🔄 예보 · 새로고침'}</button><br><span>${esc(w.advice)}</span></div>` : ''}
       ${d.moveNote ? `<p class="movenote">🧭 ${esc(d.moveNote)}</p>` : ''}
-      <div class="timeline">${stops}</div>
-      <a class="btn-block" href="#/food?d=${d.id}">🍜 이 날 맛집·식사 보기</a>
+      <div class="timeline${isToday ? ' is-today' : ''}">${stops}</div>
+      <a class="btn-block" href="#/food?d=${d.id}">이 날 맛집·식사 보기</a>
     </section>`;
   };
 
   // ====================================================== TALK
   S.talk = function () {
     const cats = A.data.phrases.categories || [];
-    const chipFav = `<button class="tchip on" data-action="talk-cat" data-cat="fav">⭐ 즐겨찾기</button>`;
+    const chipFav = `<button class="tchip on" data-action="talk-cat" data-cat="fav">★ 즐겨찾기</button>`;
     const chipAll = `<button class="tchip" data-action="talk-cat" data-cat="all">전체</button>`;
-    const chips = cats.map((c) => `<button class="tchip" data-action="talk-cat" data-cat="${c.id}">${c.icon} ${esc(c.label)}</button>`).join('');
+    const chips = cats.map((c) => `<button class="tchip" data-action="talk-cat" data-cat="${c.id}">${esc(c.label)}</button>`).join('');
     const rows = (A.data.phrases.phrases || []).map((p) => {
       const on = A.state.fav.includes(p.id);
       return `<div class="prow lvl-${p.level || 'n'}" data-cat="${p.cat}" data-ko="${esc(p.ko)}" data-id="${p.id}">
@@ -137,8 +160,10 @@ window.App = window.App || {};
     return `<section class="talk">
       ${head('회화', '문장을 탭하면 크게 — 점원에게 보여주세요')}
       <details class="usage"><summary>💡 사용 요령</summary><ul>${usage}</ul></details>
-      <input class="search" type="search" placeholder="한국어로 검색 (예: 카드, 화장실)" data-action="talk-search" aria-label="회화 검색">
-      <div class="tchips">${chipFav}${chipAll}${chips}</div>
+      <div class="talk-filter">
+        <input class="search" type="search" placeholder="한국어로 검색 (예: 카드, 화장실)" data-action="talk-search" aria-label="회화 검색">
+        <div class="tchips">${chipFav}${chipAll}${chips}</div>
+      </div>
       <div class="plist" id="plist">${rows}</div>
     </section>`;
   };
@@ -166,8 +191,8 @@ window.App = window.App || {};
   S.subway = function () {
     const t = A.data.transit;
     const routes = (t.routes || []).map((r) => `<div class="route">
-      <div class="r-path"><strong>${esc(r.from)}</strong> → <strong>${esc(r.to)}</strong></div>
-      <div class="r-meta">${esc(r.line)} · ${r.min}분 · ${A.fmtYen(r.fareYen)}</div>
+      <div class="r-path"><strong>${esc(r.from)}</strong><span class="r-arrow">${A.icon('next')}</span><strong>${esc(r.to)}</strong></div>
+      <div class="r-meta"><span class="r-line">${esc(r.line)}</span><span>${r.min}분</span><span>${A.fmtYen(r.fareYen)}</span></div>
       ${r.note ? `<div class="r-note">${esc(r.note)}</div>` : ''}</div>`).join('');
     const stns = (t.stations || []).map((s) =>
       `<button class="stn-chip" data-action="show-text" data-jp="${esc(s.ja)}" data-pron="${esc(s.roma)}" data-ko="${esc(s.ko)}역">${esc(s.ko)} <small lang="ja">${esc(s.ja)}</small></button>`).join('');
@@ -177,7 +202,7 @@ window.App = window.App || {};
       ${head('교통 · 지하철', t.hub ? '거점 ' + t.hub : '')}
       <p class="summary">${esc(t.summary || '')}</p>
       <button class="map-thumb" data-action="lightbox" data-src="${esc(map.webp || map.png || '')}" data-alt="${esc(map.alt || '노선도')}">
-        ${A.img(map.webp || map.png, map.alt, 'mapimg', '🗺')}<span class="zoom-hint">🔍 탭하면 크게 (핀치 줌)</span></button>
+        ${A.img(map.webp || map.png, map.alt, 'mapimg', '🗺')}<span class="zoom-hint">${A.icon('search')} 탭하면 크게 · 핀치 줌</span></button>
       <h2 class="sec">주요 경로 (요금 원화 병기)</h2>
       <div class="routes">${routes}</div>
       <h2 class="sec">역 이름 보여주기</h2>
@@ -335,12 +360,12 @@ window.App = window.App || {};
     const guideExists = (gid) => !!((((A.data.guides || {}).guides) || {})[gid]);
     const wish = (sh.wishlist || []).map((w) => {
       const on = !!A.state.wish[w.id];
-      const gl = (w.guide && guideExists(w.guide)) ? `<a class="wish-guide" href="#/guide/${w.guide}">📖 무엇을 살까 — 추천 굿즈 ›</a>` : '';
+      const gl = (w.guide && guideExists(w.guide)) ? `<a class="wish-guide" href="#/guide/${w.guide}">무엇을 살까 — 추천 굿즈 ›</a>` : '';
       return `<div class="wish-card ${on ? 'on' : ''}">
         <button class="wish-main" data-action="wish" data-id="${w.id}">
           ${A.img(A.placeImg(w.img), w.store, 'wish-img', '🛍')}
           <div class="wish-b"><div class="wish-s">${esc(w.store)}</div><div class="wish-l">${esc(w.label)}</div></div>
-          <span class="wcheck">${on ? '✅' : '⬜'}</span></button>
+          <span class="wcheck ${on ? 'on' : ''}">${on ? A.icon('check') : ''}</span></button>
         ${gl}</div>`;
     }).join('');
     const tips = (sh.giftTips || []).map((g) => `<li>${esc(g)}</li>`).join('');
@@ -348,22 +373,36 @@ window.App = window.App || {};
     const exps = (A.state.expenses || []).slice().reverse().map((e) => `<div class="exp-row"><span>${esc(e.label || '지출')}</span>
       <span class="exp-v">${A.fmtYen(e.amountYen)}</span><button class="exp-x" data-action="del-expense" data-id="${e.id}" aria-label="삭제">✕</button></div>`).join('');
     const total = (A.state.expenses || []).reduce((s, e) => s + (e.amountYen || 0), 0);
+    // 예산 상한 추출 ("2만~3만엔" → 30000) → 진행률 바
+    const parseBudget = (str) => {
+      if (!str) return 0; let max = 0, m; const re = /(\d+(?:\.\d+)?)\s*만/g;
+      while ((m = re.exec(str))) max = Math.max(max, parseFloat(m[1]) * 10000);
+      if (!max) { const r2 = /(\d[\d,]{2,})/g; while ((m = r2.exec(str))) max = Math.max(max, +m[1].replace(/,/g, '')); }
+      return max;
+    };
+    const budgetYen = parseBudget(sh.budget && sh.budget.free);
+    const pct = budgetYen ? Math.min(100, Math.round(total / budgetYen * 100)) : 0;
+    const lvl = pct >= 100 ? 'over' : pct >= 80 ? 'warn' : 'ok';
+    const budgetCard = `<div class="budget-card">
+      <div class="bc-top"><span class="bc-k">지출 합계</span><span class="bc-v">${A.fmtYen(total)}</span></div>
+      ${budgetYen ? `<div class="bc-bar ${lvl}"><span style="width:${pct}%"></span></div>
+      <div class="bc-foot"><span>${pct}% 사용</span><span>예산 ${A.fmtYen(budgetYen)}</span></div>` : ''}
+    </div>`;
     return `<section class="shopv">
       ${head('쇼핑 · 예산', (sh.budget && sh.budget.free) || '')}
-      <div class="budget-note">${sh.budget ? `🎯 ${esc(sh.budget.free)} · ${esc(sh.budget.gacha)}` : ''}</div>
+      ${budgetCard}
       ${sh.budgetNote ? `<p class="muted small">${esc(sh.budgetNote)}</p>` : ''}
       ${(sh.storeBudget || []).length ? `<div class="store-budget">${sh.storeBudget.map((b) => `<div class="sb-row"><span>${esc(b.store)}</span><span class="sb-cap">${esc(b.cap)}</span></div>`).join('')}</div>` : ''}
-      <h2 class="sec">🧾 지출 메모</h2>
+      <h2 class="sec">지출 메모</h2>
       <form class="exp-form" data-action="add-expense">
         <input name="label" placeholder="항목 (예: 가챠)" aria-label="항목">
         <input name="yen" type="number" inputmode="numeric" placeholder="¥ 금액" aria-label="금액">
-        <button type="submit">＋</button>
+        <button type="submit" aria-label="추가">＋</button>
       </form>
-      <div class="exp-total">합계 ${A.fmtYen(total)}</div>
-      <div class="exps">${exps || '<p class="muted small">아직 기록이 없어요.</p>'}</div>
-      <h2 class="sec">⭐ 사고 싶은 것 (은재)</h2>
+      <div class="exps">${exps || '<div class="empty"><div class="e-ic">' + A.icon('bag') + '</div><strong>아직 기록이 없어요</strong><p>위에서 지출을 추가하면 예산이 채워져요.</p></div>'}</div>
+      <h2 class="sec">사고 싶은 것 (은재)</h2>
       <div class="wishlist">${wish}</div>
-      <h2 class="sec">🎁 친구 선물 팁</h2><ul class="bullets">${tips}</ul>
+      <h2 class="sec">친구 선물 팁</h2><ul class="bullets">${tips}</ul>
     </section>`;
   };
 
@@ -388,7 +427,7 @@ window.App = window.App || {};
     const dr = (m.drugstores || []).map((d) => `<div class="line-card"><h3>💊 ${esc(d.name)}</h3><p>${esc(d.note)}</p></div>`).join('');
     const meds = (m.meds || []).map((x) => `<div class="med-row">
       <div class="med-row-b"><strong>${esc(x.ko)}</strong> <span lang="ja">${esc(x.ja)}</span> <small>${esc(x.pron)}</small><p>${esc(x.use)}</p></div>
-      <button class="show-btn" data-action="show-text" data-jp="${esc(x.ja)}" data-pron="${esc(x.pron)}" data-ko="${esc(x.ko)}">📢</button></div>`).join('');
+      <button class="show-btn" data-action="show-text" data-jp="${esc(x.ja)}" data-pron="${esc(x.pron)}" data-ko="${esc(x.ko)}" aria-label="${esc(x.ko)} 일본어로 보여주기">📢</button></div>`).join('');
     return `<section class="medv">
       ${head('병원 · 약국', '아플 때 — 출발 전 한 번 더 확인하세요')}
       <h2 class="sec">🏥 외국어 가능 병원</h2>${hos}
@@ -422,16 +461,24 @@ window.App = window.App || {};
   S.check = function () {
     const groups = (A.data.checklist.groups || []).map((g) => {
       const done = g.items.filter((i) => A.state.check[i.id]).length;
+      const total = g.items.length;
+      const pct = total ? Math.round(done / total * 100) : 0;
+      const allDone = done === total && total > 0;
       const items = g.items.map((i) => {
         const on = !!A.state.check[i.id];
         return `<button class="chk ${on ? 'on' : ''}" data-action="check" data-id="${i.id}">
-          <span class="chk-box">${on ? '✓' : ''}</span>
+          <span class="chk-box">${on ? A.icon('check') : ''}</span>
           <span class="chk-t">${esc(i.text)}</span>
           ${i.owner ? `<span class="chk-o">${esc(i.owner)}</span>` : ''}</button>`;
       }).join('');
-      return `<details class="cgroup" ${done < g.items.length ? 'open' : ''}>
-        <summary>${g.icon} ${esc(g.label)} <span class="cg-prog">${done}/${g.items.length}</span></summary>
-        ${items}</details>`;
+      return `<details class="cgroup" ${done < total ? 'open' : ''}>
+        <summary>
+          <span class="cg-ring ${allDone ? 'done' : ''}" style="--p:${pct}"><span class="cg-num">${allDone ? A.icon('check') : done}</span></span>
+          <span class="cg-label">${esc(g.label)}</span>
+          <span class="cg-prog">${done}/${total}</span>
+          <span class="cg-ch">${A.icon('next')}</span>
+        </summary>
+        <div class="cgroup-body">${items}</div></details>`;
     }).join('');
     return `<section class="checkv">${head('체크리스트', '출발 전 · 매일 · 귀국일')}${groups}</section>`;
   };
@@ -492,10 +539,12 @@ window.App = window.App || {};
 
   // ====================================================== SEARCH (전역 검색)
   S.search = function () {
+    const eg = ['스카이라이너', '환전', '화장실', '가챠', '라멘'];
     return `<section class="searchv">
       ${head('검색', '회화·맛집·교통·꿀팁·일정 무엇이든')}
       <input class="search" id="gsearch" type="search" placeholder="예: 스카이라이너, 환전, 화장실, 가챠, 라멘" data-action="global-search" autocomplete="off">
-      <div id="gresults" class="gresults"><p class="muted small">검색어를 입력하세요. (한국어)</p></div>
+      <div class="search-eg">${eg.map((w) => `<button class="qchip" data-action="search-eg" data-q="${w}">${w}</button>`).join('')}</div>
+      <div id="gresults" class="gresults"></div>
     </section>`;
   };
 
@@ -510,7 +559,10 @@ window.App = window.App || {};
       const tips = (s.tips || []).length ? `<ul class="g-tips">${s.tips.map((x) => `<li>💡 ${esc(x)}</li>`).join('')}</ul>` : '';
       const cau = (s.cautions || []).length ? `<ul class="g-caution">${s.cautions.map((x) => `<li>⚠️ ${esc(x)}</li>`).join('')}</ul>` : '';
       const ph = (s.phraseIds || []).map((pid) => { const p = A.phraseIndex[pid]; return p ? `<button class="mini-show" data-action="show" data-id="${pid}">📢 ${esc(p.ko)}</button>` : ''; }).join('');
-      return `<div class="g-sec" id="g-sec-${i}"><h3>${s.icon ? s.icon + ' ' : ''}${esc(s.heading)}</h3>${steps}${tips}${cau}${ph ? `<div class="row-btns">${ph}</div>` : ''}</div>`;
+      return `<details class="g-sec" id="g-sec-${i}"${i === 0 ? ' open' : ''}>
+        <summary><span class="g-sec-t">${s.icon ? s.icon + ' ' : ''}${esc(s.heading)}</span><span class="g-sec-ch">${A.icon('next')}</span></summary>
+        <div class="g-sec-body">${steps}${tips}${cau}${ph ? `<div class="row-btns">${ph}</div>` : ''}</div>
+      </details>`;
     };
     const heroSrc = g.heroImg || (g.hero ? A.placeImg(g.hero) : '');
     const gallery = (g.gallery || []).length ? `<div class="g-gallery">${g.gallery.map((im) =>
