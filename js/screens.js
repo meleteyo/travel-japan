@@ -144,8 +144,14 @@ window.App = window.App || {};
     const chipFav = `<button class="tchip on" data-action="talk-cat" data-cat="fav">★ 즐겨찾기</button>`;
     const chipAll = `<button class="tchip" data-action="talk-cat" data-cat="all">전체</button>`;
     const chips = cats.map((c) => `<button class="tchip" data-action="talk-cat" data-cat="${c.id}">${esc(c.label)}</button>`).join('');
-    const rows = (A.data.phrases.phrases || []).map((p) => {
-      const on = A.state.fav.includes(p.id);
+    // 즐겨찾기를 저장된 순서대로 먼저, 나머지는 원래 순서로 — 즐겨찾기 탭에서 드래그 정렬 가능
+    const all = A.data.phrases.phrases || [];
+    const favIds = A.state.fav || [];
+    const favSet = new Set(favIds);
+    const ordered = favIds.map((id) => all.find((p) => p.id === id)).filter(Boolean)
+      .concat(all.filter((p) => !favSet.has(p.id)));
+    const rows = ordered.map((p) => {
+      const on = favSet.has(p.id);
       return `<div class="prow lvl-${p.level || 'n'}" data-cat="${p.cat}" data-ko="${esc(p.ko)}" data-id="${p.id}">
         <button class="prow-main" data-action="show" data-id="${p.id}">
           <div class="p-ko">${esc(p.ko)}</div>
@@ -154,6 +160,7 @@ window.App = window.App || {};
           ${p.note ? `<div class="p-note">💡 ${esc(p.note)}</div>` : ''}
         </button>
         <button class="fav ${on ? 'on' : ''}" data-action="fav" data-id="${p.id}" aria-label="즐겨찾기">${on ? '★' : '☆'}</button>
+        <span class="prow-drag" aria-hidden="true" title="드래그해서 순서 변경">⠿</span>
       </div>`;
     }).join('');
     const usage = (A.data.phrases.usage || []).map((u) => `<li>${esc(u)}</li>`).join('');
@@ -164,7 +171,7 @@ window.App = window.App || {};
         <input class="search" type="search" placeholder="한국어로 검색 (예: 카드, 화장실)" data-action="talk-search" aria-label="회화 검색">
         <div class="tchips">${chipFav}${chipAll}${chips}</div>
       </div>
-      <div class="plist" id="plist">${rows}</div>
+      <div class="plist fav-view" id="plist"><p class="fav-hint muted small">⠿ 손잡이를 끌어 즐겨찾기 순서를 바꿀 수 있어요</p>${rows}</div>
     </section>`;
   };
 

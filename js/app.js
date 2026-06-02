@@ -229,8 +229,51 @@ window.App = window.App || {};
   function setTalkCat(cat, btn) {
     A.talkState.cat = cat;
     A.$$('.tchip').forEach((c) => c.classList.toggle('on', c === btn));
+    const pl = A.$('#plist'); if (pl) pl.classList.toggle('fav-view', cat === 'fav');  // 드래그 정렬은 즐겨찾기 탭만
     filterTalk();
   }
+
+  // ---------------- 즐겨찾기 드래그 정렬 (회화 즐겨찾기 탭) ----------------
+  (function favReorder() {
+    let drag = null, plist = null;
+    const isFav = (r) => A.state.fav.includes(r.dataset.id);
+    const visibleFavRows = () => A.$$('#plist .prow').filter((r) => isFav(r) && r.style.display !== 'none');
+    document.addEventListener('pointerdown', function (e) {
+      const h = e.target.closest('.prow-drag');
+      if (!h || !A.talkState || A.talkState.cat !== 'fav') return;
+      const row = h.closest('.prow'); if (!row) return;
+      e.preventDefault();
+      plist = A.$('#plist'); drag = row;
+      row.classList.add('dragging');
+      document.body.classList.add('reordering');
+      try { h.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    document.addEventListener('pointermove', function (e) {
+      if (!drag || !plist) return;
+      e.preventDefault();
+      const y = e.clientY;
+      const rows = visibleFavRows();
+      let after = null, best = Infinity;
+      for (const r of rows) {
+        if (r === drag) continue;
+        const box = r.getBoundingClientRect();
+        const mid = box.top + box.height / 2;
+        if (y < mid && (mid - y) < best) { best = mid - y; after = r; }
+      }
+      if (after && after !== drag) plist.insertBefore(drag, after);
+      else if (!after) { const last = rows[rows.length - 1]; if (last && last !== drag) plist.insertBefore(drag, last.nextSibling); }
+    });
+    function commit() {
+      if (!drag) return;
+      drag.classList.remove('dragging');
+      document.body.classList.remove('reordering');
+      const order = A.$$('#plist .prow').map((r) => r.dataset.id).filter((id) => A.state.fav.includes(id));
+      A.state.fav = order; A.save('fav');
+      drag = null; plist = null;
+    }
+    document.addEventListener('pointerup', commit);
+    document.addEventListener('pointercancel', commit);
+  })();
   function filterTalk() {
     const { cat, q } = A.talkState;
     const ql = q.toLowerCase();
