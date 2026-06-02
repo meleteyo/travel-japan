@@ -134,14 +134,14 @@
     },
     {
       "key": "pokemon-center-shibuya",
-      "name": "포켓몬 센터 메가 도쿄",
-      "nameJa": "ポケモンセンターメガトウキョー",
-      "area": "이케부쿠로",
+      "name": "포켓몬 센터 시부야",
+      "nameJa": "ポケモンセンターシブヤ",
+      "area": "시부야",
       "imageUrl": "assets/img/1c8c930e03e02efb.webp",
       "imageSource": "upload.wikimedia.org",
       "isReal": true,
-      "gmapUrl": "https://maps.google.com/?q=Pokemon+Center+Mega+Tokyo+Ikebukuro",
-      "note": "선샤인시티 내 세계 최대급 포켓몬 공식 직영점. 한정 굿즈는 오픈 전 줄서기 필수."
+      "gmapUrl": "https://maps.google.com/?q=Pokemon+Center+Shibuya+PARCO",
+      "note": "시부야 파르코 6층(닌텐도 TOKYO·캡콤 스토어와 같은 층). 자유 입장(정리권 불필요), 영업 10:00~21:00. 시부야 한정 굿즈가 많아요."
     },
     {
       "key": "nintendo-tokyo",
