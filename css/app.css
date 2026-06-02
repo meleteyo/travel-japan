@@ -578,7 +578,8 @@ img { background: var(--surface-2); }
 
 /* toast */
 #toast { position: fixed; left: 50%; bottom: calc(108px + env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(20px);
-  background: var(--text); color: var(--bg); padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: .9rem;
+  max-width: min(86vw, 320px); text-align: center; line-height: 1.35;
+  background: var(--text); color: var(--bg); padding: 9px 16px; border-radius: 14px; font-weight: 600; font-size: .82rem;
   opacity: 0; pointer-events: none; transition: .25s; z-index: 80; box-shadow: var(--shadow-pop); }
 #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
