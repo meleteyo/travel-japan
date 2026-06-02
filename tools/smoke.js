@@ -18,7 +18,7 @@ global.document = Object.assign(noopEl(), { readyState: 'loading',
   createElement: () => noopEl(), querySelector: (s) => (s === '#app' ? appEl : null), querySelectorAll: () => [],
   body: noopEl(), documentElement: { dataset: {}, style: { setProperty() {} } } });
 
-for (const f of ['util', 'icons', 'idb', 'data', 'weather', 'fx', 'screens', 'panzoom', 'router', 'app'])
+for (const f of ['util', 'icons', 'idb', 'data', 'weather', 'fx', 'sync', 'screens', 'panzoom', 'router', 'app'])
   require(path.join(ROOT, 'js', f + '.js'));
 const App = global.App;
 
@@ -38,6 +38,7 @@ const cases = {
   'food(d3)': () => S.food('d3'), tips: () => S.tips(), shopping: () => S.shopping(),
   photo: () => S.photo(), medical: () => S.medical(), exchange: () => S.exchange(),
   check: () => S.check(), info: () => S.info(), settings: () => S.settings(), docs: () => S.docs(), search: () => S.search(),
+  join: () => S.join({ get: () => '' }), 'join(code)': () => S.join({ get: () => 'abcdefghjkmn' }),
   'guide(narita)': () => S.guide('narita-arrival'), 'guide(miss)': () => S.guide('zzz'),
   'eat(wagyu)': () => S.eat('wagyu'), 'eat(ramen)': () => S.eat('ramen'), 'eat(miss)': () => S.eat('zzz'),
 };

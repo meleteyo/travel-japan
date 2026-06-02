@@ -14,7 +14,7 @@ const appEl = noopEl();
 global.document = Object.assign(noopEl(), { readyState: 'loading', createElement: () => noopEl(),
   querySelector: (s) => (s === '#app' ? appEl : null), querySelectorAll: () => [], body: noopEl(),
   documentElement: { dataset: {}, style: { setProperty() {} } } });
-for (const f of ['util', 'icons', 'idb', 'data', 'weather', 'fx', 'screens', 'panzoom', 'router', 'app']) require(path.join(ROOT, 'js', f + '.js'));
+for (const f of ['util', 'icons', 'idb', 'data', 'weather', 'fx', 'sync', 'screens', 'panzoom', 'router', 'app']) require(path.join(ROOT, 'js', f + '.js'));
 const App = global.App;
 ['itinerary', 'phrases', 'emergency', 'info', 'transit', 'exchange', 'weather', 'checklist', 'shopping', 'tips', 'restaurants', 'musteat', 'places', 'photospots', 'medical', 'docs', 'guides']
   .forEach((f) => { App.data[f] = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', f + '.json'))); });
@@ -27,6 +27,12 @@ App.state.fxRate = App.data.exchange.ratePer100;
 const S = App.screens;
 let html = [S.home(), S.talk(), S.subway(), S.sos(), S.tips(), S.shopping(), S.photo(), S.medical(), S.exchange(), S.check(), S.info(), S.settings(), S.docs(), S.search(), S.guide('narita-arrival')];
 ['d1', 'd2', 'd3', 'd4'].forEach((d) => { html.push(S.day(d)); html.push(S.food(d)); });
+html.push(S.join({ get: () => '' }));
+// 가족 연결 상태 렌더 — own-tally/own-chip/chk-by/exp-by/fam-on/fam-* 클래스 커버
+App.state.familyCode = 'abcdefghjkmn'; App.state.member = 'mom';
+App.shared = { checks: { f1: { by: 'mom', ts: 1 }, m1: { by: 'dad', ts: 1 } }, expenses: [{ id: 'x1', by: 'dad', label: '편의점', amountYen: 1200, ts: 1 }] };
+html.push(S.check()); html.push(S.shopping()); html.push(S.settings());
+App.state.familyCode = null; App.state.member = null; App.shared = { checks: {}, expenses: [] };
 // dynamic sheet markup (show / show-text) — capture via the string builders
 html.push('<div class="show lvl-allergy"><button class="sheet-x"></button><div class="show-tag warn"></div><div class="show-jp"></div><div class="show-pron"></div><div class="show-ko"></div><p class="show-hint"></p></div>');
 html.push(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8'));

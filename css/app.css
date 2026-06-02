@@ -487,6 +487,24 @@ img { background: var(--surface-2); }
 .chk.on .chk-box { background: var(--ok); border-color: var(--ok); }
 .chk-t { flex: 1; font-size: .95rem; } .chk.on .chk-t { color: var(--text-soft); text-decoration: line-through; }
 .chk-o { font-size: .7rem; background: var(--surface-2); color: var(--text-soft); padding: 3px 9px; border-radius: 999px; font-weight: 700; }
+.chk-by { font-size: .68rem; background: var(--ok); color: #fff; padding: 3px 9px; border-radius: 999px; font-weight: 800; white-space: nowrap; flex: 0 0 auto; }
+
+/* ---- 가족 공유 (체크 담당자 집계 · 지출 결제자 · 연결 카드) ---- */
+.own-tally { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+.own-chip { font-size: .8rem; background: var(--surface); border: 1px solid var(--line); color: var(--text-soft); padding: 6px 11px; border-radius: 999px; font-weight: 700; }
+.own-chip b { color: var(--text); font-weight: 800; margin-right: 3px; }
+.own-chip.done { background: var(--ok); border-color: var(--ok); color: #fff; }
+.own-chip.done b { color: #fff; }
+.exp-by { font-size: .7rem; background: var(--surface-2); color: var(--text-soft); padding: 3px 9px; border-radius: 999px; font-weight: 700; flex: 0 0 auto; white-space: nowrap; }
+.fam-on { font-size: .72rem; color: var(--primary); font-weight: 800; }
+.fam-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 11px; margin-bottom: 6px; }
+.fam-card .segs { margin: 0; }
+.fam-stat { font-size: .95rem; font-weight: 700; }
+.fam-step { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: .95rem; margin-top: 2px; }
+.fam-n { flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; background: var(--primary); color: var(--primary-ink); display: grid; place-items: center; font-size: .82rem; font-weight: 800; }
+.fc-input { width: 100%; padding: 13px 14px; border: 1px solid var(--line-strong); border-radius: var(--r-sm); background: var(--surface); font-size: 1rem; letter-spacing: .04em; }
+.fc-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
+.joinv { padding-bottom: 24px; }
 
 /* ===== info ===== */
 .hotel-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); }

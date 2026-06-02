@@ -369,10 +369,12 @@ window.App = window.App || {};
         ${gl}</div>`;
     }).join('');
     const tips = (sh.giftTips || []).map((g) => `<li>${esc(g)}</li>`).join('');
-    // expense tracker
-    const exps = (A.state.expenses || []).slice().reverse().map((e) => `<div class="exp-row"><span>${esc(e.label || '지출')}</span>
-      <span class="exp-v">${A.fmtYen(e.amountYen)}</span><button class="exp-x" data-action="del-expense" data-id="${e.id}" aria-label="삭제">✕</button></div>`).join('');
-    const total = (A.state.expenses || []).reduce((s, e) => s + (e.amountYen || 0), 0);
+    // expense tracker — 연결 시 가족 통합 가계부, 아니면 로컬
+    const linked = A.linked && A.linked();
+    const list = A.expenseList();   // [{id,by,label,amountYen,ts}]
+    const exps = list.slice().reverse().map((e) => `<div class="exp-row"><span>${esc(e.label || '지출')}</span>
+      ${e.by ? `<span class="exp-by">${A.memberKo(e.by)}</span>` : ''}<span class="exp-v">${A.fmtYen(e.amountYen)}</span><button class="exp-x" data-action="del-expense" data-id="${e.id}" aria-label="삭제">✕</button></div>`).join('');
+    const total = list.reduce((s, e) => s + (e.amountYen || 0), 0);
     // 예산 상한 추출 ("2만~3만엔" → 30000) → 진행률 바
     const parseBudget = (str) => {
       if (!str) return 0; let max = 0, m; const re = /(\d+(?:\.\d+)?)\s*만/g;
@@ -393,7 +395,7 @@ window.App = window.App || {};
       ${budgetCard}
       ${sh.budgetNote ? `<p class="muted small">${esc(sh.budgetNote)}</p>` : ''}
       ${(sh.storeBudget || []).length ? `<div class="store-budget">${sh.storeBudget.map((b) => `<div class="sb-row"><span>${esc(b.store)}</span><span class="sb-cap">${esc(b.cap)}</span></div>`).join('')}</div>` : ''}
-      <h2 class="sec">지출 메모</h2>
+      <h2 class="sec">지출 메모${linked ? ' <span class="fam-on">👨‍👩‍👧 가족 통합</span>' : ''}</h2>
       <form class="exp-form" data-action="add-expense">
         <input name="label" placeholder="항목" aria-label="항목">
         <input name="yen" type="number" inputmode="numeric" placeholder="¥ 금액" aria-label="금액">
@@ -459,16 +461,20 @@ window.App = window.App || {};
 
   // ====================================================== CHECK
   S.check = function () {
+    const linked = A.linked && A.linked();
     const groups = (A.data.checklist.groups || []).map((g) => {
-      const done = g.items.filter((i) => A.state.check[i.id]).length;
+      const done = g.items.filter((i) => A.checkOn(i.id)).length;
       const total = g.items.length;
       const pct = total ? Math.round(done / total * 100) : 0;
       const allDone = done === total && total > 0;
       const items = g.items.map((i) => {
-        const on = !!A.state.check[i.id];
+        const on = A.checkOn(i.id);
+        const by = linked ? A.checkBy(i.id) : '';
+        const byChip = (on && by) ? `<span class="chk-by">${A.memberKo(by)}</span>` : '';
         return `<button class="chk ${on ? 'on' : ''}" data-action="check" data-id="${i.id}">
           <span class="chk-box">${on ? A.icon('check') : ''}</span>
           <span class="chk-t">${esc(i.text)}</span>
+          ${byChip}
           ${i.owner ? `<span class="chk-o">${esc(i.owner)}</span>` : ''}</button>`;
       }).join('');
       return `<details class="cgroup" ${done < total ? 'open' : ''}>
@@ -480,7 +486,20 @@ window.App = window.App || {};
         </summary>
         <div class="cgroup-body">${items}</div></details>`;
     }).join('');
-    return `<section class="checkv">${head('체크리스트', '출발 전 · 매일 · 귀국일')}${groups}</section>`;
+    // 담당자별 진행 요약 (연결 시): owner('아빠/엄마/은재/가족')별 완료/전체
+    let perOwner = '';
+    if (linked) {
+      const tally = ['아빠', '엄마', '은재', '가족'].map((ow) => {
+        const items = [];
+        (A.data.checklist.groups || []).forEach((g) => g.items.forEach((i) => { if (i.owner === ow) items.push(i); }));
+        if (!items.length) return '';
+        const d = items.filter((i) => A.checkOn(i.id)).length;
+        return `<span class="own-chip ${d === items.length ? 'done' : ''}"><b>${esc(ow)}</b> ${d}/${items.length}</span>`;
+      }).filter(Boolean).join('');
+      perOwner = `<div class="own-tally">${tally}</div>`;
+    }
+    const sub = linked ? `${A.memberKo(A.state.member)}로 가족과 공유 중` : '출발 전 · 매일 · 귀국일';
+    return `<section class="checkv">${head('체크리스트', sub)}${perOwner}${groups}</section>`;
   };
 
   // ====================================================== INFO
@@ -510,11 +529,56 @@ window.App = window.App || {};
   };
 
   // ====================================================== SETTINGS
+  // 가족 공유 카드 (설정·연결 화면 공용)
+  const memSeg = (cur, m) => `<button class="seg ${cur === m ? 'on' : ''}" data-action="pick-member" data-val="${m}">${A.MEMBERS[m].emoji} ${A.MEMBERS[m].ko}</button>`;
+  const fcInput = (val) => `<input class="fc-input" id="fc-input" type="text" inputmode="latin" autocapitalize="off" autocomplete="off" spellcheck="false" placeholder="가족 코드 (12자 이상)" value="${esc(val || '')}">`;
+  function familyBlock(st) {
+    if (st.familyCode && st.member) {
+      const tail = String(st.familyCode).slice(-4);
+      const avail = A.sync && A.sync.available();
+      return `<div class="fam-card">
+        <p class="fam-stat">✅ <b>${A.memberKo(st.member)}</b>로 연결됨 · 코드 …${esc(tail)}${avail ? '' : ' <span class="muted small">(오프라인/미로드 — 온라인 시 동기화)</span>'}</p>
+        <p class="muted small">체크리스트 체크와 지출이 가족 모두의 앱에 실시간으로 함께 보여요. 여권·캡처 등 <b>서류함 사진은 공유되지 않고</b> 이 기기에만 저장돼요.</p>
+        <button class="btn-primary wide" data-action="copy-invite">🔗 가족 초대 링크 복사</button>
+        <button class="btn-block" data-action="unlink-family">가족 공유 해제</button>
+      </div>`;
+    }
+    return `<div class="fam-card">
+      <p class="muted">아빠·엄마·은재가 같은 <b>가족 코드</b>로 연결하면, 체크리스트와 지출이 모두의 앱에 실시간으로 함께 보여요.</p>
+      <div class="fam-step"><span class="fam-n">1</span> 나는 누구?</div>
+      <div class="segs">${memSeg(st.member, 'dad')}${memSeg(st.member, 'mom')}${memSeg(st.member, 'eunjae')}</div>
+      <div class="fam-step"><span class="fam-n">2</span> 가족 코드</div>
+      ${fcInput('')}
+      <div class="segs"><button class="seg" data-action="make-code">🎲 새 코드 만들기</button></div>
+      <p class="muted small">처음 시작하는 사람이 "새 코드 만들기"로 코드를 만들어 연결한 뒤, "가족 초대 링크 복사"로 카톡에 공유하세요. 링크를 받은 사람은 열기만 하면 코드가 자동 입력돼요.</p>
+      <button class="btn-primary wide" data-action="link-family">가족과 연결</button>
+    </div>`;
+  }
+
+  S.join = function (q) {
+    const code = (q && q.get && q.get('fc')) || '';
+    const cur = A.state.member;
+    return `<section class="joinv">
+      ${head('가족 공유 연결', '같은 코드로 연결하면 체크리스트·지출이 함께 보여요')}
+      <div class="fam-card">
+        <div class="fam-step"><span class="fam-n">1</span> 나는 누구?</div>
+        <div class="segs">${memSeg(cur, 'dad')}${memSeg(cur, 'mom')}${memSeg(cur, 'eunjae')}</div>
+        <div class="fam-step"><span class="fam-n">2</span> 가족 코드</div>
+        ${fcInput(code)}
+        <div class="segs"><button class="seg" data-action="make-code">🎲 새 코드 만들기</button></div>
+        <button class="btn-primary wide" data-action="link-family">가족과 연결</button>
+        <p class="muted small">받은 초대 링크를 열면 코드가 자동 입력돼요. 처음 시작하는 사람은 "새 코드 만들기"로 만들어 연결한 뒤 가족에게 링크를 공유하세요.</p>
+      </div>
+    </section>`;
+  };
+
   S.settings = function () {
     const st = A.state;
     const opt = (cur, val, lbl, act) => `<button class="seg ${cur === val ? 'on' : ''}" data-action="${act}" data-val="${val}">${lbl}</button>`;
     return `<section class="setv">
       ${head('설정')}
+      <h2 class="sec">👨‍👩‍👧 가족 공유</h2>
+      ${familyBlock(st)}
       <h2 class="sec">📥 오프라인</h2>
       <p class="muted">출발 전 와이파이에서 한 번 눌러 사진까지 모두 저장하면, 인터넷 없이도 전부 열려요.</p>
       <button class="btn-primary wide" data-action="prefetch">📥 오프라인 전체 저장</button>

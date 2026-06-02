@@ -28,8 +28,29 @@ window.App = window.App || {};
     ttsRate: LS.get('ttsRate', 1),          // 말하기 속도 0.8 | 1 | 1.2 | 1.4
     docExtra: LS.get('docExtra', []),       // 서류함 커스텀 슬롯 [{id,label}]
     fxManual: LS.get('fxManual', false),    // 환율을 사용자가 직접 입력했는지 (자동 갱신 시 존중)
+    member: LS.get('member', null),         // 가족 공유 신원 'dad'|'mom'|'eunjae'|null
+    familyCode: LS.get('familyCode', null), // 가족 코드(RTDB room) — null이면 미연결
   };
   A.save = (k) => LS.set(k, A.state[k]);
+
+  // ---- 가족 멤버 ----
+  A.MEMBERS = {
+    dad:    { id: 'dad',    ko: '아빠', owner: '아빠', emoji: '👨' },
+    mom:    { id: 'mom',    ko: '엄마', owner: '엄마', emoji: '👩' },
+    eunjae: { id: 'eunjae', ko: '은재', owner: '은재', emoji: '🧒' },
+  };
+  A.memberKo = (m) => (A.MEMBERS[m] ? A.MEMBERS[m].emoji + ' ' + A.MEMBERS[m].ko : '');
+
+  // ---- 가족 공유 상태 (sync.js가 채움; 미연결/미로드 시 로컬 폴백) ----
+  // 화면은 아래 접근자만 사용 → sync.js가 없어도(로드 실패) 항상 정의돼 안전.
+  A.shared = { checks: {}, expenses: [] };
+  A.linked = () => !!(A.state.familyCode && A.state.member);
+  A.checkOn = (id) => (A.linked() ? !!A.shared.checks[id] : !!A.state.check[id]);
+  A.checkBy = (id) => ((A.linked() && A.shared.checks[id]) ? A.shared.checks[id].by : '');
+  // 지출 목록을 단일 형태 [{id,by,label,amountYen,ts}]로 — 연결 시 공유 가계부, 아니면 로컬.
+  A.expenseList = () => (A.linked()
+    ? (A.shared.expenses || [])
+    : (A.state.expenses || []).map((e) => ({ id: e.id, by: '', label: e.label, amountYen: e.amountYen, ts: e.ts || 0 })));
 
   // ---- money: ¥ with KRW alongside ----
   A.rate = () => A.state.fxRate || (A.data && A.data.exchange && A.data.exchange.ratePer100) || 920;

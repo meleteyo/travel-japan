@@ -7,7 +7,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SW = os.path.join(ROOT, "service-worker.js")
 
 ROOT_FILES = ["index.html", "manifest.webmanifest", "404.html", "offline.html", "favicon-32.png"]
-DIRS = ["css", "js", "data", "assets/icons", "assets/maps", "assets/img"]
+DIRS = ["css", "js", "data", "assets/icons", "assets/maps", "assets/img", "assets/vendor"]
 EXCLUDE_EXT = {".py", ".md"}
 EXCLUDE_NAME = {"service-worker.js"}
 

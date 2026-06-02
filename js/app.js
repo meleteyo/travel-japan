@@ -37,6 +37,11 @@ window.App = window.App || {};
       case 'refresh-rate': refreshRateUI(t); break;
       case 'force-update': forceUpdate(); break;
       case 'search-eg': { const i = A.$('#gsearch'); if (i) { i.value = t.dataset.q; A.runGlobalSearch(t.dataset.q); } break; }
+      case 'pick-member': pickMember(t.dataset.val); break;
+      case 'make-code': makeCode(); break;
+      case 'link-family': linkFamily(); break;
+      case 'copy-invite': copyInvite(); break;
+      case 'unlink-family': unlinkFamily(); break;
     }
   });
 
@@ -165,8 +170,13 @@ window.App = window.App || {};
     const label = (t.label.value || '지출').trim();
     const yen = parseInt(t.yen.value, 10);
     if (!yen || yen <= 0) { A.toast('금액을 입력하세요'); return; }
-    A.state.expenses.push({ id: 'e' + Date.now(), label, amountYen: yen });
-    A.save('expenses'); A.render();
+    if (A.linked && A.linked() && A.sync && A.sync.addExpense(label, yen)) {
+      try { t.reset(); } catch (e) {}            // 폼 비우기 — 목록/총합은 동기화 리스너가 갱신
+      A.toast('가족 가계부에 기록했어요');
+    } else {
+      A.state.expenses.push({ id: 'e' + Date.now(), label, amountYen: yen });
+      A.save('expenses'); A.render();
+    }
   });
 
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { A.closeSheet(); A.closeLightbox(); } });
@@ -221,10 +231,15 @@ window.App = window.App || {};
 
   // ---------------- checklist / wishlist ----------------
   function toggleCheck(id, btn) {
-    const on = (A.state.check[id] = !A.state.check[id]); A.save('check');
+    const on = !btn.classList.contains('on');   // 목표 상태 (소스: 연결 시 공유, 아니면 로컬)
+    if (A.linked && A.linked() && A.sync && A.sync.setCheck(id, on)) {
+      // 클라우드 동기화 — 로컬 check는 소스가 아니므로 건드리지 않음. 리스너가 확정 반영.
+    } else {
+      A.state.check[id] = on; A.save('check');
+    }
+    // 낙관적 즉시 반영 + 그룹 진행도 제자리 갱신 (전체 재렌더 없이 → 스크롤 안 튐)
     btn.classList.toggle('on', on);
     A.$('.chk-box', btn).innerHTML = on ? A.icon('check') : '';
-    // 그룹 진행도만 제자리 갱신 — 전체 재렌더 시 체크 후 스크롤이 맨 위로 튀는 문제 방지
     const grp = btn.closest('.cgroup'); if (!grp) return;
     const boxes = A.$$('.chk', grp);
     const done = boxes.filter((b) => b.classList.contains('on')).length;
@@ -243,7 +258,51 @@ window.App = window.App || {};
     const chk = A.$('.wcheck', btn); if (chk) chk.textContent = A.state.wish[id] ? '✅' : '⬜';
   }
   function delExpense(id) {
+    if (A.linked && A.linked()) {
+      const e = (A.shared.expenses || []).find((x) => x.id === id);
+      if (e && e.by && e.by !== A.state.member && !confirm(A.memberKo(e.by) + '님이 기록한 지출이에요. 삭제할까요?')) return;
+      if (A.sync && A.sync.delExpense(id)) return;   // 리스너가 목록/총합 갱신
+    }
     A.state.expenses = A.state.expenses.filter((e) => e.id !== id); A.save('expenses'); A.render();
+  }
+
+  // ---------------- 가족 공유 (Firebase) ----------------
+  function pickMember(m) {
+    if (!A.MEMBERS[m]) return;
+    A._joinMember = m;
+    A.$$('[data-action="pick-member"]').forEach((b) => b.classList.toggle('on', b.dataset.val === m));
+  }
+  function makeCode() {
+    const inp = A.$('#fc-input');
+    if (inp && A.sync) inp.value = A.sync.newCode();
+  }
+  function linkFamily() {
+    const inp = A.$('#fc-input');
+    const code = ((inp && inp.value) || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+    const member = A._joinMember || A.state.member;
+    if (!member) { A.toast('먼저 "나는 누구"를 골라주세요'); return; }
+    if (code.length < 12) { A.toast('가족 코드는 12자 이상이어야 해요'); return; }
+    A.state.familyCode = code; A.state.member = member;
+    A.save('familyCode'); A.save('member');
+    if (A.sync) A.sync.init();
+    A.toast('가족과 연결됐어요 · ' + A.memberKo(member));
+    location.hash = '#/check';
+  }
+  function copyInvite() {
+    const code = A.state.familyCode;
+    if (!code) { A.toast('먼저 가족 코드를 만들어 연결하세요'); return; }
+    const link = location.origin + location.pathname + '#/join?fc=' + code;
+    const msg = '우리 가족 도쿄 여행 가이드 공유 링크예요. 열고 "나는 누구"만 고르면 체크리스트·지출이 함께 보여요:\n' + link;
+    const done = () => A.toast('초대 링크를 복사했어요 · 카톡에 붙여넣기');
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(msg).then(done).catch(() => prompt('이 링크를 복사해 공유하세요', link));
+    else prompt('이 링크를 복사해 공유하세요', link);
+  }
+  function unlinkFamily() {
+    if (!confirm('가족 공유를 해제할까요? (내 기기에서만 끊기고, 가족 데이터는 그대로 남아요)')) return;
+    if (A.sync) A.sync.unlink();
+    else { A.state.familyCode = null; A.state.member = null; A.save('familyCode'); A.save('member'); }
+    A.toast('가족 공유를 해제했어요');
+    A.render();
   }
 
   // ---------------- exchange calculator ----------------
@@ -343,6 +402,7 @@ window.App = window.App || {};
     try { await A.load(); } catch (e) { console.error(e); }
     if (A.loadCachedWeather) A.loadCachedWeather();
     if (A.loadCachedRate) A.loadCachedRate();
+    if (A.sync) A.sync.loadMirror();   // 가족 공유: 오프라인에서도 마지막 동기화본 표시
     // bottom tab "일정" → today's day
     const today = A.tripDay();
     const dayHref = '#/day/' + ((today.day && today.day.id) || 'd1');
@@ -355,6 +415,10 @@ window.App = window.App || {};
     if (A.refreshRate) {
       A.refreshRate();
       document.addEventListener('visibilitychange', () => { if (!document.hidden) A.refreshRate(); });
+    }
+    if (A.sync) {
+      A.sync.init();   // 가족 연결돼 있으면 실시간 리스너 연결 (미연결/오프라인이면 조용히 무시)
+      document.addEventListener('visibilitychange', () => { if (!document.hidden && A.sync) A.sync.init(); });
     }
     // service worker — with prompt update + auto-refresh on new version
     if ('serviceWorker' in navigator) {

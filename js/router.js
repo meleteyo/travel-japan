@@ -12,7 +12,10 @@ window.App = window.App || {};
     return { parts, q: new URLSearchParams(query) };
   }
 
-  A.render = function () {
+  A.render = function (opts) {
+    // opts.keepScroll: 동기화로 인한 제자리 갱신 — 스크롤 초기화·전환 애니메이션 생략.
+    // (hashchange는 Event를 넘기므로 keepScroll이 없어 기존 동작 유지)
+    const keep = !!(opts && opts.keepScroll === true);
     const { parts, q } = parse();
     const name = parts[0] || 'home';
     const S = A.screens;
@@ -36,6 +39,7 @@ window.App = window.App || {};
         case 'exchange': html = S.exchange(); tab = 'home'; break;
         case 'check': html = S.check(); tab = 'home'; break;
         case 'info': html = S.info(); tab = 'home'; break;
+        case 'join': html = S.join(q); tab = 'home'; break;
         case 'settings': html = S.settings(); tab = 'home'; break;
         default: html = S.home(); tab = 'home';
       }
@@ -46,13 +50,13 @@ window.App = window.App || {};
     const app = A.$('#app');
     const paint = function () {
       app.innerHTML = html;
-      app.scrollTop = 0; window.scrollTo(0, 0);
+      if (!keep) { app.scrollTop = 0; window.scrollTo(0, 0); }
       setActiveTab(tab);
       toggleBack(name);
       A.afterRender(name);
     };
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (document.startViewTransition && !reduce) {
+    if (document.startViewTransition && !reduce && !keep) {
       document.documentElement.dataset.vt = (name === 'home' || name === A._prevName) ? 'fade' : 'push';
       A._prevName = name;
       document.startViewTransition(paint);
