@@ -17,6 +17,26 @@ window.App = window.App || {};
   const telBtn = (tel, label) => tel ? `<a class="tel-btn" href="${A.telHref(tel)}">📞 ${esc(label || '전화')}</a>` : '';
   const mapBtn = (q, label) => q ? `<a class="map-btn" href="${A.gmap(q)}" target="_blank" rel="noopener">🗺 ${esc(label || '지도')}</a>` : '';
 
+  // 태풍 상황판 카드 (weather.json의 typhoon 데이터 · 지정 dayId에서만 노출, 오프라인 OK)
+  const typhoonCard = (dayId) => {
+    const ty = (A.data.weather || {}).typhoon;
+    if (!ty || !ty.active || (ty.dayId && ty.dayId !== dayId)) return '';
+    const tl = (ty.timeline || []).map((r) =>
+      `<li class="ty-row lv-${esc(r.level || 'ok')}"><span class="ty-t">${esc(r.t)}</span><span class="ty-l">${esc(r.label)}</span></li>`).join('');
+    const pts = (ty.points || []).map((p) => `<li>${esc(p)}</li>`).join('');
+    const links = (ty.links || []).map((l) =>
+      `<a class="ty-link" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('');
+    return `<section class="typhoon-card">
+      <div class="ty-head"><span class="ty-badge">🌀 태풍 상황판</span><span class="ty-name">${esc(ty.name || '')}</span></div>
+      <div class="ty-verdict"><strong>✅ ${esc(ty.verdict || '')}</strong>${ty.verdictSub ? `<span>${esc(ty.verdictSub)}</span>` : ''}</div>
+      ${ty.headline ? `<p class="ty-headline">${esc(ty.headline)}</p>` : ''}
+      ${tl ? `<ol class="ty-timeline">${tl}</ol>` : ''}
+      ${pts ? `<ul class="ty-points">${pts}</ul>` : ''}
+      ${links ? `<div class="ty-links">${links}</div>` : ''}
+      ${ty.updated ? `<p class="ty-updated">${esc(ty.updated)}</p>` : ''}
+    </section>`;
+  };
+
   // ====================================================== HOME
   S.home = function () {
     const t = A.tripDay();
@@ -49,6 +69,10 @@ window.App = window.App || {};
     const w = weatherOf((t.day || {}).id) || (A.data.weather.days || [])[0];
     const cloth = w ? `<a class="widget" href="#/day/${(t.day||{}).id||'d1'}"><span class="w-ic">${w.icon}</span>
       <span class="w-k">오늘 옷차림</span><span class="w-v small">${(w.clothing||[]).map(esc).join(' · ')}</span></a>` : '';
+    // 태풍 알림 배너 — 출발 전 또는 도착일(태풍 dayId)에 노출, 탭하면 상황판으로
+    const _ty = (A.data.weather || {}).typhoon;
+    const _tyShow = _ty && _ty.active && (t.phase === 'before' || (t.phase === 'during' && (t.day || {}).id === _ty.dayId));
+    const tyBanner = _tyShow ? `<a class="typhoon-alert" href="#/day/${esc(_ty.dayId || 'd1')}"><span class="ta-ic">🌀</span><span class="ta-b"><strong>태풍 ${esc(_ty.verdict || '')} · ${esc((_ty.name || '').replace(/\s*\(.*\)/, ''))}</strong><span>${esc(_ty.headline || '')}</span></span><span class="ta-go">상황판 ›</span></a>` : '';
 
     const small = [
       ['#/day/' + ((t.day || {}).id || 'd1'), 'calendar', '일정'],
@@ -69,6 +93,7 @@ window.App = window.App || {};
       </header>
       <a class="home-search" href="#/search">${A.icon('search')}<span>무엇이든 검색 — 회화·맛집·교통·꿀팁…</span></a>
       ${hero}
+      ${tyBanner}
       <div class="widgets">${budget}${cloth}</div>
       <h2 class="sec">바로가기</h2>
       <div class="bento">
@@ -134,6 +159,7 @@ window.App = window.App || {};
     return `<section class="dayv">
       ${head(d.n + '일차 · ' + d.title, d.date + ' (' + d.dow + ') · ' + d.mood)}
       <div class="chips">${chips}</div>
+      ${typhoonCard(d.id)}
       ${w ? `<div class="weather-band">${w.icon} <strong>${esc(w.summary)} · 비 ${w.rainPct}% · ${w.tempMin}~${w.tempMax}°</strong> <button class="wlive" data-action="refresh-weather" aria-label="날씨 새로고침">${wLive() || '🔄 예보 · 새로고침'}</button><br><span>${esc(w.advice)}</span></div>` : ''}
       ${d.moveNote ? `<p class="movenote">🧭 ${esc(d.moveNote)}</p>` : ''}
       <div class="timeline${isToday ? ' is-today' : ''}">${stops}</div>
