@@ -410,9 +410,9 @@ body.reordering .prow-main { pointer-events: none; }
 /* ===== shopping ===== */
 .budget-note { background: var(--primary-soft); color: var(--text); border-radius: var(--r-sm); padding: 12px 14px; font-weight: 700; font-size: .92rem; }
 .budget-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; box-shadow: var(--shadow); margin-bottom: 12px; }
-.bc-top { display: flex; align-items: baseline; justify-content: space-between; }
-.bc-k { font-size: .82rem; font-weight: 600; color: var(--text-soft); }
-.bc-v { font-size: 1.5rem; font-weight: 780; letter-spacing: -0.03em; }
+.bc-top { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.bc-k { font-size: .82rem; font-weight: 600; color: var(--text-soft); white-space: nowrap; }
+.bc-v { font-size: 1.45rem; font-weight: 780; letter-spacing: -0.03em; }
 .bc-bar { height: 10px; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin: 12px 0 8px; }
 .bc-bar > span { display: block; height: 100%; border-radius: 999px; background: var(--ok); transition: width .6s var(--ease); }
 .bc-bar.warn > span { background: var(--warn); } .bc-bar.over > span { background: var(--danger); }
@@ -430,9 +430,23 @@ body.reordering .prow-main { pointer-events: none; }
 .cur-seg { padding: 7px 15px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--text-soft); font-weight: 700; font-size: .85rem; }
 .cur-seg.on { background: var(--primary); color: var(--primary-ink); border-color: var(--primary); }
 .exps { display: flex; flex-direction: column; gap: 7px; }
-.exp-row { display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 11px 14px; }
-.exp-row span:first-child { flex: 1; font-weight: 600; }
-.exp-v { font-size: .9rem; font-weight: 650; } .exp-x { color: var(--text-dim); width: 32px; font-size: .9rem; }
+.exp-row { display: flex; flex-direction: column; gap: 6px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 11px 14px; }
+.exp-info { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.exp-label { flex: 1; min-width: 0; font-weight: 600; word-break: keep-all; overflow-wrap: anywhere; }
+.exp-amt { display: flex; align-items: center; justify-content: flex-end; gap: 10px; }
+.exp-v { font-size: .95rem; font-weight: 650; } .exp-x { color: var(--text-dim); width: 32px; font-size: .9rem; flex: 0 0 auto; }
+
+/* 선물 추천 (대상별) */
+.gp-h { font-size: 1rem; font-weight: 800; margin: 16px 0 8px; }
+.gp-list { display: flex; flex-direction: column; gap: 9px; }
+.gp-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 12px 14px; box-shadow: var(--shadow); }
+.gp-top { display: flex; flex-direction: column; gap: 2px; }
+.gp-name { font-weight: 800; font-size: .98rem; }
+.gp-price { font-weight: 700; font-size: .85rem; }
+.gp-jp { font-size: .8rem; color: var(--text-soft); margin-top: 3px; }
+.gp-where { font-size: .82rem; color: var(--primary); font-weight: 600; margin-top: 6px; }
+.gp-why { font-size: .82rem; color: var(--text-soft); margin-top: 4px; line-height: 1.45; }
+.gp-tips { margin-top: 12px; }
 .wishlist { display: flex; flex-direction: column; gap: 9px; }
 .wish-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; box-shadow: var(--shadow); }
 .wish-card.on { background: var(--ok-soft); border-color: color-mix(in srgb, var(--ok) 50%, transparent); }

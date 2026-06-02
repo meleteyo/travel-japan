@@ -38,8 +38,8 @@ window.App = window.App || {};
         <strong>${esc(d.title)}</strong><p>${esc(d.summary)}</p>
         ${wBadge(weatherOf(d.id))}</div></a>`;
     }
-    // budget widget
-    const total = (A.state.expenses || []).reduce((s, e) => s + (e.amountYen || 0), 0);
+    // budget widget — 가족 연결 시 공유 가계부, 아니면 로컬 (쇼핑 화면과 같은 소스)
+    const total = (A.expenseList ? A.expenseList() : (A.state.expenses || [])).reduce((s, e) => s + (e.amountYen || 0), 0);
     const budget = `<a class="widget" href="#/shopping"><span class="w-ic">💴</span><span class="w-k">지출 합계</span>
       <span class="w-v">${total ? A.fmtYen(total) : '<span class="muted">기록 없음</span>'}</span></a>`;
     // clothing widget
@@ -376,12 +376,24 @@ window.App = window.App || {};
         ${gl}</div>`;
     }).join('');
     const tips = (sh.giftTips || []).map((g) => `<li>${esc(g)}</li>`).join('');
+    // 선물 추천 (대상별) — 지인 초콜릿 / 장인어른 무알코올 / 엄마·아빠 잡화·문구
+    const giftPicksHtml = (sh.giftPicks || []).map((b) => `
+      <h3 class="gp-h">${b.icon || '🎁'} ${esc(b.title)}</h3>
+      <div class="gp-list">${(b.items || []).map((it) => `<div class="gp-card">
+        <div class="gp-top"><span class="gp-name">${esc(it.nameKo)}</span><span class="gp-price">${A.fmtRange(it.price)}</span></div>
+        ${it.nameJp ? `<div class="gp-jp" lang="ja">${esc(it.nameJp)}</div>` : ''}
+        <div class="gp-where">📍 ${esc(it.where)}</div>
+        ${it.why ? `<div class="gp-why">${esc(it.why)}</div>` : ''}
+      </div>`).join('')}</div>`).join('');
+    const giftPickTips = (sh.giftPickTips || []).map((t) => `<li>${esc(t)}</li>`).join('');
     // expense tracker — 연결 시 가족 통합 가계부, 아니면 로컬
     const linked = A.linked && A.linked();
     const cur = A.state.expCur || 'krw';   // 입력 통화 (기본 원화)
     const list = A.expenseList();   // [{id,by,label,amountYen,ts}]
-    const exps = list.slice().reverse().map((e) => `<div class="exp-row"><span>${esc(e.label || '지출')}</span>
-      ${e.by ? `<span class="exp-by">${A.memberKo(e.by)}</span>` : ''}<span class="exp-v">${A.fmtYen(e.amountYen)}</span><button class="exp-x" data-action="del-expense" data-id="${e.id}" aria-label="삭제">✕</button></div>`).join('');
+    const exps = list.slice().reverse().map((e) => `<div class="exp-row">
+      <div class="exp-info"><span class="exp-label">${esc(e.label || '지출')}</span>${e.by ? `<span class="exp-by">${A.memberKo(e.by)}</span>` : ''}</div>
+      <div class="exp-amt"><span class="exp-v">${A.fmtYen(e.amountYen)}</span><button class="exp-x" data-action="del-expense" data-id="${e.id}" aria-label="삭제">✕</button></div>
+    </div>`).join('');
     const total = list.reduce((s, e) => s + (e.amountYen || 0), 0);
     // 예산은 한국 원화 기준(여행 총예산). 지출 합계(엔)는 원화로 환산해 진행률 계산.
     const totalKRW = A.krw(total);
@@ -415,6 +427,7 @@ window.App = window.App || {};
       <h2 class="sec">사고 싶은 것 (은재)</h2>
       <div class="wishlist">${wish}</div>
       <h2 class="sec">친구 선물 팁</h2><ul class="bullets">${tips}</ul>
+      ${(sh.giftPicks || []).length ? `<h2 class="sec">🎁 선물 추천 (대상별)</h2><p class="muted small">동선·가격(원화 환산)·구매처를 함께 정리했어요. 가격은 대략치입니다.</p>${giftPicksHtml}${giftPickTips ? `<ul class="bullets gp-tips">${giftPickTips}</ul>` : ''}` : ''}
     </section>`;
   };
 
