@@ -191,6 +191,22 @@ window.App = window.App || {};
     }
   });
 
+  // ---------------- 가족 대화: 메시지 전송 ----------------
+  document.addEventListener('submit', function (e) {
+    const t = e.target.closest('[data-action="send-message"]'); if (!t) return;
+    e.preventDefault();
+    const inp = t.querySelector('input[name="msg"]') || A.$('#chat-input');
+    const text = ((inp && inp.value) || '').trim();
+    if (!text) return;
+    // 연결 중(오프라인 포함)이면 Firebase가 큐에 넣고 낙관적으로 즉시 보여줌 → 리스너(value)가 버블을 그린다.
+    if (A.linked && A.linked() && A.sync && A.sync.sendMessage(text)) {
+      if (inp) inp.value = '';
+      A._chatStick = true;                       // 방금 보냈으니 최신으로 따라가기
+    } else {
+      A.toast('오프라인 — 메시지를 보낼 수 없어요');
+    }
+  });
+
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { A.closeSheet(); A.closeLightbox(); } });
 
   // ---------------- navigation: universal back ----------------
@@ -368,11 +384,38 @@ window.App = window.App || {};
     else { krw.value = val || ''; jpy.value = val ? Math.round(val * 100 / rate) : ''; }
   }
 
+  // ---------------- 가족 대화: 상단바 안읽음 뱃지 ----------------
+  // 상단바 아이콘은 #app 밖(헤더)이라 render가 건드리지 않음 → 여기서 직접 갱신한다.
+  A.refreshChatBadge = function () {
+    const b = A.$('#ab-chat-badge');
+    if (!b) return;
+    const n = (A.chatUnread ? A.chatUnread() : 0);
+    if (n > 0) { b.textContent = n > 99 ? '99+' : String(n); b.hidden = false; }
+    else { b.textContent = ''; b.hidden = true; }
+  };
+
   // ---------------- after render hooks ----------------
   A.afterRender = function (name) {
     if (name === 'talk') { A.talkState = { cat: 'fav', q: '' }; filterTalk(); }
     if (name === 'docs' || name === 'sos') A.loadDocs();
     if (name === 'search') { const i = A.$('#gsearch'); if (i) { try { i.focus(); } catch (e) {} A.runGlobalSearch(i.value); } }
+    if (name === 'chat') {
+      if (A.markChatSeen) A.markChatSeen();      // 들어왔으니 읽음 처리
+      A.refreshChatBadge();                      // 뱃지 0으로
+      const list = A.$('#chat-list');
+      if (list) {
+        // morph 갱신 때는 같은 #chat-list 노드가 재사용됨(_bound 유지) → 재바인딩 안 함.
+        // 통째 렌더(화면 진입)는 새 노드 → 항상 최신으로 스크롤.
+        if (!list._bound) {
+          list._bound = true;
+          A._chatStick = true;
+          list.addEventListener('scroll', function () {
+            A._chatStick = (list.scrollHeight - list.scrollTop - list.clientHeight) < 80;
+          });
+        }
+        if (A._chatStick !== false) list.scrollTop = list.scrollHeight;  // 바닥 근처면 최신으로, 위로 읽는 중이면 그대로
+      }
+    }
   };
 
   // ---------------- 전역 검색 ----------------
@@ -458,6 +501,7 @@ window.App = window.App || {};
     if (A.loadCachedWeather) A.loadCachedWeather();
     if (A.loadCachedRate) A.loadCachedRate();
     if (A.sync) A.sync.loadMirror();   // 가족 공유: 오프라인에서도 마지막 동기화본 표시
+    A.refreshChatBadge();              // 부팅 시 미러 기준 안읽음 뱃지 표시
     // bottom tab "일정" → today's day
     const today = A.tripDay();
     const dayHref = '#/day/' + ((today.day && today.day.id) || 'd1');

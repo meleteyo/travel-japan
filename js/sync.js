@@ -5,7 +5,7 @@
 window.App = window.App || {};
 (function (A) {
   'use strict';
-  let app = null, db = null, ref = null, curCode = null, renderT = 0;
+  let app = null, db = null, ref = null, curCode = null, renderT = 0, msgCode = null;
 
   const fb = () => (typeof firebase !== 'undefined' ? firebase : null);
 
@@ -28,10 +28,12 @@ window.App = window.App || {};
     if (m && typeof m === 'object') {
       A.shared.checks = m.checks || {};
       A.shared.expenses = Array.isArray(m.expenses) ? m.expenses : [];
+      A.shared.messages = Array.isArray(m.messages) ? m.messages : []; // 구버전 미러엔 없을 수 있음
+      msgCode = A.state.familyCode || null;  // 미러 메시지가 속한 가족 코드 (코드 전환 감지용)
     }
   };
   function saveMirror() {
-    A.LS.set('shared', { checks: A.shared.checks, expenses: A.shared.expenses, ts: Date.now() });
+    A.LS.set('shared', { checks: A.shared.checks, expenses: A.shared.expenses, messages: A.shared.messages, ts: Date.now() });
   }
 
   // 다수 value 이벤트를 1회 렌더로 합치고, 스크롤은 보존(체크 후 위로 안 튐), 시트/라이트박스 열려있으면 건너뜀.
@@ -70,6 +72,17 @@ window.App = window.App || {};
     return out;
   }
 
+  // RTDB messages 객체 → 배열(ts 오름차순). text 없는 건 버린다.
+  function msgArray(obj) {
+    const out = [];
+    if (obj) Object.keys(obj).forEach(function (k) {
+      const m = obj[k];
+      if (m && typeof m.text === 'string') out.push({ id: k, by: m.by || '', text: m.text, ts: (typeof m.ts === 'number' ? m.ts : 0) });
+    });
+    out.sort(function (a, b) { return (a.ts || 0) - (b.ts || 0); });
+    return out;
+  }
+
   A.sync.init = function () {
     if (!A.sync.available() || !A.linked()) return;
     const f = fb();
@@ -80,12 +93,22 @@ window.App = window.App || {};
     const code = A.state.familyCode;
     if (ref && curCode === code) return;          // 이미 같은 코드로 연결됨
     if (ref) { try { ref.off(); } catch (e) {} ref = null; }
+    // 다른 가족 코드로 바뀌면 이전 가족 대화를 비운다 (messages는 value로 통째 교체되므로 자가 교정되지만,
+    // 새 코드의 첫 스냅이 오기 전 잠깐 이전 대화가 보이는 걸 막는다).
+    if (msgCode !== code) { A.shared.messages = []; msgCode = code; }
     curCode = code;
     try {
       ref = db.ref('families/' + code);
       migrateOnce(ref);
       ref.child('checks').on('value', function (snap) { A.shared.checks = snap.val() || {}; saveMirror(); rerender(); });
       ref.child('expenses').on('value', function (snap) { A.shared.expenses = expArray(snap.val()); saveMirror(); rerender(); });
+      // 가족 대화 — 최근 200개만 구독. ts는 ServerValue.TIMESTAMP라 폰 시계가 달라도 순서 일관.
+      ref.child('messages').orderByKey().limitToLast(200).on('value', function (snap) {
+        A.shared.messages = msgArray(snap.val());
+        saveMirror();
+        if (A.refreshChatBadge) A.refreshChatBadge();   // 상단바 안읽음 뱃지 (어느 화면에 있든 갱신)
+        rerender();                                     // 채팅 화면이면 morph로 제자리 갱신(입력·스크롤 보존)
+      });
     } catch (e) { ref = null; }
   };
 
@@ -128,6 +151,14 @@ window.App = window.App || {};
   A.sync.delExpense = function (id) {
     if (!ref) return false;
     try { ref.child('expenses/' + id).remove(); return true; } catch (e) { return false; }
+  };
+  // 가족 대화 메시지 전송. ServerValue.TIMESTAMP로 서버 기준 시각을 찍어 순서를 일관되게 한다.
+  A.sync.sendMessage = function (text) {
+    if (!ref) return false;
+    try {
+      ref.child('messages').push({ by: A.state.member, text: text, ts: fb().database.ServerValue.TIMESTAMP });
+      return true;
+    } catch (e) { return false; }
   };
 
   A.sync.unlink = function () {

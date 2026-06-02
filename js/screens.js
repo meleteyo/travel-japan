@@ -627,6 +627,43 @@ window.App = window.App || {};
     </section>`;
   };
 
+  // ====================================================== CHAT (가족 대화)
+  S.chat = function () {
+    const st = (A.sync && A.sync.status) ? A.sync.status() : (A.linked() ? 'linked' : 'unlinked');
+    // 미연결·SDK 미로드 → 채팅 대신 가족 연결 안내(연결 카드 재사용). 깨진 화면 금지.
+    if (st === 'unlinked' || st === 'unavailable') {
+      return `<section class="chatv">
+        ${head('가족 대화', '가족과 연결하면 셋이 함께 대화할 수 있어요')}
+        <div class="empty"><div class="e-ic">${A.icon('message')}</div>
+          <strong>아직 가족과 연결되지 않았어요</strong>
+          <p>같은 가족 코드로 연결하면 아빠·엄마·은재가 실시간으로 대화할 수 있어요.</p></div>
+        ${familyBlock(A.state)}
+      </section>`;
+    }
+    const me = A.state.member;
+    const offline = (st === 'linked-offline');
+    const fmtT = (ts) => { if (!ts) return ''; try { return new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hour12: true }).format(new Date(ts)); } catch (e) { return ''; } };
+    const fmtD = (ts) => { if (!ts) return ''; try { return new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Tokyo', month: 'long', day: 'numeric', weekday: 'short' }).format(new Date(ts)); } catch (e) { return ''; } };
+    let lastDay = '';
+    const bubbles = A.messageList().map((m) => {
+      const day = fmtD(m.ts);
+      const sep = (day && day !== lastDay) ? `<div class="msg-day">${esc(day)}</div>` : '';
+      lastDay = day;
+      const mine = m.by === me;
+      const who = mine ? '' : `<span class="msg-by">${A.memberKo(m.by)}</span>`;
+      return `${sep}<div class="msg ${mine ? 'mine' : 'other'}">${who}<div class="msg-bubble">${esc(m.text)}</div><span class="msg-time">${esc(fmtT(m.ts))}</span></div>`;
+    }).join('');
+    const body = bubbles || `<div class="empty"><div class="e-ic">${A.icon('message')}</div><strong>첫 메시지를 남겨보세요</strong><p>여기서 나눈 대화는 가족 셋의 앱에 함께 보여요.</p></div>`;
+    return `<section class="chatv live">
+      ${head('가족 대화', offline ? '오프라인 · 저장된 대화 · 연결되면 자동 전송' : A.memberKo(me) + '로 대화 중')}
+      <div id="chat-list" class="chat-list">${body}</div>
+      <form class="chat-bar" data-action="send-message" autocomplete="off">
+        <input id="chat-input" class="chat-input" name="msg" type="text" placeholder="메시지 입력…" maxlength="1000" autocomplete="off" enterkeyhint="send">
+        <button class="chat-send" type="submit" aria-label="보내기">${A.icon('next')}</button>
+      </form>
+    </section>`;
+  };
+
   // ====================================================== SEARCH (전역 검색)
   S.search = function () {
     const eg = ['스카이라이너', '환전', '화장실', '가챠', '라멘'];

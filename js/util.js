@@ -31,6 +31,7 @@ window.App = window.App || {};
     member: LS.get('member', null),         // 가족 공유 신원 'dad'|'mom'|'eunjae'|null
     familyCode: LS.get('familyCode', null), // 가족 코드(RTDB room) — null이면 미연결
     expCur: LS.get('expCur', 'krw'),        // 지출 입력 통화 'krw'|'jpy' (기본 원화)
+    chatSeenTs: LS.get('chatSeenTs', 0),    // 가족 대화 마지막으로 읽은 메시지 ts (안읽음 뱃지용)
   };
   A.save = (k) => LS.set(k, A.state[k]);
 
@@ -44,7 +45,7 @@ window.App = window.App || {};
 
   // ---- 가족 공유 상태 (sync.js가 채움; 미연결/미로드 시 로컬 폴백) ----
   // 화면은 아래 접근자만 사용 → sync.js가 없어도(로드 실패) 항상 정의돼 안전.
-  A.shared = { checks: {}, expenses: [] };
+  A.shared = { checks: {}, expenses: [], messages: [] };
   A.linked = () => !!(A.state.familyCode && A.state.member);
   A.checkOn = (id) => (A.linked() ? !!A.shared.checks[id] : !!A.state.check[id]);
   A.checkBy = (id) => ((A.linked() && A.shared.checks[id]) ? A.shared.checks[id].by : '');
@@ -52,6 +53,14 @@ window.App = window.App || {};
   A.expenseList = () => (A.linked()
     ? (A.shared.expenses || [])
     : (A.state.expenses || []).map((e) => ({ id: e.id, by: '', label: e.label, amountYen: e.amountYen, ts: e.ts || 0 })));
+
+  // ---- 가족 대화 (sync.js가 A.shared.messages를 채움) ----
+  // 연결됐을 때만 의미 있음(미연결 로컬 폴백 없음 — 지출과 다른 점).
+  A.messageList = () => (A.linked() ? (A.shared.messages || []) : []);
+  // 안읽음 = 마지막으로 읽은 ts 이후 + 내가 보낸 게 아닌 메시지 수.
+  A.chatUnread = () => (A.shared.messages || []).filter((m) => m.ts > (A.state.chatSeenTs || 0) && m.by !== A.state.member).length;
+  // 현재까지의 최신 메시지 ts를 '읽음'으로 기록.
+  A.markChatSeen = () => { A.state.chatSeenTs = (A.shared.messages || []).reduce((mx, m) => Math.max(mx, m.ts || 0), 0); A.save('chatSeenTs'); };
 
   // ---- money: ¥ with KRW alongside ----
   A.rate = () => A.state.fxRate || (A.data && A.data.exchange && A.data.exchange.ratePer100) || 920;

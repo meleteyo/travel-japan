@@ -86,5 +86,30 @@ try {
   else { fail++; console.log('FAIL  weather-live', n, d1.tempMax, d1.rainPct, d1.summary); }
 } catch (e) { fail++; console.log('FAIL weather-live', e.message); }
 
+// 가족 대화: 미연결이면 연결 안내가 렌더돼야 한다 (깨진 화면 금지)
+try {
+  App.state.familyCode = null; App.state.member = null;
+  const h = S.chat();
+  if (typeof h === 'string' && h.length > 20 && !/undefined|\[object Object\]|NaN/.test(h)) console.log('ok    chat(unlinked)');
+  else { fail++; console.log('FAIL  chat(unlinked)', (String(h).match(/undefined|\[object Object\]|NaN/) || [''])[0]); }
+} catch (e) { fail++; console.log('FAIL chat(unlinked)', e.message); }
+
+// 가족 대화: 연결 상태에서 버블이 렌더되고 메시지 텍스트가 HTML 이스케이프돼야 한다 (저장형 XSS 방지)
+try {
+  global.firebase = { database: { ServerValue: { TIMESTAMP: {} } } };
+  App.firebaseConfig = { apiKey: 'x', databaseURL: 'https://x.firebaseio.com' };
+  App.state.familyCode = 'abcdefghjkmn'; App.state.member = 'mom';
+  App.shared.messages = [
+    { id: 'm1', by: 'dad', text: '점심 뭐 먹을까?', ts: 1717400000000 },
+    { id: 'm2', by: 'mom', text: '라멘 <맛집> 가자', ts: 1717400600000 },
+    { id: 'm3', by: 'eunjae', text: '', ts: 0 },
+  ];
+  const h = S.chat();
+  const escaped = h.indexOf('&lt;맛집&gt;') >= 0 && h.indexOf('<맛집>') < 0;
+  const shell = h.indexOf('chat-list') >= 0 && h.indexOf('chat-bar') >= 0;
+  if (typeof h === 'string' && escaped && shell && !/undefined|\[object Object\]|NaN/.test(h)) console.log('ok    chat(linked) bubbles+esc');
+  else { fail++; console.log(`FAIL  chat(linked) escaped=${escaped} shell=${shell}`, (h.match(/undefined|\[object Object\]|NaN/) || [''])[0]); }
+} catch (e) { fail++; console.log('FAIL chat(linked)', e.message); }
+
 console.log(fail ? `\n❌ ${fail} failures` : '\n✅ all screens rendered');
 process.exit(fail ? 1 : 0);

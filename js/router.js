@@ -82,6 +82,7 @@ window.App = window.App || {};
         case 'info': html = S.info(); tab = 'home'; break;
         case 'join': html = S.join(q); tab = 'home'; break;
         case 'settings': html = S.settings(); tab = 'home'; break;
+        case 'chat': html = S.chat(); tab = 'chat'; break;
         default: html = S.home(); tab = 'home';
       }
     } catch (e) {
@@ -98,6 +99,7 @@ window.App = window.App || {};
         app.innerHTML = html;
       }
       if (!keep) { app.scrollTop = 0; window.scrollTo(0, 0); }
+      document.body.dataset.route = name;   // CSS 훅 (예: 채팅에서 하단 탭바 숨김)
       setActiveTab(tab);
       toggleBack(name);
       A.afterRender(name);
@@ -114,7 +116,7 @@ window.App = window.App || {};
   };
 
   // tab-root screens reachable from the bottom bar — no back arrow needed.
-  const ROOTS = { home: 1, day: 1, talk: 1, subway: 1, food: 1, sos: 1 };
+  const ROOTS = { home: 1, day: 1, talk: 1, subway: 1, food: 1, sos: 1, chat: 1 };
   function toggleBack(name) {
     const b = A.$('#ab-back');
     if (b) b.hidden = !!ROOTS[name];
