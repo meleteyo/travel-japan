@@ -100,3 +100,6 @@
 - `assets/img/6fef201446a04307.webp` (guide:departure fetch:Narita Airport departure terminal check-in)
 - `assets/img/4f2dcc5c36524909.webp` (musteat:wagyu) <- https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E9%82%A3%E9%9C%B8_Naha_%E4%B9%85%E8%8C%82%E5%9C%B0_Kumoji_MK_Building_shop_%E5%92%8C%E7%89%9B%E7%87%92%E8%82%89%E5%BA%97_BBQ_Motobu_WAGYU_Yakiniku_Beef_Restaurant_lunch_meal_January_2025_R12S_08.jpg/1280px-thumbnail.jpg
 - `assets/img/d4972a7e500e5088.webp` (place:cheongju-airport) <- https://upload.wikimedia.org/wikipedia/commons/3/3e/Cheongju_airport_20090404.jpg (CC BY-SA 3.0, Wikimedia Commons User:Sonata)
+- `assets/img/8c412fb02df95ad3.webp` (place:shibuya-loft) <- https://upload.wikimedia.org/wikipedia/commons/2/2a/Shibuya-Loft.jpg
+- `assets/img/6361a81c395dba04.webp` (place:hotel) <- https://art-nippori-lungwood.com/files/images/home/img_kv1.jpg
+- `assets/img/c826b5f1aabf55eb.webp` (place:ramen, reused Tonkotsu_ramen.JPG) — 대표 라멘 이미지

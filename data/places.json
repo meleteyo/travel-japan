@@ -219,6 +219,39 @@
       "isReal": true,
       "gmapUrl": "https://maps.google.com/?q=Cheongju+International+Airport",
       "note": "우리 가족이 출발하는 공항. 단일 여객터미널이라 동선이 단순하고, 국제선은 3층 출국장에서 수속한다."
+    },
+    {
+      "key": "shibuya-loft",
+      "name": "시부야 로프트",
+      "nameJa": "渋谷ロフト",
+      "area": "시부야",
+      "imageUrl": "assets/img/8c412fb02df95ad3.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E6%B8%8B%E8%B0%B7%E3%83%AD%E3%83%95%E3%83%88",
+      "note": "생활잡화·문구·선물 소품 백화점."
+    },
+    {
+      "key": "hotel",
+      "name": "아트호텔 닛포리 렁우드",
+      "nameJa": "アートホテル日暮里ラングウッド",
+      "area": "닛포리",
+      "imageUrl": "assets/img/6361a81c395dba04.webp",
+      "imageSource": "art-nippori-lungwood.com",
+      "isReal": true,
+      "gmapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%AB%E6%97%A5%E6%9A%AE%E9%87%8C%E3%83%A9%E3%83%B3%E3%82%B0%E3%82%A6%E3%83%83%E3%83%89",
+      "note": "우리 가족 숙소. JR 닛포리역 도보 1분."
+    },
+    {
+      "key": "ramen",
+      "name": "라멘 (점심)",
+      "nameJa": "ラーメン",
+      "area": "",
+      "imageUrl": "assets/img/c826b5f1aabf55eb.webp",
+      "imageSource": "reuse",
+      "isReal": false,
+      "gmapUrl": "",
+      "note": "대표 이미지(돈코츠 라멘)."
     }
   ]
 }
