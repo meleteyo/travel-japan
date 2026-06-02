@@ -382,7 +382,7 @@ window.App = window.App || {};
       <div class="gp-list">${(b.items || []).map((it) => `<div class="gp-card">
         <div class="gp-top"><span class="gp-name">${esc(it.nameKo)}</span><span class="gp-price">${A.fmtRange(it.price)}</span></div>
         ${it.nameJp ? `<div class="gp-jp" lang="ja">${esc(it.nameJp)}</div>` : ''}
-        <div class="gp-where">📍 ${esc(it.where)}</div>
+        <a class="gp-where" href="${A.gmap(it.gmap || it.where)}" target="_blank" rel="noopener">📍 ${esc(it.where)} <span class="gp-map">🗺 지도</span></a>
         ${it.why ? `<div class="gp-why">${esc(it.why)}</div>` : ''}
       </div>`).join('')}</div>`).join('');
     const giftPickTips = (sh.giftPickTips || []).map((t) => `<li>${esc(t)}</li>`).join('');

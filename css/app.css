@@ -446,7 +446,8 @@ body.reordering .prow-main { pointer-events: none; }
 .gp-name { font-weight: 800; font-size: .98rem; }
 .gp-price { font-weight: 700; font-size: .85rem; }
 .gp-jp { font-size: .8rem; color: var(--text-soft); margin-top: 3px; }
-.gp-where { font-size: .82rem; color: var(--primary); font-weight: 600; margin-top: 6px; }
+.gp-where { display: block; font-size: .82rem; color: var(--primary); font-weight: 600; margin-top: 6px; text-decoration: none; }
+.gp-map { display: inline-block; margin-left: 3px; font-size: .72rem; background: var(--primary-soft); color: var(--primary); padding: 1px 8px; border-radius: 999px; font-weight: 700; white-space: nowrap; }
 .gp-why { font-size: .82rem; color: var(--text-soft); margin-top: 4px; line-height: 1.45; }
 .gp-tips { margin-top: 12px; }
 .wishlist { display: flex; flex-direction: column; gap: 9px; }
