@@ -15,7 +15,8 @@
       { "id": "hotel", "label": "호텔 예약" }
     ] },
     { "id": "insurance", "label": "보험", "icon": "🛡️", "slots": [
-      { "id": "insurance-cert", "label": "여행자보험 증서" }
+      { "id": "insurance-cert", "label": "여행자보험 증서" },
+      { "id": "insurance-tel", "label": "보험사 24h 사고접수·증권번호" }
     ] },
     { "id": "opt", "label": "선택", "icon": "📌", "slots": [
       { "id": "skyliner", "label": "스카이라이너 예매" },
