@@ -22,7 +22,7 @@ window.App = window.App || {};
     const t = A.tripDay();
     const trip = A.data.itinerary.trip || {};
     let hero = '';
-    if (t.phase === 'before') {
+    if (t.phase === 'before' && t.dleft >= 1) {
       hero = `<div class="today-card before">
         <div class="dday">D-${t.dleft}</div>
         <div class="tc-body"><strong>출발까지 ${t.dleft}일</strong>
