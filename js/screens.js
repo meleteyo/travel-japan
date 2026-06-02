@@ -40,8 +40,11 @@ window.App = window.App || {};
     }
     // budget widget — 가족 연결 시 공유 가계부, 아니면 로컬 (쇼핑 화면과 같은 소스)
     const total = (A.expenseList ? A.expenseList() : (A.state.expenses || [])).reduce((s, e) => s + (e.amountYen || 0), 0);
+    const budgetVal = total
+      ? `<span class="yen"><span class="krw">₩${(A.krw(total)).toLocaleString('ko-KR')}</span> <span class="jpy">¥${total.toLocaleString('ko-KR')}</span></span>`
+      : '<span class="muted">기록 없음</span>';
     const budget = `<a class="widget" href="#/shopping"><span class="w-ic">💴</span><span class="w-k">지출 합계</span>
-      <span class="w-v">${total ? A.fmtYen(total) : '<span class="muted">기록 없음</span>'}</span></a>`;
+      <span class="w-v">${budgetVal}</span></a>`;
     // clothing widget
     const w = weatherOf((t.day || {}).id) || (A.data.weather.days || [])[0];
     const cloth = w ? `<a class="widget" href="#/day/${(t.day||{}).id||'d1'}"><span class="w-ic">${w.icon}</span>
