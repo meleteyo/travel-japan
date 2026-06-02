@@ -406,6 +406,7 @@ window.App = window.App || {};
       ${head('환율 · 돈', ex.note || '')}
       <div class="fx-rate">
         <label>100엔 = <input id="rate" type="number" inputmode="decimal" value="${rate}" data-action="set-rate"> 원</label>
+        <button class="wlive" data-action="refresh-rate" aria-label="환율 새로고침">${A.rateUpdatedLabel ? (A.rateUpdatedLabel() || '🔄 실시간 환율 새로고침') : '🔄 실시간 환율 새로고침'}</button>
       </div>
       <div class="calc">
         <div class="calc-row"><span>¥</span><input id="cjpy" type="number" inputmode="numeric" placeholder="엔" data-action="calc-jpy"></div>

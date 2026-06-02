@@ -34,6 +34,7 @@ window.App = window.App || {};
       case 'doc-del': delDoc(t.dataset.slot); break;
       case 'doc-add': addDoc(); break;
       case 'refresh-weather': refreshWeatherUI(t); break;
+      case 'refresh-rate': refreshRateUI(t); break;
     }
   });
 
@@ -49,6 +50,19 @@ window.App = window.App || {};
     if (status === 'ok') { A.render(); A.toast('최신 날씨로 업데이트됐어요'); return; } // render가 버튼 새로 그림
     if (btn) { btn.textContent = btn.dataset.label || '🔄 새로고침'; btn.classList.remove('busy'); btn.removeAttribute('aria-busy'); }
     A.toast(status === 'nochange' ? '예보 변동이 없어요' : '업데이트를 못 했어요 — 잠시 후 다시 시도');
+  }
+
+  async function refreshRateUI(btn) {
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) { A.toast('오프라인 — 저장된 환율을 보여드려요'); return; }
+    if (!A.refreshRate || A._fxBusy) return;
+    A._fxBusy = true;
+    if (btn) { btn.dataset.label = btn.textContent; btn.textContent = '🔄 새로고침 중…'; btn.classList.add('busy'); btn.setAttribute('aria-busy', 'true'); }
+    let status = 'fail';
+    try { status = await A.refreshRate(true, { render: false }); } catch (e) {}
+    A._fxBusy = false;
+    if (status === 'ok' || status === 'nochange') { A.render(); A.toast(status === 'ok' ? '최신 환율로 업데이트됐어요' : '환율 변동이 없어요'); return; }
+    if (btn) { btn.textContent = btn.dataset.label || '🔄 실시간 환율 새로고침'; btn.classList.remove('busy'); btn.removeAttribute('aria-busy'); }
+    A.toast('환율을 못 가져왔어요 — 잠시 후 다시 시도');
   }
 
   // ---- 서류함 (기기 저장 캡처) ----
@@ -125,7 +139,7 @@ window.App = window.App || {};
     const t = e.target.closest('[data-action]'); if (!t) return;
     switch (t.dataset.action) {
       case 'talk-search': A.talkState.q = t.value.trim(); filterTalk(); break;
-      case 'set-rate': { const v = parseFloat(t.value); if (v > 0) { A.state.fxRate = v; A.save('fxRate'); calcFrom('jpy', parseFloat((A.$('#cjpy') || {}).value) || null); } break; }
+      case 'set-rate': { const v = parseFloat(t.value); if (v > 0) { A.state.fxRate = v; A.state.fxManual = true; A.save('fxRate'); A.save('fxManual'); calcFrom('jpy', parseFloat((A.$('#cjpy') || {}).value) || null); } break; }
       case 'calc-jpy': calcFrom('jpy', parseFloat(t.value)); break;
       case 'calc-krw': calcFrom('krw', parseFloat(t.value)); break;
       case 'global-search': A.runGlobalSearch(t.value); break;
@@ -318,6 +332,7 @@ window.App = window.App || {};
     if (window.matchMedia) matchMedia('(prefers-color-scheme: dark)').addEventListener('change', A.applyTheme);
     try { await A.load(); } catch (e) { console.error(e); }
     if (A.loadCachedWeather) A.loadCachedWeather();
+    if (A.loadCachedRate) A.loadCachedRate();
     // bottom tab "일정" → today's day
     const today = A.tripDay();
     const dayHref = '#/day/' + ((today.day && today.day.id) || 'd1');
@@ -326,6 +341,10 @@ window.App = window.App || {};
     if (A.refreshWeather) {
       A.refreshWeather();
       document.addEventListener('visibilitychange', () => { if (!document.hidden) A.refreshWeather(); });
+    }
+    if (A.refreshRate) {
+      A.refreshRate();
+      document.addEventListener('visibilitychange', () => { if (!document.hidden) A.refreshRate(); });
     }
     // service worker — with prompt update + auto-refresh on new version
     if ('serviceWorker' in navigator) {

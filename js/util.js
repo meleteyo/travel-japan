@@ -27,6 +27,7 @@ window.App = window.App || {};
     voice: LS.get('voice', 'female'),       // female | male (일본어 TTS)
     ttsRate: LS.get('ttsRate', 1),          // 말하기 속도 0.8 | 1 | 1.2 | 1.4
     docExtra: LS.get('docExtra', []),       // 서류함 커스텀 슬롯 [{id,label}]
+    fxManual: LS.get('fxManual', false),    // 환율을 사용자가 직접 입력했는지 (자동 갱신 시 존중)
   };
   A.save = (k) => LS.set(k, A.state[k]);
 
