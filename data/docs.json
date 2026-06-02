@@ -11,7 +11,8 @@
       { "id": "qr-eunjae", "label": "VJW QR — 은재" }
     ] },
     { "id": "booking", "label": "예약", "icon": "🎫", "slots": [
-      { "id": "flight", "label": "항공권 (왕복)" },
+      { "id": "flight", "label": "항공권 — 가는 편" },
+      { "id": "flight-ret", "label": "항공권 — 오는 편" },
       { "id": "hotel", "label": "호텔 예약" }
     ] },
     { "id": "insurance", "label": "보험", "icon": "🛡️", "slots": [

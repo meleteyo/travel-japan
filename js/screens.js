@@ -371,24 +371,21 @@ window.App = window.App || {};
     const tips = (sh.giftTips || []).map((g) => `<li>${esc(g)}</li>`).join('');
     // expense tracker — 연결 시 가족 통합 가계부, 아니면 로컬
     const linked = A.linked && A.linked();
+    const cur = A.state.expCur || 'krw';   // 입력 통화 (기본 원화)
     const list = A.expenseList();   // [{id,by,label,amountYen,ts}]
     const exps = list.slice().reverse().map((e) => `<div class="exp-row"><span>${esc(e.label || '지출')}</span>
       ${e.by ? `<span class="exp-by">${A.memberKo(e.by)}</span>` : ''}<span class="exp-v">${A.fmtYen(e.amountYen)}</span><button class="exp-x" data-action="del-expense" data-id="${e.id}" aria-label="삭제">✕</button></div>`).join('');
     const total = list.reduce((s, e) => s + (e.amountYen || 0), 0);
-    // 예산 상한 추출 ("2만~3만엔" → 30000) → 진행률 바
-    const parseBudget = (str) => {
-      if (!str) return 0; let max = 0, m; const re = /(\d+(?:\.\d+)?)\s*만/g;
-      while ((m = re.exec(str))) max = Math.max(max, parseFloat(m[1]) * 10000);
-      if (!max) { const r2 = /(\d[\d,]{2,})/g; while ((m = r2.exec(str))) max = Math.max(max, +m[1].replace(/,/g, '')); }
-      return max;
-    };
-    const budgetYen = parseBudget(sh.budget && sh.budget.free);
-    const pct = budgetYen ? Math.min(100, Math.round(total / budgetYen * 100)) : 0;
+    // 예산은 한국 원화 기준(여행 총예산). 지출 합계(엔)는 원화로 환산해 진행률 계산.
+    const totalKRW = A.krw(total);
+    const budgetKRW = (sh.budgetKRW && sh.budgetKRW > 0) ? sh.budgetKRW : 5000000;
+    const won = (n) => '₩' + Math.round(n).toLocaleString('ko-KR');
+    const pct = Math.min(100, Math.round(totalKRW / budgetKRW * 100));
     const lvl = pct >= 100 ? 'over' : pct >= 80 ? 'warn' : 'ok';
     const budgetCard = `<div class="budget-card">
       <div class="bc-top"><span class="bc-k">지출 합계</span><span class="bc-v">${A.fmtYen(total)}</span></div>
-      ${budgetYen ? `<div class="bc-bar ${lvl}"><span style="width:${pct}%"></span></div>
-      <div class="bc-foot"><span>${pct}% 사용</span><span>예산 ${A.fmtYen(budgetYen)}</span></div>` : ''}
+      <div class="bc-bar ${lvl}"><span style="width:${pct}%"></span></div>
+      <div class="bc-foot"><span>${pct}% 사용 · ${won(totalKRW)}</span><span>여행 총예산 ${won(budgetKRW)}</span></div>
     </div>`;
     return `<section class="shopv">
       ${head('쇼핑 · 예산', (sh.budget && sh.budget.free) || '')}
@@ -397,9 +394,15 @@ window.App = window.App || {};
       ${(sh.storeBudget || []).length ? `<div class="store-budget">${sh.storeBudget.map((b) => `<div class="sb-row"><span>${esc(b.store)}</span><span class="sb-cap">${esc(b.cap)}</span></div>`).join('')}</div>` : ''}
       <h2 class="sec">지출 메모${linked ? ' <span class="fam-on">👨‍👩‍👧 가족 통합</span>' : ''}</h2>
       <form class="exp-form" data-action="add-expense">
-        <input name="label" placeholder="항목" aria-label="항목">
-        <input name="yen" type="number" inputmode="numeric" placeholder="¥ 금액" aria-label="금액">
-        <button type="submit" aria-label="추가">＋</button>
+        <div class="exp-cur">
+          <button type="button" class="cur-seg ${cur === 'krw' ? 'on' : ''}" data-action="exp-cur" data-val="krw">₩ 원화</button>
+          <button type="button" class="cur-seg ${cur === 'jpy' ? 'on' : ''}" data-action="exp-cur" data-val="jpy">¥ 엔화</button>
+        </div>
+        <div class="exp-row-in">
+          <input name="label" placeholder="항목" aria-label="항목">
+          <input name="amt" type="number" inputmode="numeric" placeholder="${cur === 'krw' ? '₩ 금액' : '¥ 금액'}" aria-label="금액">
+          <button type="submit" aria-label="추가">＋</button>
+        </div>
       </form>
       <div class="exps">${exps || '<div class="empty"><div class="e-ic">' + A.icon('bag') + '</div><strong>아직 기록이 없어요</strong><p>위에서 지출을 추가하면 예산이 채워져요.</p></div>'}</div>
       <h2 class="sec">사고 싶은 것 (은재)</h2>

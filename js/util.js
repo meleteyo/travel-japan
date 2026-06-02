@@ -30,6 +30,7 @@ window.App = window.App || {};
     fxManual: LS.get('fxManual', false),    // 환율을 사용자가 직접 입력했는지 (자동 갱신 시 존중)
     member: LS.get('member', null),         // 가족 공유 신원 'dad'|'mom'|'eunjae'|null
     familyCode: LS.get('familyCode', null), // 가족 코드(RTDB room) — null이면 미연결
+    expCur: LS.get('expCur', 'krw'),        // 지출 입력 통화 'krw'|'jpy' (기본 원화)
   };
   A.save = (k) => LS.set(k, A.state[k]);
 

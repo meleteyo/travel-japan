@@ -42,8 +42,18 @@ window.App = window.App || {};
       case 'link-family': linkFamily(); break;
       case 'copy-invite': copyInvite(); break;
       case 'unlink-family': unlinkFamily(); break;
+      case 'exp-cur': setExpCur(t.dataset.val); break;
     }
   });
+
+  // 지출 입력 통화 토글 (₩/¥) — 재렌더 없이 제자리 (입력한 항목 보존)
+  function setExpCur(c) {
+    A.state.expCur = (c === 'jpy') ? 'jpy' : 'krw';
+    A.save('expCur');
+    A.$$('[data-action="exp-cur"]').forEach((b) => b.classList.toggle('on', b.dataset.val === A.state.expCur));
+    const amt = A.$('.exp-form input[name="amt"]');
+    if (amt) amt.placeholder = A.state.expCur === 'krw' ? '₩ 금액' : '¥ 금액';
+  }
 
   async function refreshWeatherUI(btn) {
     if (typeof navigator !== 'undefined' && navigator.onLine === false) { A.toast('오프라인 — 저장된 예보를 보여드려요'); return; }
@@ -168,8 +178,10 @@ window.App = window.App || {};
     const t = e.target.closest('[data-action="add-expense"]'); if (!t) return;
     e.preventDefault();
     const label = (t.label.value || '지출').trim();
-    const yen = parseInt(t.yen.value, 10);
-    if (!yen || yen <= 0) { A.toast('금액을 입력하세요'); return; }
+    const raw = parseInt(t.amt.value, 10);
+    if (!raw || raw <= 0) { A.toast('금액을 입력하세요'); return; }
+    // 엔(amountYen)이 표준 저장값. 원화 입력은 현재 환율로 엔 환산해 저장(가족 동기화 스키마 그대로 유지).
+    const yen = (A.state.expCur === 'jpy') ? raw : Math.max(1, Math.round(raw * 100 / A.rate()));
     if (A.linked && A.linked() && A.sync && A.sync.addExpense(label, yen)) {
       try { t.reset(); } catch (e) {}            // 폼 비우기 — 목록/총합은 동기화 리스너가 갱신
       A.toast('가족 가계부에 기록했어요');
