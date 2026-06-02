@@ -392,7 +392,7 @@ window.App = window.App || {};
     const list = A.expenseList();   // [{id,by,label,amountYen,ts}]
     const exps = list.slice().reverse().map((e) => `<div class="exp-row">
       <div class="exp-info"><span class="exp-label">${esc(e.label || '지출')}</span>${e.by ? `<span class="exp-by">${A.memberKo(e.by)}</span>` : ''}</div>
-      <div class="exp-amt"><span class="exp-v">${A.fmtYen(e.amountYen)}</span><button class="exp-x" data-action="del-expense" data-id="${e.id}" aria-label="삭제">✕</button></div>
+      <div class="exp-amt"><span class="exp-v">₩${A.krw(e.amountYen).toLocaleString('ko-KR')} <span class="exp-yen">¥${(e.amountYen || 0).toLocaleString('ko-KR')}</span></span><button class="exp-x" data-action="del-expense" data-id="${e.id}" aria-label="삭제">✕</button></div>
     </div>`).join('');
     const total = list.reduce((s, e) => s + (e.amountYen || 0), 0);
     // 예산은 한국 원화 기준(여행 총예산). 지출 합계(엔)는 원화로 환산해 진행률 계산.
