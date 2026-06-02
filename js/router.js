@@ -12,6 +12,47 @@ window.App = window.App || {};
     return { parts, q: new URLSearchParams(query) };
   }
 
+  // ---- 제자리 DOM 패치(morph): 같은 화면 데이터 갱신 시 통째 교체 대신 바뀐 노드만 수정 ----
+  // 변하지 않은 요소(특히 <img>)를 재생성하지 않아 백그라운드 갱신 시 깜박임이 없다.
+  function morphInner(parent, html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    morphChildren(parent, tmp);
+  }
+  function morphChildren(oldP, newP) {
+    let oldN = oldP.firstChild, newN = newP.firstChild;
+    while (newN) {
+      const nextNew = newN.nextSibling;
+      if (!oldN) { oldP.appendChild(newN); newN = nextNew; continue; }   // newN 이동
+      const nextOld = oldN.nextSibling;
+      const same = oldN.nodeType === newN.nodeType && (oldN.nodeType !== 1 || oldN.tagName === newN.tagName);
+      if (same) { morphNode(oldN, newN); }
+      else { oldP.replaceChild(newN, oldN); }                             // 위치 교체(태그 다를 때만)
+      oldN = nextOld; newN = nextNew;
+    }
+    while (oldN) { const n = oldN.nextSibling; oldP.removeChild(oldN); oldN = n; }
+  }
+  function morphNode(oldN, newN) {
+    if (oldN.nodeType === 3 || oldN.nodeType === 8) { if (oldN.nodeValue !== newN.nodeValue) oldN.nodeValue = newN.nodeValue; return; }
+    if (oldN.nodeType !== 1) return;
+    const na = newN.attributes;
+    for (let i = 0; i < na.length; i++) { const a = na[i]; if (oldN.getAttribute(a.name) !== a.value) oldN.setAttribute(a.name, a.value); }
+    const oa = oldN.attributes;
+    for (let i = oa.length - 1; i >= 0; i--) { const a = oa[i]; if (!newN.hasAttribute(a.name)) oldN.removeAttribute(a.name); }
+    morphChildren(oldN, newN);
+  }
+
+  // 백그라운드 갱신 합치기(날씨·환율·sync): 여러 갱신을 한 번의 제자리 렌더로 코얼레스.
+  let _softT = 0;
+  A.softRender = function () {
+    clearTimeout(_softT);
+    _softT = setTimeout(function () {
+      const sheet = A.$('#sheet'), lb = A.$('#lightbox');
+      if ((sheet && sheet.classList.contains('open')) || (lb && lb.classList.contains('open'))) return;
+      A.render({ keepScroll: true });
+    }, 120);
+  };
+
   A.render = function (opts) {
     // opts.keepScroll: 동기화로 인한 제자리 갱신 — 스크롤 초기화·전환 애니메이션 생략.
     // (hashchange는 Event를 넘기므로 keepScroll이 없어 기존 동작 유지)
@@ -49,7 +90,13 @@ window.App = window.App || {};
     }
     const app = A.$('#app');
     const paint = function () {
-      app.innerHTML = html;
+      // 같은 화면 백그라운드 갱신(keep)은 morph로 제자리 패치 → 이미지 재생성·깜박임 없음.
+      // 화면 이동(첫 렌더 포함)은 통째 교체.
+      if (keep && app.childNodes && app.childNodes.length) {
+        try { morphInner(app, html); } catch (e) { app.innerHTML = html; }
+      } else {
+        app.innerHTML = html;
+      }
       if (!keep) { app.scrollTop = 0; window.scrollTo(0, 0); }
       setActiveTab(tab);
       toggleBack(name);

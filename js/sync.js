@@ -36,6 +36,7 @@ window.App = window.App || {};
 
   // 다수 value 이벤트를 1회 렌더로 합치고, 스크롤은 보존(체크 후 위로 안 튐), 시트/라이트박스 열려있으면 건너뜀.
   function rerender() {
+    if (A.softRender) { A.softRender(); return; }   // 날씨·환율과 한 번으로 코얼레스 + morph
     clearTimeout(renderT);
     renderT = setTimeout(function () {
       if (typeof A.render !== 'function') return;

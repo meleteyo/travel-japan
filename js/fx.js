@@ -61,7 +61,7 @@ window.App = window.App || {};
       A.LS.set('fx', { ts: now, per100: p.per100 });
       A.save('fxRate'); A.save('fxManual');
       // 값이 실제로 바뀐 경우에만, 무애니메이션으로 반영 (부팅 직후 홈 깜박임 방지)
-      if (changed && doRender && typeof A.render === 'function') A.render({ keepScroll: true });
+      if (changed && doRender) { if (A.softRender) A.softRender(); else if (typeof A.render === 'function') A.render({ keepScroll: true }); }
       return changed ? 'ok' : 'nochange';
     } catch (e) { return 'fail'; }
   };
