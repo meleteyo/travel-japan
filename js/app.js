@@ -221,11 +221,20 @@ window.App = window.App || {};
 
   // ---------------- checklist / wishlist ----------------
   function toggleCheck(id, btn) {
-    A.state.check[id] = !A.state.check[id]; A.save('check');
-    btn.classList.toggle('on', A.state.check[id]);
-    A.$('.chk-box', btn).textContent = A.state.check[id] ? '✓' : '';
-    // update group progress
-    A.render();
+    const on = (A.state.check[id] = !A.state.check[id]); A.save('check');
+    btn.classList.toggle('on', on);
+    A.$('.chk-box', btn).innerHTML = on ? A.icon('check') : '';
+    // 그룹 진행도만 제자리 갱신 — 전체 재렌더 시 체크 후 스크롤이 맨 위로 튀는 문제 방지
+    const grp = btn.closest('.cgroup'); if (!grp) return;
+    const boxes = A.$$('.chk', grp);
+    const done = boxes.filter((b) => b.classList.contains('on')).length;
+    const total = boxes.length;
+    const pct = total ? Math.round(done / total * 100) : 0;
+    const allDone = total > 0 && done === total;
+    const ring = A.$('.cg-ring', grp);
+    if (ring) { ring.style.setProperty('--p', pct); ring.classList.toggle('done', allDone); }
+    const num = A.$('.cg-num', grp); if (num) num.innerHTML = allDone ? A.icon('check') : String(done);
+    const prog = A.$('.cg-prog', grp); if (prog) prog.textContent = done + '/' + total;
   }
   function toggleWish(id, btn) {
     A.state.wish[id] = !A.state.wish[id]; A.save('wish');

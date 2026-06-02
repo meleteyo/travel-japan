@@ -395,7 +395,7 @@ window.App = window.App || {};
       ${(sh.storeBudget || []).length ? `<div class="store-budget">${sh.storeBudget.map((b) => `<div class="sb-row"><span>${esc(b.store)}</span><span class="sb-cap">${esc(b.cap)}</span></div>`).join('')}</div>` : ''}
       <h2 class="sec">지출 메모</h2>
       <form class="exp-form" data-action="add-expense">
-        <input name="label" placeholder="항목 (예: 가챠)" aria-label="항목">
+        <input name="label" placeholder="항목" aria-label="항목">
         <input name="yen" type="number" inputmode="numeric" placeholder="¥ 금액" aria-label="금액">
         <button type="submit" aria-label="추가">＋</button>
       </form>

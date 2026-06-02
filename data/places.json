@@ -208,6 +208,17 @@
       "isReal": true,
       "gmapUrl": "https://maps.google.com/?q=Narita+Airport+Terminal+1+Tokyo",
       "note": "외국인 전용 교통·전자화폐 IC카드. 보증금 없이 구입하며 구입일로부터 28일 유효."
+    },
+    {
+      "key": "cheongju-airport",
+      "name": "청주국제공항",
+      "nameJa": "清州国際空港 / Cheongju Int'l (CJJ)",
+      "area": "청주",
+      "imageUrl": "assets/img/d4972a7e500e5088.webp",
+      "imageSource": "upload.wikimedia.org",
+      "isReal": true,
+      "gmapUrl": "https://maps.google.com/?q=Cheongju+International+Airport",
+      "note": "우리 가족이 출발하는 공항. 단일 여객터미널이라 동선이 단순하고, 국제선은 3층 출국장에서 수속한다."
     }
   ]
 }

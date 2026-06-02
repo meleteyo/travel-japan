@@ -413,8 +413,8 @@ img { background: var(--surface-2); }
 .sb-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-top: 1px solid var(--line); font-size: .9rem; }
 .sb-row:first-child { border-top: 0; }
 .sb-cap { font-weight: 800; color: var(--primary); }
-.exp-form { display: grid; grid-template-columns: 1fr 100px 48px; gap: 8px; margin-bottom: 10px; }
-.exp-form input { padding: 12px 14px; border: 1px solid var(--line-strong); border-radius: var(--r-sm); background: var(--surface); }
+.exp-form { display: grid; grid-template-columns: minmax(0, 1fr) 92px 46px; gap: 8px; margin-bottom: 10px; }
+.exp-form input { min-width: 0; padding: 12px 12px; border: 1px solid var(--line-strong); border-radius: var(--r-sm); background: var(--surface); }
 .exp-form input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
 .exp-form button { background: var(--primary); color: var(--primary-ink); border-radius: var(--r-sm); font-size: 1.3rem; font-weight: 800; }
 .exps { display: flex; flex-direction: column; gap: 7px; }
