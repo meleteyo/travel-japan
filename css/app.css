@@ -80,7 +80,7 @@ body {
   position: fixed; left: 50%; transform: translateX(-50%);
   bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 40;
   width: min(440px, calc(100% - 28px));
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px;
   padding: 7px;
   background: color-mix(in srgb, var(--surface) 80%, transparent);
   -webkit-backdrop-filter: saturate(1.8) blur(20px); backdrop-filter: saturate(1.8) blur(20px);

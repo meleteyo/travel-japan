@@ -24,7 +24,7 @@ window.App = window.App || {};
         case 'talk': html = S.talk(); break;
         case 'subway': html = S.subway(); break;
         case 'sos': html = S.sos(); break;
-        case 'food': html = S.food(q.get('d')); tab = 'home'; break;
+        case 'food': html = S.food(q.get('d')); tab = 'food'; break;
         case 'tips': html = S.tips(); tab = 'home'; break;
         case 'shopping': html = S.shopping(); tab = 'home'; break;
         case 'photo': html = S.photo(); tab = 'home'; break;
@@ -32,7 +32,7 @@ window.App = window.App || {};
         case 'docs': html = S.docs(); tab = 'home'; break;
         case 'search': html = S.search(); tab = 'home'; break;
         case 'guide': html = S.guide(parts[1]); tab = 'day'; break;
-        case 'eat': html = S.eat(parts[1]); tab = 'home'; break;
+        case 'eat': html = S.eat(parts[1]); tab = 'food'; break;
         case 'exchange': html = S.exchange(); tab = 'home'; break;
         case 'check': html = S.check(); tab = 'home'; break;
         case 'info': html = S.info(); tab = 'home'; break;
@@ -63,7 +63,7 @@ window.App = window.App || {};
   };
 
   // tab-root screens reachable from the bottom bar — no back arrow needed.
-  const ROOTS = { home: 1, day: 1, talk: 1, subway: 1, sos: 1 };
+  const ROOTS = { home: 1, day: 1, talk: 1, subway: 1, food: 1, sos: 1 };
   function toggleBack(name) {
     const b = A.$('#ab-back');
     if (b) b.hidden = !!ROOTS[name];
