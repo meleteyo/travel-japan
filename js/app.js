@@ -429,7 +429,7 @@ window.App = window.App || {};
       'shopping', 'tips', 'restaurants', 'musteat', 'places', 'photospots', 'medical'].forEach((f) => add('data/' + f + '.json'));
     const t = A.data.transit && A.data.transit.map || {};
     add(t.webp); add(t.png);
-    ['assets/icons/icon-192-v2.png', 'assets/icons/icon-512-v2.png'].forEach(add);
+    ['assets/icons/icon-192-v3.png', 'assets/icons/icon-512-v3.png'].forEach(add);
     const list = Array.from(urls);
     let done = 0;
     if (statusEl) statusEl.textContent = `저장 중… 0 / ${list.length}`;
