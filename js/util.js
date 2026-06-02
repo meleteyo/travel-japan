@@ -82,8 +82,8 @@ window.App = window.App || {};
   A.toast = (msg) => {
     let t = A.$('#toast');
     if (!t) { t = document.createElement('div'); t.id = 'toast'; document.body.appendChild(t); }
-    t.textContent = msg; t.classList.add('show');
-    clearTimeout(A._tt); A._tt = setTimeout(() => t.classList.remove('show'), 2200);
+    t.textContent = msg; t.classList.add('on');
+    clearTimeout(A._tt); A._tt = setTimeout(() => t.classList.remove('on'), 2200);
   };
 
   // ---- fullscreen "show to staff" sheet ----
