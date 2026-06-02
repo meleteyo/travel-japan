@@ -35,6 +35,8 @@ window.App = window.App || {};
       case 'doc-add': addDoc(); break;
       case 'refresh-weather': refreshWeatherUI(t); break;
       case 'refresh-rate': refreshRateUI(t); break;
+      case 'force-update': forceUpdate(); break;
+      case 'search-eg': { const i = A.$('#gsearch'); if (i) { i.value = t.dataset.q; A.runGlobalSearch(t.dataset.q); } break; }
     }
   });
 
@@ -143,8 +145,6 @@ window.App = window.App || {};
       case 'calc-jpy': calcFrom('jpy', parseFloat(t.value)); break;
       case 'calc-krw': calcFrom('krw', parseFloat(t.value)); break;
       case 'global-search': A.runGlobalSearch(t.value); break;
-      case 'search-eg': { const i = A.$('#gsearch'); if (i) { i.value = t.dataset.q; A.runGlobalSearch(t.dataset.q); } break; }
-      case 'force-update': forceUpdate(); break;
     }
   });
 
