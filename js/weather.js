@@ -98,7 +98,7 @@ window.App = window.App || {};
       const n = A.applyWeather(map, now);
       if (n) {
         A.LS.set('wx', { ts: now, map });
-        if (doRender && typeof A.render === 'function') A.render();
+        if (doRender && typeof A.render === 'function') A.render({ keepScroll: true });  // 부팅 직후 깜박임 방지: 무애니메이션 즉시 반영
         return 'ok';
       }
       return 'nochange';

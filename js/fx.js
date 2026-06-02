@@ -53,14 +53,16 @@ window.App = window.App || {};
       const p = parse(await res.json());
       if (!p) return 'fail';
       const prev = A.state.fxRate;
+      const changed = p.per100 !== prev;
       A.state.fxRate = p.per100;
       A.state.fxManual = false;
       A.data.exchange.rateSource = 'live';
       A.data.exchange.rateUpdatedAt = now;
       A.LS.set('fx', { ts: now, per100: p.per100 });
       A.save('fxRate'); A.save('fxManual');
-      if (doRender && typeof A.render === 'function') A.render();
-      return p.per100 === prev ? 'nochange' : 'ok';
+      // 값이 실제로 바뀐 경우에만, 무애니메이션으로 반영 (부팅 직후 홈 깜박임 방지)
+      if (changed && doRender && typeof A.render === 'function') A.render({ keepScroll: true });
+      return changed ? 'ok' : 'nochange';
     } catch (e) { return 'fail'; }
   };
 })(window.App);
